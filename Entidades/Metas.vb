@@ -15,8 +15,7 @@
     End Sub
 
     Public Sub New(numODS As Integer, codMeta As String, nombre As String, descripcion As String)
-        Me.NumODS = numODS
-        Me.CodMeta = codMeta
+        Me.New(numODS, codMeta)
         Me.Nombre = nombre
         Me.Descripcion = descripcion
     End Sub
