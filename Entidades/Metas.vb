@@ -13,6 +13,6 @@
     Public Overloads Function Equals(other As Metas) As Boolean Implements IEquatable(Of Metas).Equals
         Return other IsNot Nothing AndAlso
                NumODS = other.NumODS AndAlso
-               CodMeta = other.CodMeta
+               CodMeta.ToLower = other.CodMeta.ToLower
     End Function
 End Class
