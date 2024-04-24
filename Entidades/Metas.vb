@@ -6,6 +6,21 @@
     Public Property Nombre As String
     Public Property Descripcion As String
 
+    Public Sub New()
+    End Sub
+
+    Public Sub New(numODS As Integer, codMeta As String)
+        Me.NumODS = numODS
+        Me.CodMeta = codMeta
+    End Sub
+
+    Public Sub New(numODS As Integer, codMeta As String, nombre As String, descripcion As String)
+        Me.New(numODS, codMeta)
+        Me.Nombre = nombre
+        Me.Descripcion = descripcion
+    End Sub
+
+
     Public Overrides Function Equals(obj As Object) As Boolean
         Return Equals(TryCast(obj, Metas))
     End Function
