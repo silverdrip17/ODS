@@ -5,6 +5,7 @@
     Public Property Nombre As String
     Public Property Descripcion As String
     Public Property Imagen As String
+    Public Property ListaMetas As List(Of Metas)
 
     Public Sub New()
     End Sub
