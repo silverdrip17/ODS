@@ -24,13 +24,15 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.grpEditar = New System.Windows.Forms.GroupBox()
+        Me.txtEditarMetas = New System.Windows.Forms.TextBox()
+        Me.txtEditarOds = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.lblEditarMetas = New System.Windows.Forms.Label()
         Me.lblEditarOds = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnTodasOds = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.txtEditarOds = New System.Windows.Forms.TextBox()
-        Me.txtEditarMetas = New System.Windows.Forms.TextBox()
+        Me.btnEditar = New System.Windows.Forms.Button()
+        Me.btnCammbios = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpEditar.SuspendLayout()
         Me.SuspendLayout()
@@ -48,6 +50,8 @@ Partial Class Form1
         '
         'grpEditar
         '
+        Me.grpEditar.Controls.Add(Me.btnCammbios)
+        Me.grpEditar.Controls.Add(Me.btnEditar)
         Me.grpEditar.Controls.Add(Me.txtEditarMetas)
         Me.grpEditar.Controls.Add(Me.txtEditarOds)
         Me.grpEditar.Controls.Add(Me.TextBox1)
@@ -60,6 +64,30 @@ Partial Class Form1
         Me.grpEditar.TabIndex = 1
         Me.grpEditar.TabStop = False
         Me.grpEditar.Text = "Editar ods y/o Metas"
+        '
+        'txtEditarMetas
+        '
+        Me.txtEditarMetas.BackColor = System.Drawing.Color.GreenYellow
+        Me.txtEditarMetas.Location = New System.Drawing.Point(127, 183)
+        Me.txtEditarMetas.Name = "txtEditarMetas"
+        Me.txtEditarMetas.Size = New System.Drawing.Size(245, 26)
+        Me.txtEditarMetas.TabIndex = 5
+        '
+        'txtEditarOds
+        '
+        Me.txtEditarOds.BackColor = System.Drawing.Color.GreenYellow
+        Me.txtEditarOds.Location = New System.Drawing.Point(127, 132)
+        Me.txtEditarOds.Name = "txtEditarOds"
+        Me.txtEditarOds.Size = New System.Drawing.Size(245, 26)
+        Me.txtEditarOds.TabIndex = 4
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BackColor = System.Drawing.Color.GreenYellow
+        Me.TextBox1.Location = New System.Drawing.Point(127, 63)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(245, 26)
+        Me.TextBox1.TabIndex = 3
         '
         'lblEditarMetas
         '
@@ -97,29 +125,23 @@ Partial Class Form1
         Me.btnTodasOds.Text = "Ver Todos los ODS"
         Me.btnTodasOds.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'btnEditar
         '
-        Me.TextBox1.BackColor = System.Drawing.Color.GreenYellow
-        Me.TextBox1.Location = New System.Drawing.Point(127, 63)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(245, 26)
-        Me.TextBox1.TabIndex = 3
+        Me.btnEditar.Location = New System.Drawing.Point(34, 240)
+        Me.btnEditar.Name = "btnEditar"
+        Me.btnEditar.Size = New System.Drawing.Size(93, 31)
+        Me.btnEditar.TabIndex = 6
+        Me.btnEditar.Text = "Editar"
+        Me.btnEditar.UseVisualStyleBackColor = True
         '
-        'txtEditarOds
+        'btnCammbios
         '
-        Me.txtEditarOds.BackColor = System.Drawing.Color.GreenYellow
-        Me.txtEditarOds.Location = New System.Drawing.Point(127, 132)
-        Me.txtEditarOds.Name = "txtEditarOds"
-        Me.txtEditarOds.Size = New System.Drawing.Size(245, 26)
-        Me.txtEditarOds.TabIndex = 4
-        '
-        'txtEditarMetas
-        '
-        Me.txtEditarMetas.BackColor = System.Drawing.Color.GreenYellow
-        Me.txtEditarMetas.Location = New System.Drawing.Point(127, 183)
-        Me.txtEditarMetas.Name = "txtEditarMetas"
-        Me.txtEditarMetas.Size = New System.Drawing.Size(245, 26)
-        Me.txtEditarMetas.TabIndex = 5
+        Me.btnCammbios.Location = New System.Drawing.Point(159, 240)
+        Me.btnCammbios.Name = "btnCammbios"
+        Me.btnCammbios.Size = New System.Drawing.Size(183, 31)
+        Me.btnCammbios.TabIndex = 7
+        Me.btnCammbios.Text = "Confitmar Cambios"
+        Me.btnCammbios.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -148,4 +170,6 @@ Partial Class Form1
     Friend WithEvents txtEditarOds As TextBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents btnTodasOds As Button
+    Friend WithEvents btnEditar As Button
+    Friend WithEvents btnCammbios As Button
 End Class
