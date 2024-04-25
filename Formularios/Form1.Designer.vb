@@ -26,13 +26,13 @@ Partial Class Form1
         Me.grpEditar = New System.Windows.Forms.GroupBox()
         Me.txtEditarMetas = New System.Windows.Forms.TextBox()
         Me.txtEditarOds = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.lblEditarMetas = New System.Windows.Forms.Label()
         Me.lblEditarOds = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnTodasOds = New System.Windows.Forms.Button()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnCammbios = New System.Windows.Forms.Button()
+        Me.cboOds = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpEditar.SuspendLayout()
         Me.SuspendLayout()
@@ -50,11 +50,11 @@ Partial Class Form1
         '
         'grpEditar
         '
+        Me.grpEditar.Controls.Add(Me.cboOds)
         Me.grpEditar.Controls.Add(Me.btnCammbios)
         Me.grpEditar.Controls.Add(Me.btnEditar)
         Me.grpEditar.Controls.Add(Me.txtEditarMetas)
         Me.grpEditar.Controls.Add(Me.txtEditarOds)
-        Me.grpEditar.Controls.Add(Me.TextBox1)
         Me.grpEditar.Controls.Add(Me.lblEditarMetas)
         Me.grpEditar.Controls.Add(Me.lblEditarOds)
         Me.grpEditar.Controls.Add(Me.Label1)
@@ -80,14 +80,6 @@ Partial Class Form1
         Me.txtEditarOds.Name = "txtEditarOds"
         Me.txtEditarOds.Size = New System.Drawing.Size(245, 26)
         Me.txtEditarOds.TabIndex = 4
-        '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.GreenYellow
-        Me.TextBox1.Location = New System.Drawing.Point(127, 63)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(245, 26)
-        Me.TextBox1.TabIndex = 3
         '
         'lblEditarMetas
         '
@@ -143,6 +135,14 @@ Partial Class Form1
         Me.btnCammbios.Text = "Confitmar Cambios"
         Me.btnCammbios.UseVisualStyleBackColor = True
         '
+        'cboOds
+        '
+        Me.cboOds.FormattingEnabled = True
+        Me.cboOds.Location = New System.Drawing.Point(127, 61)
+        Me.cboOds.Name = "cboOds"
+        Me.cboOds.Size = New System.Drawing.Size(245, 28)
+        Me.cboOds.TabIndex = 8
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -168,8 +168,8 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents txtEditarMetas As TextBox
     Friend WithEvents txtEditarOds As TextBox
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents btnTodasOds As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnCammbios As Button
+    Friend WithEvents cboOds As ComboBox
 End Class
