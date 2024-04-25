@@ -30,5 +30,7 @@
                NumODS = other.NumODS
     End Function
 
-
+    Public Overrides Function ToString() As String
+        Return $"{NumODS}: {Nombre}"
+    End Function
 End Class
