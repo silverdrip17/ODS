@@ -1,11 +1,13 @@
-﻿Public Class ODS
+﻿Imports System.Collections.ObjectModel
+
+Public Class ODS
     Implements IEquatable(Of ODS)
 
     Public Property NumODS As Integer
     Public Property Nombre As String
     Public Property Descripcion As String
     Public Property Imagen As String
-    Public Property ListaMetas As List(Of Metas)
+    Public ReadOnly Property ListaMetas As ReadOnlyCollection(Of Metas)
 
     Public Sub New()
     End Sub
