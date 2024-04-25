@@ -24,9 +24,13 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.grpEditar = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnTodasOds = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpEditar.SuspendLayout()
         Me.SuspendLayout()
@@ -34,25 +38,46 @@ Partial Class Form1
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(760, 2)
+        Me.DataGridView1.Location = New System.Drawing.Point(27, 11)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 62
         Me.DataGridView1.RowTemplate.Height = 28
-        Me.DataGridView1.Size = New System.Drawing.Size(846, 324)
+        Me.DataGridView1.Size = New System.Drawing.Size(626, 324)
         Me.DataGridView1.TabIndex = 0
         '
         'grpEditar
         '
+        Me.grpEditar.Controls.Add(Me.TextBox3)
+        Me.grpEditar.Controls.Add(Me.TextBox2)
+        Me.grpEditar.Controls.Add(Me.TextBox1)
         Me.grpEditar.Controls.Add(Me.Label3)
         Me.grpEditar.Controls.Add(Me.Label2)
         Me.grpEditar.Controls.Add(Me.Label1)
-        Me.grpEditar.Location = New System.Drawing.Point(759, 354)
+        Me.grpEditar.Location = New System.Drawing.Point(705, 12)
         Me.grpEditar.Name = "grpEditar"
-        Me.grpEditar.Size = New System.Drawing.Size(832, 308)
+        Me.grpEditar.Size = New System.Drawing.Size(391, 308)
         Me.grpEditar.TabIndex = 1
         Me.grpEditar.TabStop = False
         Me.grpEditar.Text = "Editar ods y/o Metas"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(8, 186)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(103, 20)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Editar Metas:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(17, 132)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(94, 20)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Editar ODS:"
         '
         'Label1
         '
@@ -63,29 +88,45 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ODS:"
         '
-        'Label2
+        'btnTodasOds
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(49, 128)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(94, 20)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Editar ODS:"
+        Me.btnTodasOds.Location = New System.Drawing.Point(27, 367)
+        Me.btnTodasOds.Name = "btnTodasOds"
+        Me.btnTodasOds.Size = New System.Drawing.Size(186, 37)
+        Me.btnTodasOds.TabIndex = 2
+        Me.btnTodasOds.Text = "Ver Todas las ODS"
+        Me.btnTodasOds.UseVisualStyleBackColor = True
         '
-        'Label3
+        'TextBox1
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(49, 186)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(103, 20)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Editar Metas:"
+        Me.TextBox1.BackColor = System.Drawing.Color.GreenYellow
+        Me.TextBox1.Location = New System.Drawing.Point(127, 63)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(245, 26)
+        Me.TextBox1.TabIndex = 3
+        '
+        'TextBox2
+        '
+        Me.TextBox2.BackColor = System.Drawing.Color.GreenYellow
+        Me.TextBox2.Location = New System.Drawing.Point(127, 132)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(245, 26)
+        Me.TextBox2.TabIndex = 4
+        '
+        'TextBox3
+        '
+        Me.TextBox3.BackColor = System.Drawing.Color.GreenYellow
+        Me.TextBox3.Location = New System.Drawing.Point(127, 183)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(245, 26)
+        Me.TextBox3.TabIndex = 5
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1618, 678)
+        Me.ClientSize = New System.Drawing.Size(1147, 513)
+        Me.Controls.Add(Me.btnTodasOds)
         Me.Controls.Add(Me.grpEditar)
         Me.Controls.Add(Me.DataGridView1)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -103,4 +144,8 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents btnTodasOds As Button
 End Class
