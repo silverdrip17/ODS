@@ -24,13 +24,13 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.grpEditar = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblEditarMetas = New System.Windows.Forms.Label()
+        Me.lblEditarOds = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnTodasOds = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txtEditarOds = New System.Windows.Forms.TextBox()
+        Me.txtEditarMetas = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpEditar.SuspendLayout()
         Me.SuspendLayout()
@@ -48,11 +48,11 @@ Partial Class Form1
         '
         'grpEditar
         '
-        Me.grpEditar.Controls.Add(Me.TextBox3)
-        Me.grpEditar.Controls.Add(Me.TextBox2)
+        Me.grpEditar.Controls.Add(Me.txtEditarMetas)
+        Me.grpEditar.Controls.Add(Me.txtEditarOds)
         Me.grpEditar.Controls.Add(Me.TextBox1)
-        Me.grpEditar.Controls.Add(Me.Label3)
-        Me.grpEditar.Controls.Add(Me.Label2)
+        Me.grpEditar.Controls.Add(Me.lblEditarMetas)
+        Me.grpEditar.Controls.Add(Me.lblEditarOds)
         Me.grpEditar.Controls.Add(Me.Label1)
         Me.grpEditar.Location = New System.Drawing.Point(705, 12)
         Me.grpEditar.Name = "grpEditar"
@@ -61,23 +61,23 @@ Partial Class Form1
         Me.grpEditar.TabStop = False
         Me.grpEditar.Text = "Editar ods y/o Metas"
         '
-        'Label3
+        'lblEditarMetas
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 186)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(103, 20)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Editar Metas:"
+        Me.lblEditarMetas.AutoSize = True
+        Me.lblEditarMetas.Location = New System.Drawing.Point(8, 186)
+        Me.lblEditarMetas.Name = "lblEditarMetas"
+        Me.lblEditarMetas.Size = New System.Drawing.Size(103, 20)
+        Me.lblEditarMetas.TabIndex = 2
+        Me.lblEditarMetas.Text = "Editar Metas:"
         '
-        'Label2
+        'lblEditarOds
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(17, 132)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(94, 20)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Editar ODS:"
+        Me.lblEditarOds.AutoSize = True
+        Me.lblEditarOds.Location = New System.Drawing.Point(17, 132)
+        Me.lblEditarOds.Name = "lblEditarOds"
+        Me.lblEditarOds.Size = New System.Drawing.Size(94, 20)
+        Me.lblEditarOds.TabIndex = 1
+        Me.lblEditarOds.Text = "Editar ODS:"
         '
         'Label1
         '
@@ -94,7 +94,7 @@ Partial Class Form1
         Me.btnTodasOds.Name = "btnTodasOds"
         Me.btnTodasOds.Size = New System.Drawing.Size(186, 37)
         Me.btnTodasOds.TabIndex = 2
-        Me.btnTodasOds.Text = "Ver Todas las ODS"
+        Me.btnTodasOds.Text = "Ver Todos los ODS"
         Me.btnTodasOds.UseVisualStyleBackColor = True
         '
         'TextBox1
@@ -105,21 +105,21 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(245, 26)
         Me.TextBox1.TabIndex = 3
         '
-        'TextBox2
+        'txtEditarOds
         '
-        Me.TextBox2.BackColor = System.Drawing.Color.GreenYellow
-        Me.TextBox2.Location = New System.Drawing.Point(127, 132)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(245, 26)
-        Me.TextBox2.TabIndex = 4
+        Me.txtEditarOds.BackColor = System.Drawing.Color.GreenYellow
+        Me.txtEditarOds.Location = New System.Drawing.Point(127, 132)
+        Me.txtEditarOds.Name = "txtEditarOds"
+        Me.txtEditarOds.Size = New System.Drawing.Size(245, 26)
+        Me.txtEditarOds.TabIndex = 4
         '
-        'TextBox3
+        'txtEditarMetas
         '
-        Me.TextBox3.BackColor = System.Drawing.Color.GreenYellow
-        Me.TextBox3.Location = New System.Drawing.Point(127, 183)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(245, 26)
-        Me.TextBox3.TabIndex = 5
+        Me.txtEditarMetas.BackColor = System.Drawing.Color.GreenYellow
+        Me.txtEditarMetas.Location = New System.Drawing.Point(127, 183)
+        Me.txtEditarMetas.Name = "txtEditarMetas"
+        Me.txtEditarMetas.Size = New System.Drawing.Size(245, 26)
+        Me.txtEditarMetas.TabIndex = 5
         '
         'Form1
         '
@@ -141,11 +141,11 @@ Partial Class Form1
 
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents grpEditar As GroupBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblEditarMetas As Label
+    Friend WithEvents lblEditarOds As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtEditarMetas As TextBox
+    Friend WithEvents txtEditarOds As TextBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents btnTodasOds As Button
 End Class
