@@ -106,9 +106,9 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(8, 145)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 16)
+        Me.Label2.Size = New System.Drawing.Size(82, 16)
         Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Añadir Metas:"
+        Me.Label2.Text = "Añadir Meta:"
         '
         'cboOds
         '

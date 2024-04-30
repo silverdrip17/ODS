@@ -102,23 +102,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Imagenes\S_SDG_Icons-01-01.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-02.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-03.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-04.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-05.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-06.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-07.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-08.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-09.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-10-1.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-11.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-12.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-13.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-14.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-15.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-16.jpg" />
-    <Content Include="Imagenes\S_SDG_Icons-01-17.jpg" />
+    <Content Include="Imagenes\1.jpg" />
+    <Content Include="Imagenes\2.jpg" />
+    <Content Include="Imagenes\3.jpg" />
+    <Content Include="Imagenes\4.jpg" />
+    <Content Include="Imagenes\5.jpg" />
+    <Content Include="Imagenes\6.jpg" />
+    <Content Include="Imagenes\7.jpg" />
+    <Content Include="Imagenes\8.jpg" />
+    <Content Include="Imagenes\9.jpg" />
+    <Content Include="Imagenes\10.jpg" />
+    <Content Include="Imagenes\11.jpg" />
+    <Content Include="Imagenes\12.jpg" />
+    <Content Include="Imagenes\13.jpg" />
+    <Content Include="Imagenes\14.jpg" />
+    <Content Include="Imagenes\15.jpg" />
+    <Content Include="Imagenes\16.jpg" />
+    <Content Include="Imagenes\17.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
