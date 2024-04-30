@@ -23,5 +23,12 @@ Public Class Form1
 
     Private Sub cboOds_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOds.SelectedIndexChanged
         visibilidadGeneral(True)
+
+
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetas.SelectedIndexChanged
+
     End Sub
 End Class
