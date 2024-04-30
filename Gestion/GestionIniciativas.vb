@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports Entidades
 Public Class GestionIniciativas
-    Private cadenaDeConexion As String = "Data Source = *; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+    Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
     Private _MisOds As List(Of ODS)
     Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
         Get
@@ -24,7 +24,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "select NUMERO, NOMBRE, DESCRIPCION FROM PROYECTOODS"
+            Dim sql As String = "select NUMERO, NOMBRE, DESCRIPCION FROM ODS"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
