@@ -23,32 +23,32 @@ Partial Class CambioODS
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.txtNumODS = New System.Windows.Forms.TextBox()
+        Me.cboODS = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.lblImagen = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtNombreODS = New System.Windows.Forms.TextBox()
+        Me.txtDescripcionODS = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txtNumODS
         '
-        Me.TextBox1.Location = New System.Drawing.Point(204, 97)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(170, 22)
-        Me.TextBox1.TabIndex = 0
+        Me.txtNumODS.Location = New System.Drawing.Point(204, 97)
+        Me.txtNumODS.Name = "txtNumODS"
+        Me.txtNumODS.Size = New System.Drawing.Size(170, 22)
+        Me.txtNumODS.TabIndex = 0
         '
-        'ComboBox1
+        'cboODS
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(204, 45)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(170, 24)
-        Me.ComboBox1.TabIndex = 2
+        Me.cboODS.FormattingEnabled = True
+        Me.cboODS.Location = New System.Drawing.Point(204, 45)
+        Me.cboODS.Name = "cboODS"
+        Me.cboODS.Size = New System.Drawing.Size(170, 24)
+        Me.cboODS.TabIndex = 2
         '
         'Label1
         '
@@ -91,20 +91,20 @@ Partial Class CambioODS
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Nº ODS"
         '
-        'TextBox2
+        'txtNombreODS
         '
-        Me.TextBox2.Location = New System.Drawing.Point(204, 142)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(170, 22)
-        Me.TextBox2.TabIndex = 7
+        Me.txtNombreODS.Location = New System.Drawing.Point(204, 142)
+        Me.txtNombreODS.Name = "txtNombreODS"
+        Me.txtNombreODS.Size = New System.Drawing.Size(170, 22)
+        Me.txtNombreODS.TabIndex = 7
         '
-        'TextBox4
+        'txtDescripcionODS
         '
-        Me.TextBox4.Location = New System.Drawing.Point(204, 185)
-        Me.TextBox4.Multiline = True
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(293, 106)
-        Me.TextBox4.TabIndex = 8
+        Me.txtDescripcionODS.Location = New System.Drawing.Point(204, 185)
+        Me.txtDescripcionODS.Multiline = True
+        Me.txtDescripcionODS.Name = "txtDescripcionODS"
+        Me.txtDescripcionODS.Size = New System.Drawing.Size(293, 106)
+        Me.txtDescripcionODS.TabIndex = 8
         '
         'Label4
         '
@@ -121,14 +121,14 @@ Partial Class CambioODS
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 331)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtDescripcionODS)
+        Me.Controls.Add(Me.txtNombreODS)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblImagen)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.cboODS)
+        Me.Controls.Add(Me.txtNumODS)
         Me.Name = "CambioODS"
         Me.Text = "Form2"
         Me.ResumeLayout(False)
@@ -136,14 +136,14 @@ Partial Class CambioODS
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents txtNumODS As TextBox
+    Friend WithEvents cboODS As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents lblImagen As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txtNombreODS As TextBox
+    Friend WithEvents txtDescripcionODS As TextBox
     Friend WithEvents Label4 As Label
 End Class
