@@ -7,7 +7,7 @@ Public Class Form1
 
     End Sub
 
-    Public Sub visibilidadGeneral(visible As Boolean)
+    Public Sub VisibilidadGeneral(visible As Boolean)
         If visible Then
             lblEditarMetas.Visible = True
             lblEditarOds.Visible = True
@@ -24,8 +24,8 @@ Public Class Form1
     Private Sub cboOds_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOds.SelectedIndexChanged
         visibilidadGeneral(True)
         cboMetas.Items.AddRange(Gestor.devolverMeta(4))
-
-
-
+    End Sub
+    Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs) Handles btnTodasOds.Click
+        'dgvods.DataSource = Gestor.DevolverODS
     End Sub
 End Class
