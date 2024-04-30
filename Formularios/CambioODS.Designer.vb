@@ -53,7 +53,7 @@ Partial Class CambioODS
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(49, 53)
+        Me.Label1.Location = New System.Drawing.Point(26, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(149, 16)
         Me.Label1.TabIndex = 3
@@ -77,7 +77,7 @@ Partial Class CambioODS
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(49, 145)
+        Me.Label2.Location = New System.Drawing.Point(26, 145)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(98, 16)
         Me.Label2.TabIndex = 5
@@ -86,7 +86,7 @@ Partial Class CambioODS
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(49, 97)
+        Me.Label3.Location = New System.Drawing.Point(26, 97)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(54, 16)
         Me.Label3.TabIndex = 6
@@ -109,7 +109,7 @@ Partial Class CambioODS
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(49, 185)
+        Me.Label4.Location = New System.Drawing.Point(26, 185)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(130, 16)
         Me.Label4.TabIndex = 10
