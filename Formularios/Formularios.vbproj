@@ -113,6 +113,9 @@
     <EmbeddedResource Include="CambioMetas.resx">
       <DependentUpon>CambioMetas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CambioODS.resx">
+      <DependentUpon>CambioODS.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
