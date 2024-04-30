@@ -22,70 +22,72 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvOds = New System.Windows.Forms.DataGridView()
         Me.btnTodasOds = New System.Windows.Forms.Button()
         Me.btnCambiosMetas = New System.Windows.Forms.Button()
         Me.btnCambiosODS = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvOds, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvOds
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(24, 9)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 62
-        Me.DataGridView1.RowTemplate.Height = 28
-        Me.DataGridView1.Size = New System.Drawing.Size(556, 259)
-        Me.DataGridView1.TabIndex = 0
+        Me.dgvOds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvOds.Location = New System.Drawing.Point(27, 11)
+        Me.dgvOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.dgvOds.Name = "dgvOds"
+        Me.dgvOds.RowHeadersWidth = 62
+        Me.dgvOds.RowTemplate.Height = 28
+        Me.dgvOds.Size = New System.Drawing.Size(626, 324)
+        Me.dgvOds.TabIndex = 0
         '
         'btnTodasOds
         '
-        Me.btnTodasOds.Location = New System.Drawing.Point(24, 294)
+        Me.btnTodasOds.Location = New System.Drawing.Point(27, 368)
         Me.btnTodasOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnTodasOds.Name = "btnTodasOds"
-        Me.btnTodasOds.Size = New System.Drawing.Size(165, 30)
+        Me.btnTodasOds.Size = New System.Drawing.Size(186, 38)
         Me.btnTodasOds.TabIndex = 2
         Me.btnTodasOds.Text = "Ver Todos los ODS"
         Me.btnTodasOds.UseVisualStyleBackColor = True
         '
         'btnCambiosMetas
         '
-        Me.btnCambiosMetas.Location = New System.Drawing.Point(654, 12)
+        Me.btnCambiosMetas.Location = New System.Drawing.Point(736, 15)
+        Me.btnCambiosMetas.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnCambiosMetas.Name = "btnCambiosMetas"
-        Me.btnCambiosMetas.Size = New System.Drawing.Size(218, 105)
+        Me.btnCambiosMetas.Size = New System.Drawing.Size(245, 131)
         Me.btnCambiosMetas.TabIndex = 3
         Me.btnCambiosMetas.Text = "Cambios METAS"
         Me.btnCambiosMetas.UseVisualStyleBackColor = True
         '
         'btnCambiosODS
         '
-        Me.btnCambiosODS.Location = New System.Drawing.Point(654, 163)
+        Me.btnCambiosODS.Location = New System.Drawing.Point(736, 204)
+        Me.btnCambiosODS.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnCambiosODS.Name = "btnCambiosODS"
-        Me.btnCambiosODS.Size = New System.Drawing.Size(218, 105)
+        Me.btnCambiosODS.Size = New System.Drawing.Size(245, 131)
         Me.btnCambiosODS.TabIndex = 4
         Me.btnCambiosODS.Text = "Cambios ODS"
         Me.btnCambiosODS.UseVisualStyleBackColor = True
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(927, 361)
+        Me.ClientSize = New System.Drawing.Size(1043, 451)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
         Me.Controls.Add(Me.btnTodasOds)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvOds)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Form1"
         Me.Text = "Form1"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvOds, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvOds As DataGridView
     Friend WithEvents btnTodasOds As Button
     Friend WithEvents btnCambiosMetas As Button
     Friend WithEvents btnCambiosODS As Button

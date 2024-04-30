@@ -1,25 +1,20 @@
 ﻿Imports Gestion
 Imports Entidades
+Imports System.Collections.ObjectModel
 Public Class Form1
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        VisibilidadGeneral(False)
 
-    End Sub
-
-    Public Sub VisibilidadGeneral(visible As Boolean)
-        If visible Then
-            lblEditarMetas.Visible = True
-            lblEditarOds.Visible = True
-            txtEditarMetas.Visible = True
-            txtEditarOds.Visible = True
-        Else
-            lblEditarMetas.Visible = False
-            lblEditarOds.Visible = False
-            txtEditarMetas.Visible = False
-            txtEditarOds.Visible = False
-        End If
-    End Sub
     Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs)
         'dgvods.DataSource = Gestor.DevolverODS
+    End Sub
+
+    Private Sub btnTodasOds_Click_1(sender As Object, e As EventArgs) Handles btnTodasOds.Click
+        Dim msg As String = ""
+        Dim listaOds As ReadOnlyCollection(Of ODS)
+
+        dgvOds.DataSource = False
+
+        listaOds = Gestor.GuardarOds(msg)
+        dgvOds.DataSource = listaOds
+
     End Sub
 End Class
