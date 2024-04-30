@@ -2,7 +2,7 @@
 Imports Entidades
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        visibilidadGeneral(False)
+        VisibilidadGeneral(False)
         cboOds.Items.AddRange(Gestor.devolverODS())
 
     End Sub
@@ -25,7 +25,7 @@ Public Class Form1
         VisibilidadGeneral(True)
         cboMetas.Items.AddRange(Gestor.devolverMeta(4))
     End Sub
-    Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs) Handles btnTodasOds.Click
+    Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs)
         'dgvods.DataSource = Gestor.DevolverODS
     End Sub
 End Class

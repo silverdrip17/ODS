@@ -26,6 +26,7 @@ Partial Class CambioMetas
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Button1
@@ -39,7 +40,7 @@ Partial Class CambioMetas
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(363, 214)
+        Me.Button2.Location = New System.Drawing.Point(323, 287)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 1
@@ -48,7 +49,7 @@ Partial Class CambioMetas
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(371, 222)
+        Me.Button3.Location = New System.Drawing.Point(498, 242)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 2
@@ -57,23 +58,32 @@ Partial Class CambioMetas
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(379, 230)
+        Me.Button4.Location = New System.Drawing.Point(448, 157)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 3
         Me.Button4.Text = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Cambios
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(121, 156)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 24)
+        Me.ComboBox1.TabIndex = 4
+        '
+        'CambioMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Name = "Cambios"
+        Me.Name = "CambioMetas"
         Me.Text = "Form2"
         Me.ResumeLayout(False)
 
@@ -83,4 +93,5 @@ Partial Class CambioMetas
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents ComboBox1 As ComboBox
 End Class
