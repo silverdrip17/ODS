@@ -9,6 +9,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Entidades", "Entidades\Enti
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Formularios", "Formularios\Formularios.vbproj", "{FF9EF21C-0224-4EAC-9063-8C73FDEF2DA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDLBD", "DDLBD", "{9BA567A5-FA7B-458F-9466-D4A9DC5EB35B}"
+	ProjectSection(SolutionItems) = preProject
+		..\SQL\ProyectoODSProg.sql = ..\SQL\ProyectoODSProg.sql
+		..\SQL\resetearDatosODSprog.sql = ..\SQL\resetearDatosODSprog.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
