@@ -5,7 +5,10 @@ Public Class GestionIniciativas
     Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
 
     Public Sub New()
+        If Environment.MachineName = "DESKTOP-NIH4RAC" Then
+            cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
 
+        End If
     End Sub
 
     Public Function devolverODS()
