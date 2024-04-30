@@ -16,4 +16,11 @@ Public Class GestionIniciativas
 
     End Function
 
+    Public Function devolverMeta(numODS As Integer)
+        If numODS > 17 Then
+            Return Nothing
+        End If
+        Return MisODS(numODS).ListaMetas
+    End Function
+
 End Class
