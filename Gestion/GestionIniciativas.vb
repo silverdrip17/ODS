@@ -13,7 +13,8 @@ Public Class GestionIniciativas
     Public Sub New()
         If Environment.MachineName = "DESKTOP-NIH4RAC" Then
             cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
-
+        ElseIf Environment.MachineName = "4V-PRO-948" Then
+            cadenaDeConexion = "Data Source = 4V-PRO-948\SQLEXPRESS; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
         End If
     End Sub
 

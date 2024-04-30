@@ -10,4 +10,14 @@ Public Class Form1
     Private Sub btnTodasOds_Click_1(sender As Object, e As EventArgs) Handles btnTodasOds.Click
 
     End Sub
+
+    Private Sub btnCambiosMetas_Click(sender As Object, e As EventArgs) Handles btnCambiosMetas.Click
+        Dim forMetas As New CambioMetas
+        forMetas.Show()
+    End Sub
+
+    Private Sub btnCambiosODS_Click(sender As Object, e As EventArgs) Handles btnCambiosODS.Click
+        Dim forOds As New CambioODS
+        forOds.Show()
+    End Sub
 End Class

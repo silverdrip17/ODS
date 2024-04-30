@@ -32,49 +32,47 @@ Partial Class Form1
         'dgvOds
         '
         Me.dgvOds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOds.Location = New System.Drawing.Point(27, 11)
+        Me.dgvOds.Location = New System.Drawing.Point(24, 9)
         Me.dgvOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvOds.Name = "dgvOds"
         Me.dgvOds.RowHeadersWidth = 62
         Me.dgvOds.RowTemplate.Height = 28
-        Me.dgvOds.Size = New System.Drawing.Size(626, 324)
+        Me.dgvOds.Size = New System.Drawing.Size(556, 259)
         Me.dgvOds.TabIndex = 0
         '
         'btnTodasOds
         '
-        Me.btnTodasOds.Location = New System.Drawing.Point(27, 368)
+        Me.btnTodasOds.Location = New System.Drawing.Point(24, 294)
         Me.btnTodasOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnTodasOds.Name = "btnTodasOds"
-        Me.btnTodasOds.Size = New System.Drawing.Size(186, 38)
+        Me.btnTodasOds.Size = New System.Drawing.Size(165, 30)
         Me.btnTodasOds.TabIndex = 2
         Me.btnTodasOds.Text = "Ver Todos los ODS"
         Me.btnTodasOds.UseVisualStyleBackColor = True
         '
         'btnCambiosMetas
         '
-        Me.btnCambiosMetas.Location = New System.Drawing.Point(736, 15)
-        Me.btnCambiosMetas.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCambiosMetas.Location = New System.Drawing.Point(654, 12)
         Me.btnCambiosMetas.Name = "btnCambiosMetas"
-        Me.btnCambiosMetas.Size = New System.Drawing.Size(245, 131)
+        Me.btnCambiosMetas.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosMetas.TabIndex = 3
         Me.btnCambiosMetas.Text = "Cambios METAS"
         Me.btnCambiosMetas.UseVisualStyleBackColor = True
         '
         'btnCambiosODS
         '
-        Me.btnCambiosODS.Location = New System.Drawing.Point(736, 204)
-        Me.btnCambiosODS.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCambiosODS.Location = New System.Drawing.Point(654, 163)
         Me.btnCambiosODS.Name = "btnCambiosODS"
-        Me.btnCambiosODS.Size = New System.Drawing.Size(245, 131)
+        Me.btnCambiosODS.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosODS.TabIndex = 4
         Me.btnCambiosODS.Text = "Cambios ODS"
         Me.btnCambiosODS.UseVisualStyleBackColor = True
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1043, 451)
+        Me.ClientSize = New System.Drawing.Size(927, 361)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
         Me.Controls.Add(Me.btnTodasOds)
