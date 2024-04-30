@@ -24,6 +24,10 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.grpEditar = New System.Windows.Forms.GroupBox()
+        Me.cboMetas = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtAñadirMetas = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.cboOds = New System.Windows.Forms.ComboBox()
         Me.btnCammbios = New System.Windows.Forms.Button()
         Me.txtEditarMetas = New System.Windows.Forms.TextBox()
@@ -49,6 +53,10 @@ Partial Class Form1
         '
         'grpEditar
         '
+        Me.grpEditar.Controls.Add(Me.cboMetas)
+        Me.grpEditar.Controls.Add(Me.Label3)
+        Me.grpEditar.Controls.Add(Me.txtAñadirMetas)
+        Me.grpEditar.Controls.Add(Me.Label2)
         Me.grpEditar.Controls.Add(Me.cboOds)
         Me.grpEditar.Controls.Add(Me.btnCammbios)
         Me.grpEditar.Controls.Add(Me.txtEditarMetas)
@@ -60,10 +68,47 @@ Partial Class Form1
         Me.grpEditar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.grpEditar.Name = "grpEditar"
         Me.grpEditar.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.grpEditar.Size = New System.Drawing.Size(348, 246)
+        Me.grpEditar.Size = New System.Drawing.Size(348, 323)
         Me.grpEditar.TabIndex = 1
         Me.grpEditar.TabStop = False
         Me.grpEditar.Text = "Editar ods y/o Metas"
+        '
+        'cboMetas
+        '
+        Me.cboMetas.BackColor = System.Drawing.Color.GreenYellow
+        Me.cboMetas.FormattingEnabled = True
+        Me.cboMetas.Location = New System.Drawing.Point(113, 184)
+        Me.cboMetas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.cboMetas.Name = "cboMetas"
+        Me.cboMetas.Size = New System.Drawing.Size(218, 24)
+        Me.cboMetas.TabIndex = 12
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(7, 192)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(57, 16)
+        Me.Label3.TabIndex = 11
+        Me.Label3.Text = "METAS:"
+        '
+        'txtAñadirMetas
+        '
+        Me.txtAñadirMetas.BackColor = System.Drawing.Color.GreenYellow
+        Me.txtAñadirMetas.Location = New System.Drawing.Point(114, 142)
+        Me.txtAñadirMetas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAñadirMetas.Name = "txtAñadirMetas"
+        Me.txtAñadirMetas.Size = New System.Drawing.Size(218, 22)
+        Me.txtAñadirMetas.TabIndex = 10
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(8, 145)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(89, 16)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Añadir Metas:"
         '
         'cboOds
         '
@@ -77,7 +122,7 @@ Partial Class Form1
         '
         'btnCammbios
         '
-        Me.btnCammbios.Location = New System.Drawing.Point(74, 189)
+        Me.btnCammbios.Location = New System.Drawing.Point(74, 274)
         Me.btnCammbios.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnCammbios.Name = "btnCammbios"
         Me.btnCammbios.Size = New System.Drawing.Size(202, 34)
@@ -88,7 +133,7 @@ Partial Class Form1
         'txtEditarMetas
         '
         Me.txtEditarMetas.BackColor = System.Drawing.Color.GreenYellow
-        Me.txtEditarMetas.Location = New System.Drawing.Point(113, 146)
+        Me.txtEditarMetas.Location = New System.Drawing.Point(113, 231)
         Me.txtEditarMetas.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtEditarMetas.Name = "txtEditarMetas"
         Me.txtEditarMetas.Size = New System.Drawing.Size(218, 22)
@@ -106,7 +151,7 @@ Partial Class Form1
         'lblEditarMetas
         '
         Me.lblEditarMetas.AutoSize = True
-        Me.lblEditarMetas.Location = New System.Drawing.Point(7, 149)
+        Me.lblEditarMetas.Location = New System.Drawing.Point(7, 234)
         Me.lblEditarMetas.Name = "lblEditarMetas"
         Me.lblEditarMetas.Size = New System.Drawing.Size(85, 16)
         Me.lblEditarMetas.TabIndex = 2
@@ -168,4 +213,8 @@ Partial Class Form1
     Friend WithEvents btnTodasOds As Button
     Friend WithEvents btnCammbios As Button
     Friend WithEvents cboOds As ComboBox
+    Friend WithEvents cboMetas As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtAñadirMetas As TextBox
+    Friend WithEvents Label2 As Label
 End Class
