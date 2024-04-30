@@ -80,10 +80,16 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cambios.Designer.vb">
-      <DependentUpon>Cambios.vb</DependentUpon>
+    <Compile Include="CambioMetas.Designer.vb">
+      <DependentUpon>CambioMetas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Cambios.vb">
+    <Compile Include="CambioMetas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioODS.Designer.vb">
+      <DependentUpon>CambioODS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CambioODS.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module1.vb" />
@@ -104,6 +110,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CambioMetas.resx">
+      <DependentUpon>CambioMetas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
