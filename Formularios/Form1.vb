@@ -21,8 +21,8 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub cboOds_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOds.SelectedIndexChanged
-        visibilidadGeneral(True)
+    Private Sub CboOds_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOds.SelectedIndexChanged
+        VisibilidadGeneral(True)
         cboMetas.Items.AddRange(Gestor.devolverMeta(4))
     End Sub
     Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs) Handles btnTodasOds.Click
