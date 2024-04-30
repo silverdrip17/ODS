@@ -3,15 +3,20 @@ Imports System.Data.SqlClient
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = *; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+    Private _MisOds As List(Of ODS)
     Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
+        Get
+            Return _MisOds.AsReadOnly
+        End Get
+    End Property
 
     Public Sub New()
 
     End Sub
 
-    Public Function DevolverODS()
-        Return MisODS
-    End Function
+    'Public Function DevolverODS()
+    '    Return MisODS
+    'End Function
 
     Public Function GuardarOds(ByRef msg As String) As ReadOnlyCollection(Of ODS)
         Dim todosLosOds As New List(Of ODS)
@@ -32,6 +37,8 @@ Public Class GestionIniciativas
         Finally
             oConexion.Close()
         End Try
+        _MisOds = New List(Of ODS)
+        _MisOds.AddRange(todosLosOds)
         Return todosLosOds.AsReadOnly
     End Function
 
