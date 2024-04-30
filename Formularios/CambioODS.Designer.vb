@@ -68,11 +68,10 @@ Partial Class CambioODS
         'lblImagen
         '
         Me.lblImagen.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.lblImagen.Location = New System.Drawing.Point(484, 45)
+        Me.lblImagen.Location = New System.Drawing.Point(522, 34)
         Me.lblImagen.Name = "lblImagen"
         Me.lblImagen.Size = New System.Drawing.Size(208, 156)
         Me.lblImagen.TabIndex = 4
-        Me.lblImagen.Text = "I M A G E N "
         '
         'Label2
         '
@@ -102,8 +101,9 @@ Partial Class CambioODS
         'TextBox4
         '
         Me.TextBox4.Location = New System.Drawing.Point(204, 185)
+        Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(170, 22)
+        Me.TextBox4.Size = New System.Drawing.Size(293, 106)
         Me.TextBox4.TabIndex = 8
         '
         'Label4
