@@ -42,15 +42,15 @@ Partial Class CambioMetas
         'cboods
         '
         Me.cboods.FormattingEnabled = True
-        Me.cboods.Location = New System.Drawing.Point(168, 109)
+        Me.cboods.Location = New System.Drawing.Point(159, 114)
         Me.cboods.Name = "cboods"
-        Me.cboods.Size = New System.Drawing.Size(121, 24)
+        Me.cboods.Size = New System.Drawing.Size(327, 24)
         Me.cboods.TabIndex = 4
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(22, 112)
+        Me.Label1.Location = New System.Drawing.Point(12, 117)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(123, 16)
         Me.Label1.TabIndex = 5
@@ -58,9 +58,9 @@ Partial Class CambioMetas
         '
         'lblimagen
         '
-        Me.lblimagen.Location = New System.Drawing.Point(317, 95)
+        Me.lblimagen.Location = New System.Drawing.Point(625, 39)
         Me.lblimagen.Name = "lblimagen"
-        Me.lblimagen.Size = New System.Drawing.Size(70, 61)
+        Me.lblimagen.Size = New System.Drawing.Size(54, 51)
         Me.lblimagen.TabIndex = 6
         Me.lblimagen.Text = "IMAGEN"
         '
