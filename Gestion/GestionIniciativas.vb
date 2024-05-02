@@ -95,7 +95,7 @@ Public Class GestionIniciativas
         Catch ex As Exception
             msg = ex.Message
         End Try
-        Return listaLocalidades.AsReadOnly
+        Return listaMetas.AsReadOnly
     End Function
 
     Public Function DevolverMeta(numODS As Integer)
