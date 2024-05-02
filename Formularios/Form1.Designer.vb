@@ -37,7 +37,7 @@ Partial Class Form1
         Me.dgvOds.Name = "dgvOds"
         Me.dgvOds.RowHeadersWidth = 62
         Me.dgvOds.RowTemplate.Height = 28
-        Me.dgvOds.Size = New System.Drawing.Size(556, 259)
+        Me.dgvOds.Size = New System.Drawing.Size(524, 259)
         Me.dgvOds.TabIndex = 0
         '
         'btnTodasOds
@@ -52,7 +52,7 @@ Partial Class Form1
         '
         'btnCambiosMetas
         '
-        Me.btnCambiosMetas.Location = New System.Drawing.Point(654, 12)
+        Me.btnCambiosMetas.Location = New System.Drawing.Point(579, 12)
         Me.btnCambiosMetas.Name = "btnCambiosMetas"
         Me.btnCambiosMetas.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosMetas.TabIndex = 3
@@ -61,7 +61,7 @@ Partial Class Form1
         '
         'btnCambiosODS
         '
-        Me.btnCambiosODS.Location = New System.Drawing.Point(654, 163)
+        Me.btnCambiosODS.Location = New System.Drawing.Point(579, 163)
         Me.btnCambiosODS.Name = "btnCambiosODS"
         Me.btnCambiosODS.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosODS.TabIndex = 4
@@ -72,7 +72,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(927, 361)
+        Me.ClientSize = New System.Drawing.Size(831, 361)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
         Me.Controls.Add(Me.btnTodasOds)
