@@ -20,7 +20,7 @@ Public Class CambioMetas
         Next
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
             Dim metaComparar As Metas = TryCast(odsSeleccionado.ListaMetas(i), Metas)

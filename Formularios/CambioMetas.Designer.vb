@@ -34,9 +34,9 @@ Partial Class CambioMetas
         Me.txtbNombre = New System.Windows.Forms.TextBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.txtDescripcionMeta = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnAgregarMeta = New System.Windows.Forms.Button()
+        Me.btnGuardarMeta = New System.Windows.Forms.Button()
+        Me.btnEliminarMeta = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -141,41 +141,41 @@ Partial Class CambioMetas
         Me.txtDescripcionMeta.Size = New System.Drawing.Size(260, 80)
         Me.txtDescripcionMeta.TabIndex = 15
         '
-        'Button1
+        'btnAgregarMeta
         '
-        Me.Button1.Location = New System.Drawing.Point(424, 357)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(111, 44)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Agregar Nueva Meta"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnAgregarMeta.Location = New System.Drawing.Point(424, 357)
+        Me.btnAgregarMeta.Name = "btnAgregarMeta"
+        Me.btnAgregarMeta.Size = New System.Drawing.Size(111, 44)
+        Me.btnAgregarMeta.TabIndex = 16
+        Me.btnAgregarMeta.Text = "Agregar Nueva Meta"
+        Me.btnAgregarMeta.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnGuardarMeta
         '
-        Me.Button2.Location = New System.Drawing.Point(661, 357)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(109, 45)
-        Me.Button2.TabIndex = 17
-        Me.Button2.Text = "Guardar Cambio Metas"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnGuardarMeta.Location = New System.Drawing.Point(661, 357)
+        Me.btnGuardarMeta.Name = "btnGuardarMeta"
+        Me.btnGuardarMeta.Size = New System.Drawing.Size(109, 45)
+        Me.btnGuardarMeta.TabIndex = 17
+        Me.btnGuardarMeta.Text = "Guardar Cambio Metas"
+        Me.btnGuardarMeta.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnEliminarMeta
         '
-        Me.Button3.Location = New System.Drawing.Point(544, 357)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(111, 45)
-        Me.Button3.TabIndex = 18
-        Me.Button3.Text = "Eliminar Meta"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnEliminarMeta.Location = New System.Drawing.Point(544, 357)
+        Me.btnEliminarMeta.Name = "btnEliminarMeta"
+        Me.btnEliminarMeta.Size = New System.Drawing.Size(111, 45)
+        Me.btnEliminarMeta.TabIndex = 18
+        Me.btnEliminarMeta.Text = "Eliminar Meta"
+        Me.btnEliminarMeta.UseVisualStyleBackColor = True
         '
         'CambioMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnEliminarMeta)
+        Me.Controls.Add(Me.btnGuardarMeta)
+        Me.Controls.Add(Me.btnAgregarMeta)
         Me.Controls.Add(Me.txtDescripcionMeta)
         Me.Controls.Add(Me.lblDescripcion)
         Me.Controls.Add(Me.txtbNombre)
@@ -207,7 +207,7 @@ Partial Class CambioMetas
     Friend WithEvents txtbNombre As TextBox
     Friend WithEvents lblDescripcion As Label
     Friend WithEvents txtDescripcionMeta As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnAgregarMeta As Button
+    Friend WithEvents btnGuardarMeta As Button
+    Friend WithEvents btnEliminarMeta As Button
 End Class
