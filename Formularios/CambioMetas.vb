@@ -15,6 +15,10 @@ Public Class CambioMetas
         If odsSeleccionado Is Nothing Then
             Exit Sub
         End If
+        If odsSeleccionado.ListaMetas.Count = 0 Then
+            MessageBox.Show("NO HAY METAS EN ESTE ODS")
+            Exit Sub
+        End If
         For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
             cboMetas.Items.Add(odsSeleccionado.ListaMetas(i))
         Next

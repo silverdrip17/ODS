@@ -105,4 +105,7 @@ Public Class GestionIniciativas
         Return MisODS(numODS).ListaMetas
     End Function
 
+    Public Function añadirMetaAODS(numODS As Integer)
+
+    End Function
 End Class
