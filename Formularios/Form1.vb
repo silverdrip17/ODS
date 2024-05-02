@@ -8,7 +8,13 @@ Public Class Form1
     End Sub
 
     Private Sub btnTodasOds_Click_1(sender As Object, e As EventArgs) Handles btnTodasOds.Click
+        Dim msg As String = ""
+        Dim listaOds As ReadOnlyCollection(Of ODS)
 
+        dgvOds.DataSource = False
+
+        listaOds = Gestor.GuardarOds(msg)
+        dgvOds.DataSource = listaOds
     End Sub
 
     Private Sub btnCambiosMetas_Click(sender As Object, e As EventArgs) Handles btnCambiosMetas.Click
