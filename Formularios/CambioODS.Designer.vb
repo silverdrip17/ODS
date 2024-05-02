@@ -33,10 +33,12 @@ Partial Class CambioODS
         Me.txtNombreODS = New System.Windows.Forms.TextBox()
         Me.txtDescripcionODS = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnGuardarCambios = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtNumODS
         '
+        Me.txtNumODS.Enabled = False
         Me.txtNumODS.Location = New System.Drawing.Point(204, 97)
         Me.txtNumODS.Name = "txtNumODS"
         Me.txtNumODS.Size = New System.Drawing.Size(170, 22)
@@ -115,11 +117,22 @@ Partial Class CambioODS
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "DESCRIPCIÓN ODS"
         '
+        'btnGuardarCambios
+        '
+        Me.btnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnGuardarCambios.Location = New System.Drawing.Point(525, 208)
+        Me.btnGuardarCambios.Name = "btnGuardarCambios"
+        Me.btnGuardarCambios.Size = New System.Drawing.Size(205, 44)
+        Me.btnGuardarCambios.TabIndex = 11
+        Me.btnGuardarCambios.Text = "Guardar cambios"
+        Me.btnGuardarCambios.UseVisualStyleBackColor = False
+        '
         'CambioODS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 331)
+        Me.Controls.Add(Me.btnGuardarCambios)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtDescripcionODS)
         Me.Controls.Add(Me.txtNombreODS)
@@ -146,4 +159,5 @@ Partial Class CambioODS
     Friend WithEvents txtNombreODS As TextBox
     Friend WithEvents txtDescripcionODS As TextBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents btnGuardarCambios As Button
 End Class
