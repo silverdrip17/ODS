@@ -46,6 +46,37 @@ Public Class GestionIniciativas
         Return todosLosOds.AsReadOnly
     End Function
 
+    Private _MisMetas As List(Of Metas)
+    Public ReadOnly Property MisMetas As ReadOnlyCollection(Of Metas)
+        Get
+            Return _MisMetas.AsReadOnly
+        End Get
+    End Property
+
+    Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas)
+        Dim todasLasMetas As New List(Of Metas)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT NUMEROODS, CODMETA, NOMBRE, DESCRIPCCION FROM METAS"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim metasss As New Metas(dr("NUMEROODS").ToString, dr("codmeta").ToString, dr("NOMBRE").ToString, dr("DESCRIPCION").ToString)
+                todasLasMetas.Add(metasss)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+            Return Nothing
+        Finally
+            oConexion.Close()
+        End Try
+        _MisMetas = New List(Of Metas)
+        _MisMetas.AddRange(todasLasMetas)
+        Return todasLasMetas.AsReadOnly
+    End Function
+
     Public Function DevolverMeta(numODS As Integer)
         If numODS > 17 Then
             Return Nothing
