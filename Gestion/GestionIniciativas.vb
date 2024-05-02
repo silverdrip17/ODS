@@ -92,6 +92,15 @@ Public Class GestionIniciativas
                 msg = $"No existe ningun ods con el numero {numeroods}"
                 Return listaMetas.AsReadOnly
             End If
+            sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @numeroods"
+            Dim cdmLoc As New SqlCommand(sql, oConexion)
+            cdmLoc.Parameters.AddWithValue("@numeroods", numeroods)
+            Dim drMetas As SqlDataReader = cdmLoc.ExecuteReader
+
+            Do While drMetas.Read
+                Dim met As New Metas(Integer.Parse(drMetas("NUMEROODS")), drMetas("CODMETA").ToString, drMetas("NOMBRE").ToString, drMetas("DESCRIPCION"))
+                listaMetas.Add(met)
+            Loop
         Catch ex As Exception
             msg = ex.Message
         End Try

@@ -1,4 +1,5 @@
-﻿Imports Entidades
+﻿Imports System.Collections.ObjectModel
+Imports Entidades
 Imports Gestion
 
 Public Class CambioMetas
@@ -11,17 +12,30 @@ Public Class CambioMetas
 
 
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged
-        Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
-        If odsSeleccionado Is Nothing Then
+        'Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
+        'If odsSeleccionado Is Nothing Then
+        '    Exit Sub
+        'End If
+        'If odsSeleccionado.ListaMetas.Count = 0 Then
+        '    MessageBox.Show("NO HAY METAS EN ESTE ODS")
+        '    Exit Sub
+        'End If
+        'For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
+        '    cboMetas.Items.Add(odsSeleccionado.ListaMetas(i))
+        'Next
+
+        Dim msg As String = ""
+        Dim listaMetas As ReadOnlyCollection(Of Metas)
+
+        DataGridView1.DataSource = Nothing
+        Dim idProv = cboods.SelectedIndex
+
+        listaMetas = Gestor.MetasDeUnOds(idProv, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
             Exit Sub
         End If
-        If odsSeleccionado.ListaMetas.Count = 0 Then
-            MessageBox.Show("NO HAY METAS EN ESTE ODS")
-            Exit Sub
-        End If
-        For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
-            cboMetas.Items.Add(odsSeleccionado.ListaMetas(i))
-        Next
+        DataGridView1.DataSource = listaMetas
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click
