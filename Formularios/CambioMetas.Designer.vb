@@ -27,15 +27,16 @@ Partial Class CambioMetas
         Me.lblimagen = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtCodigoMeta = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboMetas = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtbNombre = New System.Windows.Forms.TextBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtDescripcionMeta = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -83,12 +84,12 @@ Partial Class CambioMetas
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Código Meta:"
         '
-        'TextBox1
+        'txtCodigoMeta
         '
-        Me.TextBox1.Location = New System.Drawing.Point(600, 120)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(140, 22)
-        Me.TextBox1.TabIndex = 9
+        Me.txtCodigoMeta.Location = New System.Drawing.Point(600, 120)
+        Me.txtCodigoMeta.Name = "txtCodigoMeta"
+        Me.txtCodigoMeta.Size = New System.Drawing.Size(140, 22)
+        Me.txtCodigoMeta.TabIndex = 9
         '
         'Label3
         '
@@ -132,17 +133,17 @@ Partial Class CambioMetas
         Me.lblDescripcion.TabIndex = 14
         Me.lblDescripcion.Text = "Descripcion:"
         '
-        'TextBox2
+        'txtDescripcionMeta
         '
-        Me.TextBox2.Location = New System.Drawing.Point(510, 234)
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(260, 80)
-        Me.TextBox2.TabIndex = 15
+        Me.txtDescripcionMeta.Location = New System.Drawing.Point(510, 234)
+        Me.txtDescripcionMeta.Multiline = True
+        Me.txtDescripcionMeta.Name = "txtDescripcionMeta"
+        Me.txtDescripcionMeta.Size = New System.Drawing.Size(260, 80)
+        Me.txtDescripcionMeta.TabIndex = 15
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(505, 357)
+        Me.Button1.Location = New System.Drawing.Point(424, 357)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(111, 44)
         Me.Button1.TabIndex = 16
@@ -158,20 +159,30 @@ Partial Class CambioMetas
         Me.Button2.Text = "Guardar Cambio Metas"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(544, 357)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(111, 45)
+        Me.Button3.TabIndex = 18
+        Me.Button3.Text = "Eliminar Meta"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'CambioMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtDescripcionMeta)
         Me.Controls.Add(Me.lblDescripcion)
         Me.Controls.Add(Me.txtbNombre)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cboMetas)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtCodigoMeta)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.lblimagen)
@@ -189,13 +200,14 @@ Partial Class CambioMetas
     Friend WithEvents lblimagen As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtCodigoMeta As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents cboMetas As ComboBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtbNombre As TextBox
     Friend WithEvents lblDescripcion As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtDescripcionMeta As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class

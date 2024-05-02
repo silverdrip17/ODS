@@ -19,4 +19,23 @@ Public Class CambioMetas
             cboMetas.Items.Add(odsSeleccionado.ListaMetas(i))
         Next
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
+        For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
+            Dim metaComparar As Metas = TryCast(odsSeleccionado.ListaMetas(i), Metas)
+            Dim metaAñadir As Metas
+            metaAñadir.NumODS = odsSeleccionado.NumODS
+            metaAñadir.Nombre = txtbNombre.Text
+            metaAñadir.CodMeta = metaComparar.NumODS + "." + txtCodigoMeta.Text
+            metaAñadir.Descripcion = txtDescripcionMeta.Text
+            If metaComparar.CodMeta = metaAñadir.CodMeta Then
+                MessageBox.Show("Ya existe una meta con este código")
+                Exit Sub
+            End If
+
+
+
+        Next
+    End Sub
 End Class
