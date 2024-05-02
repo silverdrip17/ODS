@@ -77,6 +77,27 @@ Public Class GestionIniciativas
         Return todasLasMetas.AsReadOnly
     End Function
 
+    Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas)
+        'saber si exixte el ods
+        Dim listaMetas As New List(Of Metas)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "Select METAS.* From METAS Where NUMEROODS = @numeroods"
+            Dim cmdLeerProv As New SqlCommand(sql, oConexion)
+            cmdLeerProv.Parameters.AddWithValue("@numeroods", numeroods)
+            Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
+            If nOds = 0 Then
+                msg = $"No existe ningun ods con el numero {numeroods}"
+                Return listaMetas.AsReadOnly
+            End If
+        Catch ex As Exception
+            msg = ex.Message
+        End Try
+        Return listaLocalidades.AsReadOnly
+    End Function
+
     Public Function DevolverMeta(numODS As Integer)
         If numODS > 17 Then
             Return Nothing
