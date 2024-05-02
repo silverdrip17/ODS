@@ -7,9 +7,7 @@ Public Class CambioMetas
         Next
     End Sub
 
-    Private Sub Descripcion_Click(sender As Object, e As EventArgs) Handles lblDescripcion.Click
 
-    End Sub
 
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged
 
