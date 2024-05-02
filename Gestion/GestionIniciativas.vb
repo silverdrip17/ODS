@@ -49,7 +49,7 @@ Public Class GestionIniciativas
     Private _MisMetas As List(Of Metas)
     Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
         Get
-            Return MisODS(ods).ListaMetas
+            Return MisODS(ods).ListaMetas.AsReadOnly
         End Get
     End Property
 
@@ -111,10 +111,14 @@ Public Class GestionIniciativas
         If numODS > 17 Then
             Return Nothing
         End If
-        Return MisODS(numODS).ListaMetas
+        Return MisODS(numODS - 1).ListaMetas
     End Function
 
-    Public Function añadirMetaAODS(numODS As Integer)
-
+    Public Function AñadirMetaAODS(numODS As Integer, meta As Metas)
+        For i As Integer = 0 To MisODS.Count - 1
+            If MisODS(i).NumODS = numODS Then
+                MisODS(i).ListaMetas.Add(meta)
+            End If
+        Next
     End Function
 End Class
