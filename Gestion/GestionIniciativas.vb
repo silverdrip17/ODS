@@ -47,9 +47,9 @@ Public Class GestionIniciativas
     End Function
 
     Private _MisMetas As List(Of Metas)
-    Public ReadOnly Property MisMetas As ReadOnlyCollection(Of Metas)
+    Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
         Get
-            Return _MisMetas.AsReadOnly
+            Return MisODS(ods).ListaMetas
         End Get
     End Property
 
