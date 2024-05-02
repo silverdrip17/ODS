@@ -15,6 +15,8 @@ Public Class Form1
 
         listaOds = Gestor.GuardarOds(msg)
         dgvOds.DataSource = listaOds
+        btnCambiosMetas.Show()
+        btnCambiosODS.Show()
     End Sub
 
     Private Sub btnCambiosMetas_Click(sender As Object, e As EventArgs) Handles btnCambiosMetas.Click
@@ -25,5 +27,10 @@ Public Class Form1
     Private Sub btnCambiosODS_Click(sender As Object, e As EventArgs) Handles btnCambiosODS.Click
         Dim forOds As New CambioODS
         forOds.Show()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        btnCambiosMetas.Hide()
+        btnCambiosODS.Hide()
     End Sub
 End Class
