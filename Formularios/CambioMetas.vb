@@ -37,6 +37,7 @@ Public Class CambioMetas
                 MessageBox.Show("Ya existe una meta con este código")
                 Exit Sub
             End If
+            Gestor.AñadirMetaAODS(odsSeleccionado.NumODS, metaAñadir)
 
 
 
