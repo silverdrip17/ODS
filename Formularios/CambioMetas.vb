@@ -62,4 +62,11 @@ Public Class CambioMetas
 
         Next
     End Sub
+
+    Private Sub cboMetas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetas.SelectedIndexChanged
+        Dim metaSeleccionada As Metas = TryCast(cboMetas.SelectedItem, Metas)
+        txtbNombre.Text = metaSeleccionada.Nombre
+        txtCodigoMeta.Text = metaSeleccionada.CodMeta
+        txtDescripcionMeta.Text = metaSeleccionada.Descripcion
+    End Sub
 End Class
