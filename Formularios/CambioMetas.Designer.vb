@@ -94,7 +94,7 @@ Partial Class CambioMetas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(34, 380)
+        Me.Label3.Location = New System.Drawing.Point(37, 371)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(132, 16)
         Me.Label3.TabIndex = 10
@@ -103,9 +103,9 @@ Partial Class CambioMetas
         'cboMetas
         '
         Me.cboMetas.FormattingEnabled = True
-        Me.cboMetas.Location = New System.Drawing.Point(194, 377)
+        Me.cboMetas.Location = New System.Drawing.Point(194, 368)
         Me.cboMetas.Name = "cboMetas"
-        Me.cboMetas.Size = New System.Drawing.Size(163, 24)
+        Me.cboMetas.Size = New System.Drawing.Size(224, 24)
         Me.cboMetas.TabIndex = 11
         '
         'Label4
