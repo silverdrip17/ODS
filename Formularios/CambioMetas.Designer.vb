@@ -24,7 +24,6 @@ Partial Class CambioMetas
     Private Sub InitializeComponent()
         Me.cboods = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblimagen = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCodigoMeta = New System.Windows.Forms.TextBox()
@@ -37,6 +36,7 @@ Partial Class CambioMetas
         Me.btnAgregarMeta = New System.Windows.Forms.Button()
         Me.btnGuardarMeta = New System.Windows.Forms.Button()
         Me.btnEliminarMeta = New System.Windows.Forms.Button()
+        Me.btnFoto = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,14 +56,6 @@ Partial Class CambioMetas
         Me.Label1.Size = New System.Drawing.Size(123, 16)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "SELECCIONA ODS"
-        '
-        'lblimagen
-        '
-        Me.lblimagen.Location = New System.Drawing.Point(625, 39)
-        Me.lblimagen.Name = "lblimagen"
-        Me.lblimagen.Size = New System.Drawing.Size(54, 51)
-        Me.lblimagen.TabIndex = 6
-        Me.lblimagen.Text = "IMAGEN"
         '
         'DataGridView1
         '
@@ -168,11 +160,20 @@ Partial Class CambioMetas
         Me.btnEliminarMeta.Text = "Eliminar Meta"
         Me.btnEliminarMeta.UseVisualStyleBackColor = True
         '
+        'btnFoto
+        '
+        Me.btnFoto.Location = New System.Drawing.Point(598, 12)
+        Me.btnFoto.Name = "btnFoto"
+        Me.btnFoto.Size = New System.Drawing.Size(112, 102)
+        Me.btnFoto.TabIndex = 19
+        Me.btnFoto.UseVisualStyleBackColor = True
+        '
         'CambioMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnFoto)
         Me.Controls.Add(Me.btnEliminarMeta)
         Me.Controls.Add(Me.btnGuardarMeta)
         Me.Controls.Add(Me.btnAgregarMeta)
@@ -185,7 +186,6 @@ Partial Class CambioMetas
         Me.Controls.Add(Me.txtCodigoMeta)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.lblimagen)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboods)
         Me.Name = "CambioMetas"
@@ -197,7 +197,6 @@ Partial Class CambioMetas
     End Sub
     Friend WithEvents cboods As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents lblimagen As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label2 As Label
     Friend WithEvents txtCodigoMeta As TextBox
@@ -210,4 +209,5 @@ Partial Class CambioMetas
     Friend WithEvents btnAgregarMeta As Button
     Friend WithEvents btnGuardarMeta As Button
     Friend WithEvents btnEliminarMeta As Button
+    Friend WithEvents btnFoto As Button
 End Class

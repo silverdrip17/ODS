@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CambioODS
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class CambioODS
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.txtNumODS = New System.Windows.Forms.TextBox()
@@ -34,11 +34,11 @@ Partial Class CambioODS
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnGuardarCambios = New System.Windows.Forms.Button()
         Me.btnfoto = New System.Windows.Forms.Button()
+        Me.btnEliminarODS = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtNumODS
         '
-        Me.txtNumODS.Enabled = False
         Me.txtNumODS.Location = New System.Drawing.Point(204, 97)
         Me.txtNumODS.Name = "txtNumODS"
         Me.txtNumODS.Size = New System.Drawing.Size(170, 22)
@@ -112,9 +112,9 @@ Partial Class CambioODS
         'btnGuardarCambios
         '
         Me.btnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.btnGuardarCambios.Location = New System.Drawing.Point(525, 208)
+        Me.btnGuardarCambios.Location = New System.Drawing.Point(525, 203)
         Me.btnGuardarCambios.Name = "btnGuardarCambios"
-        Me.btnGuardarCambios.Size = New System.Drawing.Size(205, 44)
+        Me.btnGuardarCambios.Size = New System.Drawing.Size(205, 61)
         Me.btnGuardarCambios.TabIndex = 11
         Me.btnGuardarCambios.Text = "Guardar cambios"
         Me.btnGuardarCambios.UseVisualStyleBackColor = False
@@ -127,11 +127,22 @@ Partial Class CambioODS
         Me.btnfoto.TabIndex = 12
         Me.btnfoto.UseVisualStyleBackColor = True
         '
+        'btnEliminarODS
+        '
+        Me.btnEliminarODS.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.btnEliminarODS.Location = New System.Drawing.Point(525, 270)
+        Me.btnEliminarODS.Name = "btnEliminarODS"
+        Me.btnEliminarODS.Size = New System.Drawing.Size(205, 26)
+        Me.btnEliminarODS.TabIndex = 13
+        Me.btnEliminarODS.Text = "Eliminar ODS"
+        Me.btnEliminarODS.UseVisualStyleBackColor = False
+        '
         'CambioODS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 331)
+        Me.Controls.Add(Me.btnEliminarODS)
         Me.Controls.Add(Me.btnfoto)
         Me.Controls.Add(Me.btnGuardarCambios)
         Me.Controls.Add(Me.Label4)
@@ -160,4 +171,5 @@ Partial Class CambioODS
     Friend WithEvents Label4 As Label
     Friend WithEvents btnGuardarCambios As Button
     Friend WithEvents btnfoto As Button
+    Friend WithEvents btnEliminarODS As Button
 End Class

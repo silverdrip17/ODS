@@ -4,6 +4,7 @@ Imports Gestion
 
 Public Class CambioMetas
     Private Sub CambioMetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        btnFoto.Hide()
         For i As Integer = 0 To Gestor.MisODS.Count - 1
             cboods.Items.Add(Gestor.MisODS(i))
         Next
@@ -12,6 +13,7 @@ Public Class CambioMetas
 
 
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged
+        DataGridView1.DataSource = Nothing
         'Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         'If odsSeleccionado Is Nothing Then
         '    Exit Sub
@@ -39,6 +41,9 @@ Public Class CambioMetas
         For i As Integer = 0 To listaMetas.Count - 1
             cboMetas.Items.Add(listaMetas(i))
         Next
+        btnFoto.Show()
+        btnFoto.BackgroundImage = Image.FromFile($"./Imagenes/{odsSeleccionado.NumODS}.jpg")
+        btnFoto.BackgroundImageLayout = ImageLayout.Stretch
 
 
     End Sub
