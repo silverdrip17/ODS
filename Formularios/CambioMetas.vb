@@ -23,12 +23,12 @@ Public Class CambioMetas
         'For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
         '    cboMetas.Items.Add(odsSeleccionado.ListaMetas(i))
         'Next
-
+        Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         Dim msg As String = ""
         Dim listaMetas As ReadOnlyCollection(Of Metas)
 
         DataGridView1.DataSource = Nothing
-        Dim idProv = cboods.SelectedIndex
+        Dim idProv = odsSeleccionado.NumODS
 
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
@@ -36,6 +36,11 @@ Public Class CambioMetas
             Exit Sub
         End If
         DataGridView1.DataSource = listaMetas
+        For i As Integer = 0 To listaMetas.Count - 1
+            cboMetas.Items.Add(listaMetas(i))
+        Next
+
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click

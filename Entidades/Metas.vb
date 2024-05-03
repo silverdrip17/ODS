@@ -30,4 +30,8 @@
                NumODS = other.NumODS AndAlso
                CodMeta.ToLower = other.CodMeta.ToLower
     End Function
+
+    Public Overrides Function ToString() As String
+        Return $"{CodMeta}:{Nombre}"
+    End Function
 End Class
