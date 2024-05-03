@@ -27,13 +27,13 @@ Partial Class CambioODS
         Me.cboODS = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.lblImagen = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtNombreODS = New System.Windows.Forms.TextBox()
         Me.txtDescripcionODS = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnGuardarCambios = New System.Windows.Forms.Button()
+        Me.btnfoto = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtNumODS
@@ -66,14 +66,6 @@ Partial Class CambioODS
         Me.ImageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
         Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        '
-        'lblImagen
-        '
-        Me.lblImagen.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.lblImagen.Location = New System.Drawing.Point(522, 34)
-        Me.lblImagen.Name = "lblImagen"
-        Me.lblImagen.Size = New System.Drawing.Size(208, 156)
-        Me.lblImagen.TabIndex = 4
         '
         'Label2
         '
@@ -127,18 +119,26 @@ Partial Class CambioODS
         Me.btnGuardarCambios.Text = "Guardar cambios"
         Me.btnGuardarCambios.UseVisualStyleBackColor = False
         '
+        'btnfoto
+        '
+        Me.btnfoto.Location = New System.Drawing.Point(525, 24)
+        Me.btnfoto.Name = "btnfoto"
+        Me.btnfoto.Size = New System.Drawing.Size(205, 164)
+        Me.btnfoto.TabIndex = 12
+        Me.btnfoto.UseVisualStyleBackColor = True
+        '
         'CambioODS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 331)
+        Me.Controls.Add(Me.btnfoto)
         Me.Controls.Add(Me.btnGuardarCambios)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtDescripcionODS)
         Me.Controls.Add(Me.txtNombreODS)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lblImagen)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboODS)
         Me.Controls.Add(Me.txtNumODS)
@@ -153,11 +153,11 @@ Partial Class CambioODS
     Friend WithEvents cboODS As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents lblImagen As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents txtNombreODS As TextBox
     Friend WithEvents txtDescripcionODS As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents btnGuardarCambios As Button
+    Friend WithEvents btnfoto As Button
 End Class

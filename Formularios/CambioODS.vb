@@ -2,7 +2,7 @@
 
 Public Class CambioODS
     Private Sub CambioODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblImagen.Hide()
+        btnfoto.Hide()
         For i As Integer = 0 To Gestor.MisODS.Count - 1
             cboODS.Items.Add(Gestor.MisODS(i))
         Next
@@ -16,6 +16,9 @@ Public Class CambioODS
         txtDescripcionODS.Text = odsSeleccionado.Descripcion
         txtNombreODS.Text = odsSeleccionado.Nombre
         txtNumODS.Text = odsSeleccionado.NumODS
-        lblImagen.Show()
+        btnfoto.Show()
+        btnfoto.BackgroundImage = Image.FromFile($"./Imagenes/{odsSeleccionado.NumODS}.jpg")
+        btnfoto.BackgroundImageLayout = ImageLayout.Stretch
+
     End Sub
 End Class
