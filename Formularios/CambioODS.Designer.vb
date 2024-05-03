@@ -89,7 +89,7 @@ Partial Class CambioODS
         '
         Me.txtNombreODS.Location = New System.Drawing.Point(204, 142)
         Me.txtNombreODS.Name = "txtNombreODS"
-        Me.txtNombreODS.Size = New System.Drawing.Size(170, 22)
+        Me.txtNombreODS.Size = New System.Drawing.Size(267, 22)
         Me.txtNombreODS.TabIndex = 7
         '
         'txtDescripcionODS
