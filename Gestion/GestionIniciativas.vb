@@ -159,4 +159,36 @@ Public Class GestionIniciativas
         Return ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
     End Function
 
+    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT DESCRIPCION FROM Metas WHERE IDODS = @IDODS AND NUMERO = @NUMERO"
+            Dim cmdLeerMeta As New SqlCommand(sql, oConexion)
+            cmdLeerMeta.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
+            cmdLeerMeta.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+            Dim drMeta As SqlDataReader = cmdLeerMeta.ExecuteReader()
+            If drMeta.Read() Then
+                sql = "UPDATE Metas SET DESCRIPCION = @descripcion WHERE IDODS = @IDODS AND NUMERO = @NUMERO"
+                Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
+                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
+                cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
+                cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+                cmdCambiarDesc.ExecuteNonQuery()
+                mensajerror = "La meta ha sido modificada exitosamente."
+            Else
+                sql = "INSERT INTO Metas (IDODS, NUMERO, DESCRIPCION) VALUES (@IDODS, @NUMERO, @descripcion)"
+                Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
+                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
+                cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
+                cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+                cmdCambiarDesc.ExecuteNonQuery()
+                mensajerror = "La meta ha sido creada."
+            End If
+        Catch ex As Exception
+            mensajerror = ex.ToString
+        Finally
+            oConexion.Close()
+        End Try
+    End Sub
 End Class
