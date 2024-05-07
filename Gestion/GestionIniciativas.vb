@@ -181,7 +181,7 @@ Public Class GestionIniciativas
                 cmdCambiarDesc.ExecuteNonQuery()
                 mensajerror = "La meta ha sido modificada exitosamente."
             Else
-                sql = "INSERT INTO Metas (NUMEROODSE, CODMETA, NOMBRE, DESCRIPCION) VALUES (@NUMEROODS, @CODMETA, @NOMBRE, @descripcion)"
+                sql = "INSERT INTO Metas (NUMEROODS, CODMETA, NOMBRE, DESCRIPCION) VALUES (@NUMEROODS, @CODMETA, @NOMBRE, @descripcion)"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
