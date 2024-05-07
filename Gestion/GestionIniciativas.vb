@@ -122,15 +122,15 @@ Public Class GestionIniciativas
         Next
     End Function
 
-    Public Function ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String) As String
+    Public Sub ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "Select Count(*) from ODS where IDODS = @idOds"
+            Dim sql As String = "Select Count(*) from ODS where NUMERO = @idOds"
             Dim cmdLeerOds As New SqlCommand(sql, oConexion)
             cmdLeerOds.Parameters.AddWithValue("@idOds", idOds)
-            Dim nProv As Integer = cmdLeerOds.ExecuteScalar()
-            If nProv = 0 Then
+            Dim nOds As Integer = cmdLeerOds.ExecuteScalar()
+            If nOds = 0 Then
                 sql = "INSERT INTO ODS VALUES (@idOds,@NOMBRE,@DESCNUEVA)"
                 Dim cmdAnyadirOds As New SqlCommand(sql, oConexion)
                 cmdAnyadirOds.Parameters.AddWithValue("@DESCNUEVA", descripcion)
@@ -139,7 +139,7 @@ Public Class GestionIniciativas
                 cmdAnyadirOds.ExecuteNonQuery()
                 mensajerror = "ODS creado correctamente"
             Else
-                sql = "update ODS set DESCRIPCION = @DESCNUEVA, NOMBRE=@NOMBRE where IDODS = @idOds"
+                sql = "update ODS set DESCRIPCION=@DESCNUEVA, NOMBRE=@NOMBRE where NUMERO=@idOds"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
                 cmdCambiarDesc.Parameters.AddWithValue("@DESCNUEVA", descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
@@ -149,15 +149,18 @@ Public Class GestionIniciativas
 
             End If
         Catch ex As Exception
-            mensajerror = ex.ToString
+            If ex.Message.Contains("CREATE RULE") Then
+                mensajerror = "Ese NÚMERO de ODS no es válido, debe ser un numero entre 1 y 17"
+            Else
+                mensajerror = ex.ToString
+            End If
         Finally
             oConexion.Close()
         End Try
-        Return Nothing
-    End Function
-    Public Function ModificarOds(ods As ODS, ByRef mensajerror As String) As String
-        Return ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
-    End Function
+    End Sub
+    Public Sub ModificarOds(ods As ODS, ByRef mensajerror As String)
+        ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
+    End Sub
 
     Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
         Dim oConexion As New SqlConnection(cadenaDeConexion)

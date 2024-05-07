@@ -27,9 +27,6 @@ Public Class CambioODS
     Private Sub btnGuardarCambios_Click(sender As Object, e As EventArgs) Handles btnGuardarCambios.Click
         Dim msg As String = ""
         Gestor.ModificarOds(txtNumODS.Text, txtNombreODS.Text, txtDescripcionODS.Text, msg)
-        If Not String.IsNullOrWhiteSpace(msg) Then
-            MessageBox.Show(msg)
-        End If
     End Sub
 
 End Class
