@@ -31,6 +31,9 @@ Public Class CambioMetas
 
         DataGridView1.DataSource = Nothing
         Dim idProv = odsSeleccionado.NumODS
+        btnFoto.Show()
+        btnFoto.BackgroundImage = Image.FromFile($"./Imagenes/{odsSeleccionado.NumODS}.jpg")
+        btnFoto.BackgroundImageLayout = ImageLayout.Stretch
 
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
@@ -41,9 +44,6 @@ Public Class CambioMetas
         For i As Integer = 0 To listaMetas.Count - 1
             cboMetas.Items.Add(listaMetas(i))
         Next
-        btnFoto.Show()
-        btnFoto.BackgroundImage = Image.FromFile($"./Imagenes/{odsSeleccionado.NumODS}.jpg")
-        btnFoto.BackgroundImageLayout = ImageLayout.Stretch
 
 
     End Sub
