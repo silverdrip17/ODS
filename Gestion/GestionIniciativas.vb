@@ -166,7 +166,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT DESCRIPCION FROM Metas WHERE IDODS = @IDODS AND NUMERO = @NUMERO"
+            Dim sql As String = "SELECT DESCRIPCION FROM Metas WHERE NUMEROODS = @IDODS AND CODMETA = @NUMERO"
             Dim cmdLeerMeta As New SqlCommand(sql, oConexion)
             cmdLeerMeta.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
             cmdLeerMeta.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
@@ -193,5 +193,14 @@ Public Class GestionIniciativas
         Finally
             oConexion.Close()
         End Try
+    End Sub
+    Public Sub ModificarMeta(numODS As Integer, codMeta As String, nombre As String, descripcion As String, ByRef msg As String)
+        Dim metaACrear As Metas
+        metaACrear.NumODS = numODS
+        metaACrear.CodMeta = codMeta
+        metaACrear.Nombre = nombre
+        metaACrear.Descripcion = descripcion
+
+        ModificarMeta(metaACrear, msg)
     End Sub
 End Class
