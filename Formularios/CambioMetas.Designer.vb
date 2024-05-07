@@ -33,7 +33,6 @@ Partial Class CambioMetas
         Me.txtbNombre = New System.Windows.Forms.TextBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.txtDescripcionMeta = New System.Windows.Forms.TextBox()
-        Me.btnAgregarMeta = New System.Windows.Forms.Button()
         Me.btnGuardarMeta = New System.Windows.Forms.Button()
         Me.btnEliminarMeta = New System.Windows.Forms.Button()
         Me.btnFoto = New System.Windows.Forms.Button()
@@ -133,15 +132,6 @@ Partial Class CambioMetas
         Me.txtDescripcionMeta.Size = New System.Drawing.Size(260, 80)
         Me.txtDescripcionMeta.TabIndex = 15
         '
-        'btnAgregarMeta
-        '
-        Me.btnAgregarMeta.Location = New System.Drawing.Point(424, 357)
-        Me.btnAgregarMeta.Name = "btnAgregarMeta"
-        Me.btnAgregarMeta.Size = New System.Drawing.Size(111, 44)
-        Me.btnAgregarMeta.TabIndex = 16
-        Me.btnAgregarMeta.Text = "Agregar Nueva Meta"
-        Me.btnAgregarMeta.UseVisualStyleBackColor = True
-        '
         'btnGuardarMeta
         '
         Me.btnGuardarMeta.Location = New System.Drawing.Point(661, 357)
@@ -176,7 +166,6 @@ Partial Class CambioMetas
         Me.Controls.Add(Me.btnFoto)
         Me.Controls.Add(Me.btnEliminarMeta)
         Me.Controls.Add(Me.btnGuardarMeta)
-        Me.Controls.Add(Me.btnAgregarMeta)
         Me.Controls.Add(Me.txtDescripcionMeta)
         Me.Controls.Add(Me.lblDescripcion)
         Me.Controls.Add(Me.txtbNombre)
@@ -206,7 +195,6 @@ Partial Class CambioMetas
     Friend WithEvents txtbNombre As TextBox
     Friend WithEvents lblDescripcion As Label
     Friend WithEvents txtDescripcionMeta As TextBox
-    Friend WithEvents btnAgregarMeta As Button
     Friend WithEvents btnGuardarMeta As Button
     Friend WithEvents btnEliminarMeta As Button
     Friend WithEvents btnFoto As Button

@@ -48,7 +48,7 @@ Public Class CambioMetas
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
             Dim metaComparar As Metas = TryCast(odsSeleccionado.ListaMetas(i), Metas)
@@ -73,5 +73,16 @@ Public Class CambioMetas
         txtbNombre.Text = metaSeleccionada.Nombre
         txtCodigoMeta.Text = metaSeleccionada.CodMeta
         txtDescripcionMeta.Text = metaSeleccionada.Descripcion
+    End Sub
+
+    Private Sub btnGuardarMeta_Click(sender As Object, e As EventArgs) Handles btnGuardarMeta.Click
+        If cboods.SelectedItem Is Nothing Then
+            MessageBox.Show("Debes seleccionar un ODS")
+            Exit Sub
+        End If
+        Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
+        Dim msg As String = ""
+        Gestor.ModificarMeta(odsSeleccionado.NumODS, txtCodigoMeta.Text, txtbNombre.Text, txtDescripcionMeta.Text, msg)
+
     End Sub
 End Class
