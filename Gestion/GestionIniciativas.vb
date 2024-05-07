@@ -162,29 +162,31 @@ Public Class GestionIniciativas
         ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
     End Sub
 
-    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
+    Public Sub ModificarMeta(numODS As Integer, codMeta As String, nombre As String, descripcion As String, ByRef mensajerror As String)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT DESCRIPCION FROM Metas WHERE NUMEROODS = @IDODS AND CODMETA = @NUMERO"
+            Dim sql As String = "SELECT DESCRIPCION FROM Metas WHERE NUMEROODS = @NUMEROODS AND CODMETA = @CODMETA"
             Dim cmdLeerMeta As New SqlCommand(sql, oConexion)
-            cmdLeerMeta.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
-            cmdLeerMeta.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+            cmdLeerMeta.Parameters.AddWithValue("@NUMEROODS", numODS)
+            cmdLeerMeta.Parameters.AddWithValue("@CODMETA", codMeta)
             Dim drMeta As SqlDataReader = cmdLeerMeta.ExecuteReader()
             If drMeta.Read() Then
-                sql = "UPDATE Metas SET DESCRIPCION = @descripcion WHERE IDODS = @IDODS AND NUMERO = @NUMERO"
+                sql = "UPDATE Metas SET DESCRIPCION = @descripcion, NOMBRE = @NOMBRE WHERE NUMEROODS = @NUMEROODS AND CODMETA = @CODMETA"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
-                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
-                cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
-                cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", descripcion)
+                cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
+                cmdCambiarDesc.Parameters.AddWithValue("@NUMEROODS", numODS)
+                cmdCambiarDesc.Parameters.AddWithValue("@CODMETA", codMeta)
                 cmdCambiarDesc.ExecuteNonQuery()
                 mensajerror = "La meta ha sido modificada exitosamente."
             Else
-                sql = "INSERT INTO Metas (IDODS, NUMERO, DESCRIPCION) VALUES (@IDODS, @NUMERO, @descripcion)"
+                sql = "INSERT INTO Metas (NUMEROODSE, CODMETA, NOMBRE, DESCRIPCION) VALUES (@NUMEROODS, @CODMETA, @NOMBRE, @descripcion)"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
-                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
-                cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
-                cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
+                cmdCambiarDesc.Parameters.AddWithValue("@descripcion", descripcion)
+                cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
+                cmdCambiarDesc.Parameters.AddWithValue("@NUMEROODS", numODS)
+                cmdCambiarDesc.Parameters.AddWithValue("@CODMETA", codMeta)
                 cmdCambiarDesc.ExecuteNonQuery()
                 mensajerror = "La meta ha sido creada."
             End If
@@ -194,13 +196,7 @@ Public Class GestionIniciativas
             oConexion.Close()
         End Try
     End Sub
-    Public Sub ModificarMeta(numODS As Integer, codMeta As String, nombre As String, descripcion As String, ByRef msg As String)
-        Dim metaACrear As Metas
-        metaACrear.NumODS = numODS
-        metaACrear.CodMeta = codMeta
-        metaACrear.Nombre = nombre
-        metaACrear.Descripcion = descripcion
-
-        ModificarMeta(metaACrear, msg)
+    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
+        ModificarMeta(metamodificar.NumODS, metamodificar.CodMeta, metamodificar.Nombre, metamodificar.Descripcion, mensajerror)
     End Sub
 End Class
