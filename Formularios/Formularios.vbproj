@@ -92,6 +92,12 @@
     <Compile Include="CambioODS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAltaIniciativas.Designer.vb">
+      <DependentUpon>FrmAltaIniciativas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAltaIniciativas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -108,6 +114,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PROYECTOODSDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PROYECTOODSDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CambioMetas.resx">
@@ -118,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAltaIniciativas.resx">
+      <DependentUpon>FrmAltaIniciativas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -137,6 +151,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="PROYECTOODSDataSet.xsc">
+      <DependentUpon>PROYECTOODSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PROYECTOODSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PROYECTOODSDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PROYECTOODSDataSet.xss">
+      <DependentUpon>PROYECTOODSDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.vbproj">
