@@ -83,6 +83,9 @@ Public Class CambioMetas
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         Dim msg As String = ""
         Gestor.ModificarMeta(odsSeleccionado.NumODS, txtCodigoMeta.Text, txtbNombre.Text, txtDescripcionMeta.Text, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+        End If
 
     End Sub
 End Class
