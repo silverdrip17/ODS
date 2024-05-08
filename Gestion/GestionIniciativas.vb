@@ -53,29 +53,29 @@ Public Class GestionIniciativas
         End Get
     End Property
 
-    Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas)
-        Dim todasLasMetas As New List(Of Metas)
-        msg = ""
-        Dim oConexion As New SqlConnection(cadenaDeConexion)
-        Try
-            oConexion.Open()
-            Dim sql As String = "SELECT NUMEROODS, CODMETA, NOMBRE, DESCRIPCCION FROM METAS"
-            Dim cmdLeer As New SqlCommand(sql, oConexion)
-            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
-            Do While dr.Read
-                Dim metasss As New Metas(dr("NUMEROODS").ToString, dr("codmeta").ToString, dr("NOMBRE").ToString, dr("DESCRIPCION").ToString)
-                todasLasMetas.Add(metasss)
-            Loop
-        Catch ex As Exception
-            msg = ex.Message
-            Return Nothing
-        Finally
-            oConexion.Close()
-        End Try
-        _MisMetas = New List(Of Metas)
-        _MisMetas.AddRange(todasLasMetas)
-        Return todasLasMetas.AsReadOnly
-    End Function
+    'Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas)
+    '    Dim todasLasMetas As New List(Of Metas)
+    '    msg = ""
+    '    Dim oConexion As New SqlConnection(cadenaDeConexion)
+    '    Try
+    '        oConexion.Open()
+    '        Dim sql As String = "SELECT NUMEROODS, CODMETA, NOMBRE, DESCRIPCION FROM METAS"
+    '        Dim cmdLeer As New SqlCommand(sql, oConexion)
+    '        Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+    '        Do While dr.Read
+    '            Dim metasss As New Metas(dr("NUMEROODS").ToString, dr("codmeta").ToString, dr("NOMBRE").ToString, dr("DESCRIPCION").ToString)
+    '            todasLasMetas.Add(metasss)
+    '        Loop
+    '    Catch ex As Exception
+    '        msg = ex.Message
+    '        Return Nothing
+    '    Finally
+    '        oConexion.Close()
+    '    End Try
+    '    _MisMetas = New List(Of Metas)
+    '    _MisMetas.AddRange(todasLasMetas)
+    '    Return todasLasMetas.AsReadOnly
+    'End Function
 
     Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas)
         'saber si exixte el ods

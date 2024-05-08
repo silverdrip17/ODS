@@ -16,6 +16,8 @@ Public Class Form1
         dgvOds.DataSource = listaOds
         dgvOds.Columns("imagen").Visible = False
 
+
+        btnIniciativa.Show()
         btnCambiosMetas.Show()
         btnCambiosODS.Show()
     End Sub
@@ -33,5 +35,10 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnCambiosMetas.Hide()
         btnCambiosODS.Hide()
+        btnIniciativa.Hide()
+    End Sub
+
+    Private Sub btnIniciativa_Click(sender As Object, e As EventArgs) Handles btnIniciativa.Click
+        FrmAltaIniciativas.Show()
     End Sub
 End Class
