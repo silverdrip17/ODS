@@ -59,7 +59,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT NUMEROODS, CODMETA, NOMBRE, DESCRIPCCION FROM METAS"
+            Dim sql As String = "SELECT NUMEROODS, CODMETA, NOMBRE, DESCRIPCION FROM METAS"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
