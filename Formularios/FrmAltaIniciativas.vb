@@ -20,6 +20,7 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
         lstMetas.Items.AddRange(misMetas.ToArray)
+        lstMetas.Show()
     End Sub
 
 
