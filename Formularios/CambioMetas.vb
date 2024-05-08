@@ -30,6 +30,8 @@ Public Class CambioMetas
             Exit Sub
         End If
         DataGridView1.DataSource = listaMetas
+        cboMetas.Items.Clear()
+
         For i As Integer = 0 To listaMetas.Count - 1
             cboMetas.Items.Add(listaMetas(i))
         Next
