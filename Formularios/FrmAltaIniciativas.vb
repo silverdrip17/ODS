@@ -11,7 +11,14 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
         Dim odsSeleccionado As ODS = TryCast(cboOds.SelectedItem, ODS)
-        lstMetas.Items.AddRange(odsSeleccionado.ListaMetas.ToArray)
+        Dim misMetas As New List(Of Metas)
+        Dim msg As String = ""
+        misMetas.AddRange(Gestor.MetasDeUnOds(odsSeleccionado.NumODS.ToString, msg))
+        If msg <> "" Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+        lstMetas.Items.AddRange(misMetas.ToArray)
     End Sub
 
 
