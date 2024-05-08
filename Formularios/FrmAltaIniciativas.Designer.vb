@@ -36,6 +36,8 @@ Partial Class FrmAltaIniciativas
         Me.txtFechaFin = New System.Windows.Forms.TextBox()
         Me.lblFechaFin = New System.Windows.Forms.Label()
         Me.btnAñadirIniciativa = New System.Windows.Forms.Button()
+        Me.txtIDSolicitante = New System.Windows.Forms.TextBox()
+        Me.lblIDSolicitante = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'cboOds
@@ -151,18 +153,37 @@ Partial Class FrmAltaIniciativas
         '
         'btnAñadirIniciativa
         '
-        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(541, 359)
+        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(590, 400)
         Me.btnAñadirIniciativa.Name = "btnAñadirIniciativa"
         Me.btnAñadirIniciativa.Size = New System.Drawing.Size(198, 38)
         Me.btnAñadirIniciativa.TabIndex = 21
         Me.btnAñadirIniciativa.Text = "Añadir Iniciativa"
         Me.btnAñadirIniciativa.UseVisualStyleBackColor = True
         '
+        'txtIDSolicitante
+        '
+        Me.txtIDSolicitante.Location = New System.Drawing.Point(450, 359)
+        Me.txtIDSolicitante.Multiline = True
+        Me.txtIDSolicitante.Name = "txtIDSolicitante"
+        Me.txtIDSolicitante.Size = New System.Drawing.Size(170, 25)
+        Me.txtIDSolicitante.TabIndex = 23
+        '
+        'lblIDSolicitante
+        '
+        Me.lblIDSolicitante.AutoSize = True
+        Me.lblIDSolicitante.Location = New System.Drawing.Point(447, 340)
+        Me.lblIDSolicitante.Name = "lblIDSolicitante"
+        Me.lblIDSolicitante.Size = New System.Drawing.Size(107, 16)
+        Me.lblIDSolicitante.TabIndex = 22
+        Me.lblIDSolicitante.Text = "ID del Solicitante"
+        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.txtIDSolicitante)
+        Me.Controls.Add(Me.lblIDSolicitante)
         Me.Controls.Add(Me.btnAñadirIniciativa)
         Me.Controls.Add(Me.txtFechaFin)
         Me.Controls.Add(Me.lblFechaFin)
@@ -198,4 +219,6 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents txtFechaFin As TextBox
     Friend WithEvents lblFechaFin As Label
     Friend WithEvents btnAñadirIniciativa As Button
+    Friend WithEvents txtIDSolicitante As TextBox
+    Friend WithEvents lblIDSolicitante As Label
 End Class
