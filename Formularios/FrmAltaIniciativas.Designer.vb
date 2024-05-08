@@ -22,70 +22,62 @@ Partial Class FrmAltaIniciativas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.cboOds = New System.Windows.Forms.ComboBox()
+        Me.cboSolicitantes = New System.Windows.Forms.ComboBox()
         Me.lstMetas = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblEscribirIniviativa = New System.Windows.Forms.Label()
-        Me.lstmetaseleccionadas = New System.Windows.Forms.ListBox()
         Me.lbltituloiniciativa = New System.Windows.Forms.Label()
         Me.txtboxtitulo = New System.Windows.Forms.TextBox()
         Me.lblDescripcionIniciativa = New System.Windows.Forms.Label()
         Me.txtDescripcionIniciativa = New System.Windows.Forms.TextBox()
         Me.lblFechaInicio = New System.Windows.Forms.Label()
-        Me.txtFechaInicio = New System.Windows.Forms.TextBox()
-        Me.txtFechaFin = New System.Windows.Forms.TextBox()
         Me.lblFechaFin = New System.Windows.Forms.Label()
         Me.btnAñadirIniciativa = New System.Windows.Forms.Button()
+        Me.lblIDSolicitante = New System.Windows.Forms.Label()
+        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
+        Me.MonthCalendar2 = New System.Windows.Forms.MonthCalendar()
+        Me.lstSolicitantes = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cboProfesores = New System.Windows.Forms.ComboBox()
+        Me.lblODSSeleccionados = New System.Windows.Forms.Label()
+        Me.lblODS = New System.Windows.Forms.Label()
+        Me.cboOds = New System.Windows.Forms.ComboBox()
+        Me.lstODS = New System.Windows.Forms.ListBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblCursos = New System.Windows.Forms.Label()
+        Me.cboCursos = New System.Windows.Forms.ComboBox()
+        Me.lblModulosSeleccionados = New System.Windows.Forms.Label()
+        Me.lstModulos = New System.Windows.Forms.ListBox()
+        Me.lblMódulos = New System.Windows.Forms.Label()
+        Me.lstCursos = New System.Windows.Forms.ListBox()
+        Me.cboModulos = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
-        'cboOds
+        'cboSolicitantes
         '
-        Me.cboOds.FormattingEnabled = True
-        Me.cboOds.Location = New System.Drawing.Point(43, 63)
-        Me.cboOds.Name = "cboOds"
-        Me.cboOds.Size = New System.Drawing.Size(278, 24)
-        Me.cboOds.TabIndex = 0
+        Me.cboSolicitantes.FormattingEnabled = True
+        Me.cboSolicitantes.Location = New System.Drawing.Point(533, 143)
+        Me.cboSolicitantes.Name = "cboSolicitantes"
+        Me.cboSolicitantes.Size = New System.Drawing.Size(250, 24)
+        Me.cboSolicitantes.TabIndex = 0
         '
         'lstMetas
         '
         Me.lstMetas.FormattingEnabled = True
         Me.lstMetas.ItemHeight = 16
-        Me.lstMetas.Location = New System.Drawing.Point(450, 63)
+        Me.lstMetas.Location = New System.Drawing.Point(798, 256)
         Me.lstMetas.Name = "lstMetas"
-        Me.lstMetas.Size = New System.Drawing.Size(250, 132)
+        Me.lstMetas.Size = New System.Drawing.Size(231, 68)
         Me.lstMetas.TabIndex = 1
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 16)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Label1"
-        '
-        'lblEscribirIniviativa
-        '
-        Me.lblEscribirIniviativa.AutoSize = True
-        Me.lblEscribirIniviativa.Location = New System.Drawing.Point(64, 130)
-        Me.lblEscribirIniviativa.Name = "lblEscribirIniviativa"
-        Me.lblEscribirIniviativa.Size = New System.Drawing.Size(138, 16)
-        Me.lblEscribirIniviativa.TabIndex = 11
-        Me.lblEscribirIniviativa.Text = "Metas Seleccionadas"
-        '
-        'lstmetaseleccionadas
-        '
-        Me.lstmetaseleccionadas.FormattingEnabled = True
-        Me.lstmetaseleccionadas.ItemHeight = 16
-        Me.lstmetaseleccionadas.Location = New System.Drawing.Point(60, 157)
-        Me.lstmetaseleccionadas.Name = "lstmetaseleccionadas"
-        Me.lstmetaseleccionadas.Size = New System.Drawing.Size(260, 20)
-        Me.lstmetaseleccionadas.TabIndex = 12
         '
         'lbltituloiniciativa
         '
         Me.lbltituloiniciativa.AutoSize = True
-        Me.lbltituloiniciativa.Location = New System.Drawing.Point(57, 194)
+        Me.lbltituloiniciativa.Location = New System.Drawing.Point(33, 27)
         Me.lbltituloiniciativa.Name = "lbltituloiniciativa"
         Me.lbltituloiniciativa.Size = New System.Drawing.Size(95, 16)
         Me.lbltituloiniciativa.TabIndex = 13
@@ -93,7 +85,7 @@ Partial Class FrmAltaIniciativas
         '
         'txtboxtitulo
         '
-        Me.txtboxtitulo.Location = New System.Drawing.Point(60, 223)
+        Me.txtboxtitulo.Location = New System.Drawing.Point(36, 56)
         Me.txtboxtitulo.Name = "txtboxtitulo"
         Me.txtboxtitulo.Size = New System.Drawing.Size(259, 22)
         Me.txtboxtitulo.TabIndex = 14
@@ -101,7 +93,7 @@ Partial Class FrmAltaIniciativas
         'lblDescripcionIniciativa
         '
         Me.lblDescripcionIniciativa.AutoSize = True
-        Me.lblDescripcionIniciativa.Location = New System.Drawing.Point(57, 263)
+        Me.lblDescripcionIniciativa.Location = New System.Drawing.Point(33, 96)
         Me.lblDescripcionIniciativa.Name = "lblDescripcionIniciativa"
         Me.lblDescripcionIniciativa.Size = New System.Drawing.Size(130, 16)
         Me.lblDescripcionIniciativa.TabIndex = 15
@@ -109,7 +101,7 @@ Partial Class FrmAltaIniciativas
         '
         'txtDescripcionIniciativa
         '
-        Me.txtDescripcionIniciativa.Location = New System.Drawing.Point(60, 292)
+        Me.txtDescripcionIniciativa.Location = New System.Drawing.Point(36, 125)
         Me.txtDescripcionIniciativa.Multiline = True
         Me.txtDescripcionIniciativa.Name = "txtDescripcionIniciativa"
         Me.txtDescripcionIniciativa.Size = New System.Drawing.Size(293, 106)
@@ -118,32 +110,16 @@ Partial Class FrmAltaIniciativas
         'lblFechaInicio
         '
         Me.lblFechaInicio.AutoSize = True
-        Me.lblFechaInicio.Location = New System.Drawing.Point(447, 223)
+        Me.lblFechaInicio.Location = New System.Drawing.Point(33, 242)
         Me.lblFechaInicio.Name = "lblFechaInicio"
         Me.lblFechaInicio.Size = New System.Drawing.Size(79, 16)
         Me.lblFechaInicio.TabIndex = 17
         Me.lblFechaInicio.Text = "Fecha Inicio"
         '
-        'txtFechaInicio
-        '
-        Me.txtFechaInicio.Location = New System.Drawing.Point(450, 242)
-        Me.txtFechaInicio.Multiline = True
-        Me.txtFechaInicio.Name = "txtFechaInicio"
-        Me.txtFechaInicio.Size = New System.Drawing.Size(170, 25)
-        Me.txtFechaInicio.TabIndex = 18
-        '
-        'txtFechaFin
-        '
-        Me.txtFechaFin.Location = New System.Drawing.Point(450, 303)
-        Me.txtFechaFin.Multiline = True
-        Me.txtFechaFin.Name = "txtFechaFin"
-        Me.txtFechaFin.Size = New System.Drawing.Size(170, 25)
-        Me.txtFechaFin.TabIndex = 20
-        '
         'lblFechaFin
         '
         Me.lblFechaFin.AutoSize = True
-        Me.lblFechaFin.Location = New System.Drawing.Point(447, 284)
+        Me.lblFechaFin.Location = New System.Drawing.Point(272, 242)
         Me.lblFechaFin.Name = "lblFechaFin"
         Me.lblFechaFin.Size = New System.Drawing.Size(66, 16)
         Me.lblFechaFin.TabIndex = 19
@@ -151,32 +127,256 @@ Partial Class FrmAltaIniciativas
         '
         'btnAñadirIniciativa
         '
-        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(541, 359)
+        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(551, 520)
         Me.btnAñadirIniciativa.Name = "btnAñadirIniciativa"
         Me.btnAñadirIniciativa.Size = New System.Drawing.Size(198, 38)
         Me.btnAñadirIniciativa.TabIndex = 21
         Me.btnAñadirIniciativa.Text = "Añadir Iniciativa"
         Me.btnAñadirIniciativa.UseVisualStyleBackColor = True
         '
+        'lblIDSolicitante
+        '
+        Me.lblIDSolicitante.AutoSize = True
+        Me.lblIDSolicitante.Location = New System.Drawing.Point(530, 114)
+        Me.lblIDSolicitante.Name = "lblIDSolicitante"
+        Me.lblIDSolicitante.Size = New System.Drawing.Size(76, 16)
+        Me.lblIDSolicitante.TabIndex = 22
+        Me.lblIDSolicitante.Text = "Solicitantes"
+        '
+        'MonthCalendar1
+        '
+        Me.MonthCalendar1.Location = New System.Drawing.Point(36, 262)
+        Me.MonthCalendar1.Name = "MonthCalendar1"
+        Me.MonthCalendar1.TabIndex = 24
+        '
+        'MonthCalendar2
+        '
+        Me.MonthCalendar2.Location = New System.Drawing.Point(275, 262)
+        Me.MonthCalendar2.Name = "MonthCalendar2"
+        Me.MonthCalendar2.TabIndex = 25
+        '
+        'lstSolicitantes
+        '
+        Me.lstSolicitantes.FormattingEnabled = True
+        Me.lstSolicitantes.ItemHeight = 16
+        Me.lstSolicitantes.Location = New System.Drawing.Point(798, 143)
+        Me.lstSolicitantes.Name = "lstSolicitantes"
+        Me.lstSolicitantes.Size = New System.Drawing.Size(231, 68)
+        Me.lstSolicitantes.TabIndex = 26
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(795, 114)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(170, 16)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Text = "Solicitantes Seleccionados"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(795, 227)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(167, 16)
+        Me.Label2.TabIndex = 31
+        Me.Label2.Text = "Profesores Seleccionados"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(530, 227)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(73, 16)
+        Me.Label3.TabIndex = 29
+        Me.Label3.Text = "Profesores"
+        '
+        'cboProfesores
+        '
+        Me.cboProfesores.FormattingEnabled = True
+        Me.cboProfesores.Location = New System.Drawing.Point(533, 256)
+        Me.cboProfesores.Name = "cboProfesores"
+        Me.cboProfesores.Size = New System.Drawing.Size(250, 24)
+        Me.cboProfesores.TabIndex = 28
+        '
+        'lblODSSeleccionados
+        '
+        Me.lblODSSeleccionados.AutoSize = True
+        Me.lblODSSeleccionados.Location = New System.Drawing.Point(297, 482)
+        Me.lblODSSeleccionados.Name = "lblODSSeleccionados"
+        Me.lblODSSeleccionados.Size = New System.Drawing.Size(130, 16)
+        Me.lblODSSeleccionados.TabIndex = 35
+        Me.lblODSSeleccionados.Text = "ODS Seleccionados"
+        '
+        'lblODS
+        '
+        Me.lblODS.AutoSize = True
+        Me.lblODS.Location = New System.Drawing.Point(32, 482)
+        Me.lblODS.Name = "lblODS"
+        Me.lblODS.Size = New System.Drawing.Size(36, 16)
+        Me.lblODS.TabIndex = 34
+        Me.lblODS.Text = "ODS"
+        '
+        'cboOds
+        '
+        Me.cboOds.FormattingEnabled = True
+        Me.cboOds.Location = New System.Drawing.Point(35, 511)
+        Me.cboOds.Name = "cboOds"
+        Me.cboOds.Size = New System.Drawing.Size(250, 24)
+        Me.cboOds.TabIndex = 33
+        '
+        'lstODS
+        '
+        Me.lstODS.FormattingEnabled = True
+        Me.lstODS.ItemHeight = 16
+        Me.lstODS.Location = New System.Drawing.Point(300, 511)
+        Me.lstODS.Name = "lstODS"
+        Me.lstODS.Size = New System.Drawing.Size(231, 68)
+        Me.lstODS.TabIndex = 32
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(795, 10)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(130, 16)
+        Me.Label4.TabIndex = 39
+        Me.Label4.Text = "ODS Seleccionados"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(530, 10)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(36, 16)
+        Me.Label5.TabIndex = 38
+        Me.Label5.Text = "ODS"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(533, 39)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(250, 24)
+        Me.ComboBox1.TabIndex = 37
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Location = New System.Drawing.Point(798, 39)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(231, 68)
+        Me.ListBox1.TabIndex = 36
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(795, 448)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(167, 16)
+        Me.Label6.TabIndex = 47
+        Me.Label6.Text = "Profesores Seleccionados"
+        '
+        'lblCursos
+        '
+        Me.lblCursos.AutoSize = True
+        Me.lblCursos.Location = New System.Drawing.Point(530, 448)
+        Me.lblCursos.Name = "lblCursos"
+        Me.lblCursos.Size = New System.Drawing.Size(49, 16)
+        Me.lblCursos.TabIndex = 46
+        Me.lblCursos.Text = "Cursos"
+        '
+        'cboCursos
+        '
+        Me.cboCursos.FormattingEnabled = True
+        Me.cboCursos.Location = New System.Drawing.Point(533, 477)
+        Me.cboCursos.Name = "cboCursos"
+        Me.cboCursos.Size = New System.Drawing.Size(250, 24)
+        Me.cboCursos.TabIndex = 45
+        '
+        'lblModulosSeleccionados
+        '
+        Me.lblModulosSeleccionados.AutoSize = True
+        Me.lblModulosSeleccionados.Location = New System.Drawing.Point(795, 335)
+        Me.lblModulosSeleccionados.Name = "lblModulosSeleccionados"
+        Me.lblModulosSeleccionados.Size = New System.Drawing.Size(170, 16)
+        Me.lblModulosSeleccionados.TabIndex = 44
+        Me.lblModulosSeleccionados.Text = "Solicitantes Seleccionados"
+        '
+        'lstModulos
+        '
+        Me.lstModulos.FormattingEnabled = True
+        Me.lstModulos.ItemHeight = 16
+        Me.lstModulos.Location = New System.Drawing.Point(798, 364)
+        Me.lstModulos.Name = "lstModulos"
+        Me.lstModulos.Size = New System.Drawing.Size(231, 68)
+        Me.lstModulos.TabIndex = 43
+        '
+        'lblMódulos
+        '
+        Me.lblMódulos.AutoSize = True
+        Me.lblMódulos.Location = New System.Drawing.Point(530, 335)
+        Me.lblMódulos.Name = "lblMódulos"
+        Me.lblMódulos.Size = New System.Drawing.Size(59, 16)
+        Me.lblMódulos.TabIndex = 42
+        Me.lblMódulos.Text = "Módulos"
+        '
+        'lstCursos
+        '
+        Me.lstCursos.FormattingEnabled = True
+        Me.lstCursos.ItemHeight = 16
+        Me.lstCursos.Location = New System.Drawing.Point(798, 477)
+        Me.lstCursos.Name = "lstCursos"
+        Me.lstCursos.Size = New System.Drawing.Size(231, 68)
+        Me.lstCursos.TabIndex = 41
+        '
+        'cboModulos
+        '
+        Me.cboModulos.FormattingEnabled = True
+        Me.cboModulos.Location = New System.Drawing.Point(533, 364)
+        Me.cboModulos.Name = "cboModulos"
+        Me.cboModulos.Size = New System.Drawing.Size(250, 24)
+        Me.cboModulos.TabIndex = 40
+        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1090, 613)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblCursos)
+        Me.Controls.Add(Me.cboCursos)
+        Me.Controls.Add(Me.lblModulosSeleccionados)
+        Me.Controls.Add(Me.lstModulos)
+        Me.Controls.Add(Me.lblMódulos)
+        Me.Controls.Add(Me.lstCursos)
+        Me.Controls.Add(Me.cboModulos)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.lblODSSeleccionados)
+        Me.Controls.Add(Me.lblODS)
+        Me.Controls.Add(Me.cboOds)
+        Me.Controls.Add(Me.lstODS)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.cboProfesores)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lstSolicitantes)
+        Me.Controls.Add(Me.MonthCalendar2)
+        Me.Controls.Add(Me.MonthCalendar1)
+        Me.Controls.Add(Me.lblIDSolicitante)
         Me.Controls.Add(Me.btnAñadirIniciativa)
-        Me.Controls.Add(Me.txtFechaFin)
         Me.Controls.Add(Me.lblFechaFin)
-        Me.Controls.Add(Me.txtFechaInicio)
         Me.Controls.Add(Me.lblFechaInicio)
         Me.Controls.Add(Me.txtDescripcionIniciativa)
         Me.Controls.Add(Me.lblDescripcionIniciativa)
         Me.Controls.Add(Me.txtboxtitulo)
         Me.Controls.Add(Me.lbltituloiniciativa)
-        Me.Controls.Add(Me.lstmetaseleccionadas)
-        Me.Controls.Add(Me.lblEscribirIniviativa)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lstMetas)
-        Me.Controls.Add(Me.cboOds)
+        Me.Controls.Add(Me.cboSolicitantes)
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
         Me.ResumeLayout(False)
@@ -184,18 +384,37 @@ Partial Class FrmAltaIniciativas
 
     End Sub
 
-    Friend WithEvents cboOds As ComboBox
+    Friend WithEvents cboSolicitantes As ComboBox
     Friend WithEvents lstMetas As ListBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents lblEscribirIniviativa As Label
-    Friend WithEvents lstmetaseleccionadas As ListBox
     Friend WithEvents lbltituloiniciativa As Label
     Friend WithEvents txtboxtitulo As TextBox
     Friend WithEvents lblDescripcionIniciativa As Label
     Friend WithEvents txtDescripcionIniciativa As TextBox
     Friend WithEvents lblFechaInicio As Label
-    Friend WithEvents txtFechaInicio As TextBox
-    Friend WithEvents txtFechaFin As TextBox
     Friend WithEvents lblFechaFin As Label
     Friend WithEvents btnAñadirIniciativa As Button
+    Friend WithEvents lblIDSolicitante As Label
+    Friend WithEvents MonthCalendar1 As MonthCalendar
+    Friend WithEvents MonthCalendar2 As MonthCalendar
+    Friend WithEvents lstSolicitantes As ListBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents cboProfesores As ComboBox
+    Friend WithEvents lblODSSeleccionados As Label
+    Friend WithEvents lblODS As Label
+    Friend WithEvents cboOds As ComboBox
+    Friend WithEvents lstODS As ListBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lblCursos As Label
+    Friend WithEvents cboCursos As ComboBox
+    Friend WithEvents lblModulosSeleccionados As Label
+    Friend WithEvents lstModulos As ListBox
+    Friend WithEvents lblMódulos As Label
+    Friend WithEvents lstCursos As ListBox
+    Friend WithEvents cboModulos As ComboBox
 End Class
