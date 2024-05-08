@@ -3,12 +3,12 @@ Imports System.Data.SqlClient
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
-    Private _MisOds As List(Of ODS)
-    Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
-        Get
-            Return _MisOds.AsReadOnly
-        End Get
-    End Property
+    'Private _MisOds As List(Of ODS)
+    'Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
+    '    Get
+    '        Return _MisOds.AsReadOnly
+    '    End Get
+    'End Property
 
     Public Sub New()
         If Environment.MachineName = "DESKTOP-NIH4RAC" Then
@@ -22,7 +22,7 @@ Public Class GestionIniciativas
     '    Return MisODS
     'End Function
 
-    Public Function GuardarOds(ByRef msg As String) As ReadOnlyCollection(Of ODS)
+    Public Function DevolverOds(ByRef msg As String) As ReadOnlyCollection(Of ODS)
         Dim todosLosOds As New List(Of ODS)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
@@ -41,17 +41,15 @@ Public Class GestionIniciativas
         Finally
             oConexion.Close()
         End Try
-        _MisOds = New List(Of ODS)
-        _MisOds.AddRange(todosLosOds)
         Return todosLosOds.AsReadOnly
     End Function
 
-    Private _MisMetas As List(Of Metas)
-    Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
-        Get
-            Return MisODS(ods).ListaMetas.AsReadOnly
-        End Get
-    End Property
+    'Private _MisMetas As List(Of Metas)
+    'Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
+    '    Get
+    '        Return MisODS(ods).ListaMetas.AsReadOnly
+    '    End Get
+    'End Property
 
     'Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas)
     '    Dim todasLasMetas As New List(Of Metas)
@@ -107,20 +105,20 @@ Public Class GestionIniciativas
         Return listaMetas.AsReadOnly
     End Function
 
-    Public Function DevolverMeta(numODS As Integer)
-        If numODS > 17 Then
-            Return Nothing
-        End If
-        Return MisODS(numODS - 1).ListaMetas
-    End Function
+    'Public Function DevolverMeta(numODS As Integer)
+    '    If numODS > 17 Then
+    '        Return Nothing
+    '    End If
+    '    Return MisODS(numODS - 1).ListaMetas
+    'End Function
 
-    Public Function AñadirMetaAODS(numODS As Integer, meta As Metas)
-        For i As Integer = 0 To MisODS.Count - 1
-            If MisODS(i).NumODS = numODS Then
-                MisODS(i).ListaMetas.Add(meta)
-            End If
-        Next
-    End Function
+    'Public Function AñadirMetaAODS(numODS As Integer, meta As Metas)
+    '    For i As Integer = 0 To MisODS.Count - 1
+    '        If MisODS(i).NumODS = numODS Then
+    '            MisODS(i).ListaMetas.Add(meta)
+    '        End If
+    '    Next
+    'End Function
 
     Public Sub ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String)
         Dim oConexion As New SqlConnection(cadenaDeConexion)

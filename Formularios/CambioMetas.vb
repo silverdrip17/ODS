@@ -4,10 +4,11 @@ Imports Gestion
 
 Public Class CambioMetas
     Private Sub CambioMetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim msg As String = ""
         btnFoto.Hide()
-        For i As Integer = 0 To Gestor.MisODS.Count - 1
-            cboods.Items.Add(Gestor.MisODS(i))
-        Next
+        'For i As Integer = 0 To Gestor.DevolverOds
+        cboods.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
+        'Next
     End Sub
 
 
@@ -40,6 +41,7 @@ Public Class CambioMetas
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
+        Dim msg As String = ""
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
             Dim metaComparar As Metas = TryCast(odsSeleccionado.ListaMetas(i), Metas)
@@ -52,10 +54,8 @@ Public Class CambioMetas
                 MessageBox.Show("Ya existe una meta con este código")
                 Exit Sub
             End If
-            Gestor.AñadirMetaAODS(odsSeleccionado.NumODS, metaAñadir)
-
-
-
+            'Gestor.AñadirMetaAODS(odsSeleccionado.NumODS, metaAñadir)
+            Gestor.MetasDeUnOds(odsSeleccionado.NumODS, msg)
         Next
     End Sub
 

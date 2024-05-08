@@ -3,10 +3,11 @@ Imports Entidades
 
 Public Class CambioODS
     Private Sub CambioODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim msg As String = ""
         btnfoto.Hide()
-        For i As Integer = 0 To Gestor.MisODS.Count - 1
-            cboODS.Items.Add(Gestor.MisODS(i))
-        Next
+        '  For i As Integer = 0 To Gestor.MisODS.Count - 1
+        cboODS.Items.Add(Gestor.DevolverOds(msg))
+        '  Next
     End Sub
 
     Private Sub cboODS_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged

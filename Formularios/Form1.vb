@@ -12,7 +12,7 @@ Public Class Form1
         Dim listaOds As ReadOnlyCollection(Of ODS)
 
         dgvOds.DataSource = False
-        listaOds = Gestor.GuardarOds(msg)
+        listaOds = Gestor.DevolverOds(msg)
         dgvOds.DataSource = listaOds
         dgvOds.Columns("imagen").Visible = False
 
