@@ -6,11 +6,11 @@ Public Class FrmAltaIniciativas
         lstMetas.Hide()
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOds.SelectedIndexChanged
-        Dim miListaOds As ComboBox = TryCast(sender, ComboBox)
-        If miListaOds.SelectedIndex < 0 Then
+        lstMetas.Items.Clear()
+        If cboOds.SelectedIndex < 0 Then
             Exit Sub
         End If
-        Dim odsSeleccionado As ODS = TryCast(miListaOds.SelectedItem, ODS)
+        Dim odsSeleccionado As ODS = TryCast(cboOds.SelectedItem, ODS)
         lstMetas.Items.AddRange(odsSeleccionado.ListaMetas.ToArray)
     End Sub
 
