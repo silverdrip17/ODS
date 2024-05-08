@@ -11,8 +11,12 @@ Public Class Form1
         Dim msg As String = ""
         Dim listaOds As ReadOnlyCollection(Of ODS)
 
-        dgvOds.DataSource = False
+        dgvOds.DataSource = Nothing
         listaOds = Gestor.DevolverOds(msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
         dgvOds.DataSource = listaOds
         dgvOds.Columns("imagen").Visible = False
 
