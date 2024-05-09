@@ -10,9 +10,12 @@ Public Class CambioMetas
         cboods.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
         'Next
     End Sub
-
-
-
+    Private Sub LimpiarTextoMetas()
+        txtCodigoMeta.Clear()
+        txtbNombre.Clear()
+        txtDescripcionMeta.Clear()
+        cboMetas.Items.Clear()
+    End Sub
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged
         DataGridView1.DataSource = Nothing
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
@@ -28,12 +31,11 @@ Public Class CambioMetas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            cboMetas.Items.Clear()
+            LimpiarTextoMetas()
             Exit Sub
         End If
         DataGridView1.DataSource = listaMetas
-        cboMetas.Items.Clear()
-
+        LimpiarTextoMetas()
         For i As Integer = 0 To listaMetas.Count - 1
             cboMetas.Items.Add(listaMetas(i))
         Next
