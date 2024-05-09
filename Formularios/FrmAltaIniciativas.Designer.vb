@@ -51,12 +51,16 @@ Partial Class FrmAltaIniciativas
         Me.lblMódulos = New System.Windows.Forms.Label()
         Me.lstCursos = New System.Windows.Forms.ListBox()
         Me.cboModulos = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cboMetas = New System.Windows.Forms.ComboBox()
+        Me.lstMetas = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'cboSolicitantes
         '
         Me.cboSolicitantes.FormattingEnabled = True
-        Me.cboSolicitantes.Location = New System.Drawing.Point(644, 143)
+        Me.cboSolicitantes.Location = New System.Drawing.Point(565, 219)
         Me.cboSolicitantes.Name = "cboSolicitantes"
         Me.cboSolicitantes.Size = New System.Drawing.Size(250, 24)
         Me.cboSolicitantes.TabIndex = 0
@@ -65,9 +69,9 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstProfesores.FormattingEnabled = True
         Me.lstProfesores.ItemHeight = 16
-        Me.lstProfesores.Location = New System.Drawing.Point(909, 256)
+        Me.lstProfesores.Location = New System.Drawing.Point(830, 401)
         Me.lstProfesores.Name = "lstProfesores"
-        Me.lstProfesores.Size = New System.Drawing.Size(231, 68)
+        Me.lstProfesores.Size = New System.Drawing.Size(231, 100)
         Me.lstProfesores.TabIndex = 1
         '
         'lbltituloiniciativa
@@ -133,7 +137,7 @@ Partial Class FrmAltaIniciativas
         'lblIDSolicitante
         '
         Me.lblIDSolicitante.AutoSize = True
-        Me.lblIDSolicitante.Location = New System.Drawing.Point(641, 114)
+        Me.lblIDSolicitante.Location = New System.Drawing.Point(562, 190)
         Me.lblIDSolicitante.Name = "lblIDSolicitante"
         Me.lblIDSolicitante.Size = New System.Drawing.Size(76, 16)
         Me.lblIDSolicitante.TabIndex = 22
@@ -155,15 +159,15 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstSolicitantes.FormattingEnabled = True
         Me.lstSolicitantes.ItemHeight = 16
-        Me.lstSolicitantes.Location = New System.Drawing.Point(909, 143)
+        Me.lstSolicitantes.Location = New System.Drawing.Point(830, 222)
         Me.lstSolicitantes.Name = "lstSolicitantes"
-        Me.lstSolicitantes.Size = New System.Drawing.Size(231, 68)
+        Me.lstSolicitantes.Size = New System.Drawing.Size(231, 100)
         Me.lstSolicitantes.TabIndex = 26
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(906, 114)
+        Me.Label1.Location = New System.Drawing.Point(827, 190)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(170, 16)
         Me.Label1.TabIndex = 27
@@ -172,7 +176,7 @@ Partial Class FrmAltaIniciativas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(906, 227)
+        Me.Label2.Location = New System.Drawing.Point(827, 372)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(167, 16)
         Me.Label2.TabIndex = 31
@@ -181,7 +185,7 @@ Partial Class FrmAltaIniciativas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(641, 227)
+        Me.Label3.Location = New System.Drawing.Point(562, 372)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 16)
         Me.Label3.TabIndex = 29
@@ -190,7 +194,7 @@ Partial Class FrmAltaIniciativas
         'cboProfesores
         '
         Me.cboProfesores.FormattingEnabled = True
-        Me.cboProfesores.Location = New System.Drawing.Point(644, 256)
+        Me.cboProfesores.Location = New System.Drawing.Point(565, 401)
         Me.cboProfesores.Name = "cboProfesores"
         Me.cboProfesores.Size = New System.Drawing.Size(250, 24)
         Me.cboProfesores.TabIndex = 28
@@ -199,15 +203,15 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstODS.FormattingEnabled = True
         Me.lstODS.ItemHeight = 16
-        Me.lstODS.Location = New System.Drawing.Point(909, 39)
+        Me.lstODS.Location = New System.Drawing.Point(830, 54)
         Me.lstODS.Name = "lstODS"
-        Me.lstODS.Size = New System.Drawing.Size(231, 68)
+        Me.lstODS.Size = New System.Drawing.Size(231, 100)
         Me.lstODS.TabIndex = 32
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(906, 10)
+        Me.Label4.Location = New System.Drawing.Point(827, 25)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(130, 16)
         Me.Label4.TabIndex = 39
@@ -216,7 +220,7 @@ Partial Class FrmAltaIniciativas
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(641, 10)
+        Me.Label5.Location = New System.Drawing.Point(562, 25)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(36, 16)
         Me.Label5.TabIndex = 38
@@ -225,7 +229,7 @@ Partial Class FrmAltaIniciativas
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(644, 39)
+        Me.ComboBox1.Location = New System.Drawing.Point(565, 54)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(250, 24)
         Me.ComboBox1.TabIndex = 37
@@ -233,7 +237,7 @@ Partial Class FrmAltaIniciativas
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(906, 448)
+        Me.Label6.Location = New System.Drawing.Point(1334, 199)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(167, 16)
         Me.Label6.TabIndex = 47
@@ -242,7 +246,7 @@ Partial Class FrmAltaIniciativas
         'lblCursos
         '
         Me.lblCursos.AutoSize = True
-        Me.lblCursos.Location = New System.Drawing.Point(641, 448)
+        Me.lblCursos.Location = New System.Drawing.Point(1069, 199)
         Me.lblCursos.Name = "lblCursos"
         Me.lblCursos.Size = New System.Drawing.Size(49, 16)
         Me.lblCursos.TabIndex = 46
@@ -251,7 +255,7 @@ Partial Class FrmAltaIniciativas
         'cboCursos
         '
         Me.cboCursos.FormattingEnabled = True
-        Me.cboCursos.Location = New System.Drawing.Point(644, 477)
+        Me.cboCursos.Location = New System.Drawing.Point(1072, 228)
         Me.cboCursos.Name = "cboCursos"
         Me.cboCursos.Size = New System.Drawing.Size(250, 24)
         Me.cboCursos.TabIndex = 45
@@ -259,7 +263,7 @@ Partial Class FrmAltaIniciativas
         'lblModulosSeleccionados
         '
         Me.lblModulosSeleccionados.AutoSize = True
-        Me.lblModulosSeleccionados.Location = New System.Drawing.Point(906, 335)
+        Me.lblModulosSeleccionados.Location = New System.Drawing.Point(1334, 372)
         Me.lblModulosSeleccionados.Name = "lblModulosSeleccionados"
         Me.lblModulosSeleccionados.Size = New System.Drawing.Size(170, 16)
         Me.lblModulosSeleccionados.TabIndex = 44
@@ -269,15 +273,15 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstModulos.FormattingEnabled = True
         Me.lstModulos.ItemHeight = 16
-        Me.lstModulos.Location = New System.Drawing.Point(909, 364)
+        Me.lstModulos.Location = New System.Drawing.Point(1337, 401)
         Me.lstModulos.Name = "lstModulos"
-        Me.lstModulos.Size = New System.Drawing.Size(231, 68)
+        Me.lstModulos.Size = New System.Drawing.Size(231, 100)
         Me.lstModulos.TabIndex = 43
         '
         'lblMódulos
         '
         Me.lblMódulos.AutoSize = True
-        Me.lblMódulos.Location = New System.Drawing.Point(641, 335)
+        Me.lblMódulos.Location = New System.Drawing.Point(1069, 372)
         Me.lblMódulos.Name = "lblMódulos"
         Me.lblMódulos.Size = New System.Drawing.Size(59, 16)
         Me.lblMódulos.TabIndex = 42
@@ -287,24 +291,63 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstCursos.FormattingEnabled = True
         Me.lstCursos.ItemHeight = 16
-        Me.lstCursos.Location = New System.Drawing.Point(909, 477)
+        Me.lstCursos.Location = New System.Drawing.Point(1337, 228)
         Me.lstCursos.Name = "lstCursos"
-        Me.lstCursos.Size = New System.Drawing.Size(231, 68)
+        Me.lstCursos.Size = New System.Drawing.Size(231, 100)
         Me.lstCursos.TabIndex = 41
         '
         'cboModulos
         '
         Me.cboModulos.FormattingEnabled = True
-        Me.cboModulos.Location = New System.Drawing.Point(644, 364)
+        Me.cboModulos.Location = New System.Drawing.Point(1072, 401)
         Me.cboModulos.Name = "cboModulos"
         Me.cboModulos.Size = New System.Drawing.Size(250, 24)
         Me.cboModulos.TabIndex = 40
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(1334, 25)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(138, 16)
+        Me.Label7.TabIndex = 51
+        Me.Label7.Text = "Metas Seleccionadas"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(1069, 25)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(44, 16)
+        Me.Label8.TabIndex = 50
+        Me.Label8.Text = "Metas"
+        '
+        'cboMetas
+        '
+        Me.cboMetas.FormattingEnabled = True
+        Me.cboMetas.Location = New System.Drawing.Point(1072, 54)
+        Me.cboMetas.Name = "cboMetas"
+        Me.cboMetas.Size = New System.Drawing.Size(250, 24)
+        Me.cboMetas.TabIndex = 49
+        '
+        'lstMetas
+        '
+        Me.lstMetas.FormattingEnabled = True
+        Me.lstMetas.ItemHeight = 16
+        Me.lstMetas.Location = New System.Drawing.Point(1337, 54)
+        Me.lstMetas.Name = "lstMetas"
+        Me.lstMetas.Size = New System.Drawing.Size(231, 100)
+        Me.lstMetas.TabIndex = 48
         '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1176, 613)
+        Me.ClientSize = New System.Drawing.Size(1655, 696)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.cboMetas)
+        Me.Controls.Add(Me.lstMetas)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.lblCursos)
         Me.Controls.Add(Me.cboCursos)
@@ -370,4 +413,8 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents lblMódulos As Label
     Friend WithEvents lstCursos As ListBox
     Friend WithEvents cboModulos As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents cboMetas As ComboBox
+    Friend WithEvents lstMetas As ListBox
 End Class
