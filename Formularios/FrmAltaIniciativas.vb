@@ -1,16 +1,20 @@
-﻿Imports Entidades
+﻿Imports System.Collections.ObjectModel
+Imports Entidades
 
 Public Class FrmAltaIniciativas
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
+        cboSolicitantes.Items.AddRange(Gestor.DevolverSolicitantes(msg).ToArray)
+        cboProfesores.Items.AddRange(Gestor.DevolverProfesores(msg).ToArray)
+        cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
     End Sub
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSolicitantes.SelectedIndexChanged
-        lstProfesores.Items.Clear()
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged
+        cboMetas.Items.Clear()
         If cboSolicitantes.SelectedIndex < 0 Then
             Exit Sub
         End If
-        Dim odsSeleccionado As ODS = TryCast(cboSolicitantes.SelectedItem, ODS)
+        Dim odsSeleccionado As ODS = TryCast(cboODS.SelectedItem, ODS)
         Dim misMetas As New List(Of Metas)
         Dim msg As String = ""
         misMetas.AddRange(Gestor.MetasDeUnOds(odsSeleccionado.NumODS.ToString, msg))
@@ -18,8 +22,8 @@ Public Class FrmAltaIniciativas
             MessageBox.Show(msg)
             Exit Sub
         End If
-        lstProfesores.Items.AddRange(misMetas.ToArray)
-        lstProfesores.Show()
+        cboMetas.Items.AddRange(misMetas.ToArray)
+        cboMetas.Show()
     End Sub
 
     Private Sub lblMódulos_Click(sender As Object, e As EventArgs) Handles lblMódulos.Click
@@ -47,14 +51,30 @@ Public Class FrmAltaIniciativas
     End Sub
 
     Private Sub cboCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCursos.SelectedIndexChanged
+        Dim cursoSeleccionado As Curso = TryCast(cboCursos.SelectedItem, Curso)
+        Dim msg As String = ""
+        Dim listaModulos As ReadOnlyCollection(Of Modulo)
+
+        Dim id = cursoSeleccionado.CodCurso
+
+        listaModulos = Gestor.ModulosDeUnCurso(id, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+
+        cboModulos.Items.Clear()
+
+        For i As Integer = 0 To listaModulos.Count - 1
+            cboModulos.Items.Add(listaModulos(i))
+        Next
+    End Sub
+
+    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs) Handles lblModulosSeleccionados.Click
-
-    End Sub
-
-    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstModulos.SelectedIndexChanged
+    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -74,7 +94,7 @@ Public Class FrmAltaIniciativas
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
             MessageBox.Show("Debes rellenar todos los campos")
         End If
-        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstODS.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 OrElse lstModulos.Items.Count = 0 Then
+        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
         End If
     End Sub

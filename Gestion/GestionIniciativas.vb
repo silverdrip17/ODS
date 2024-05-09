@@ -247,7 +247,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "Select MODULOS.* From MODULOS Where CODCURSO = @CODCURSO"
+            Dim sql As String = "Select MODULO.* From MODULO Where CODCURSO = @CODCURSO"
             Dim cmdLeerProv As New SqlCommand(sql, oConexion)
             cmdLeerProv.Parameters.AddWithValue("@codcurso", codcurso)
             Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
