@@ -4,10 +4,10 @@ Public Class FrmAltaIniciativas
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboSolicitantes.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
-        lstMetas.Hide()
+        lstProfesores.Hide()
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSolicitantes.SelectedIndexChanged
-        lstMetas.Items.Clear()
+        lstProfesores.Items.Clear()
         If cboSolicitantes.SelectedIndex < 0 Then
             Exit Sub
         End If
@@ -19,7 +19,7 @@ Public Class FrmAltaIniciativas
             MessageBox.Show(msg)
             Exit Sub
         End If
-        lstMetas.Items.AddRange(misMetas.ToArray)
-        lstMetas.Show()
+        lstProfesores.Items.AddRange(misMetas.ToArray)
+        lstProfesores.Show()
     End Sub
 End Class

@@ -23,7 +23,7 @@ Partial Class FrmAltaIniciativas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.cboSolicitantes = New System.Windows.Forms.ComboBox()
-        Me.lstMetas = New System.Windows.Forms.ListBox()
+        Me.lstProfesores = New System.Windows.Forms.ListBox()
         Me.lbltituloiniciativa = New System.Windows.Forms.Label()
         Me.txtboxtitulo = New System.Windows.Forms.TextBox()
         Me.lblDescripcionIniciativa = New System.Windows.Forms.Label()
@@ -61,14 +61,14 @@ Partial Class FrmAltaIniciativas
         Me.cboSolicitantes.Size = New System.Drawing.Size(250, 24)
         Me.cboSolicitantes.TabIndex = 0
         '
-        'lstMetas
+        'lstProfesores
         '
-        Me.lstMetas.FormattingEnabled = True
-        Me.lstMetas.ItemHeight = 16
-        Me.lstMetas.Location = New System.Drawing.Point(909, 256)
-        Me.lstMetas.Name = "lstMetas"
-        Me.lstMetas.Size = New System.Drawing.Size(231, 68)
-        Me.lstMetas.TabIndex = 1
+        Me.lstProfesores.FormattingEnabled = True
+        Me.lstProfesores.ItemHeight = 16
+        Me.lstProfesores.Location = New System.Drawing.Point(909, 256)
+        Me.lstProfesores.Name = "lstProfesores"
+        Me.lstProfesores.Size = New System.Drawing.Size(231, 68)
+        Me.lstProfesores.TabIndex = 1
         '
         'lbltituloiniciativa
         '
@@ -332,7 +332,7 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.lblDescripcionIniciativa)
         Me.Controls.Add(Me.txtboxtitulo)
         Me.Controls.Add(Me.lbltituloiniciativa)
-        Me.Controls.Add(Me.lstMetas)
+        Me.Controls.Add(Me.lstProfesores)
         Me.Controls.Add(Me.cboSolicitantes)
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
@@ -342,7 +342,7 @@ Partial Class FrmAltaIniciativas
     End Sub
 
     Friend WithEvents cboSolicitantes As ComboBox
-    Friend WithEvents lstMetas As ListBox
+    Friend WithEvents lstProfesores As ListBox
     Friend WithEvents lbltituloiniciativa As Label
     Friend WithEvents txtboxtitulo As TextBox
     Friend WithEvents lblDescripcionIniciativa As Label
