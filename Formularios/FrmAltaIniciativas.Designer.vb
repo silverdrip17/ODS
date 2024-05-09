@@ -73,7 +73,7 @@ Partial Class FrmAltaIniciativas
         'lbltituloiniciativa
         '
         Me.lbltituloiniciativa.AutoSize = True
-        Me.lbltituloiniciativa.Location = New System.Drawing.Point(33, 105)
+        Me.lbltituloiniciativa.Location = New System.Drawing.Point(54, 123)
         Me.lbltituloiniciativa.Name = "lbltituloiniciativa"
         Me.lbltituloiniciativa.Size = New System.Drawing.Size(95, 16)
         Me.lbltituloiniciativa.TabIndex = 13
@@ -81,7 +81,7 @@ Partial Class FrmAltaIniciativas
         '
         'txtTitulo
         '
-        Me.txtTitulo.Location = New System.Drawing.Point(36, 134)
+        Me.txtTitulo.Location = New System.Drawing.Point(57, 152)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(259, 22)
         Me.txtTitulo.TabIndex = 14
@@ -89,7 +89,7 @@ Partial Class FrmAltaIniciativas
         'lblDescripcionIniciativa
         '
         Me.lblDescripcionIniciativa.AutoSize = True
-        Me.lblDescripcionIniciativa.Location = New System.Drawing.Point(18, 223)
+        Me.lblDescripcionIniciativa.Location = New System.Drawing.Point(54, 289)
         Me.lblDescripcionIniciativa.Name = "lblDescripcionIniciativa"
         Me.lblDescripcionIniciativa.Size = New System.Drawing.Size(130, 16)
         Me.lblDescripcionIniciativa.TabIndex = 15
@@ -97,7 +97,7 @@ Partial Class FrmAltaIniciativas
         '
         'txtDescripcionIniciativa
         '
-        Me.txtDescripcionIniciativa.Location = New System.Drawing.Point(21, 252)
+        Me.txtDescripcionIniciativa.Location = New System.Drawing.Point(57, 318)
         Me.txtDescripcionIniciativa.Multiline = True
         Me.txtDescripcionIniciativa.Name = "txtDescripcionIniciativa"
         Me.txtDescripcionIniciativa.Size = New System.Drawing.Size(293, 106)
@@ -106,7 +106,7 @@ Partial Class FrmAltaIniciativas
         'lblFechaInicio
         '
         Me.lblFechaInicio.AutoSize = True
-        Me.lblFechaInicio.Location = New System.Drawing.Point(33, 449)
+        Me.lblFechaInicio.Location = New System.Drawing.Point(29, 517)
         Me.lblFechaInicio.Name = "lblFechaInicio"
         Me.lblFechaInicio.Size = New System.Drawing.Size(79, 16)
         Me.lblFechaInicio.TabIndex = 17
@@ -115,7 +115,7 @@ Partial Class FrmAltaIniciativas
         'lblFechaFin
         '
         Me.lblFechaFin.AutoSize = True
-        Me.lblFechaFin.Location = New System.Drawing.Point(350, 454)
+        Me.lblFechaFin.Location = New System.Drawing.Point(346, 522)
         Me.lblFechaFin.Name = "lblFechaFin"
         Me.lblFechaFin.Size = New System.Drawing.Size(66, 16)
         Me.lblFechaFin.TabIndex = 19
@@ -289,16 +289,16 @@ Partial Class FrmAltaIniciativas
         '
         'dtpInicio
         '
-        Me.dtpInicio.Location = New System.Drawing.Point(36, 479)
+        Me.dtpInicio.Location = New System.Drawing.Point(17, 552)
         Me.dtpInicio.Name = "dtpInicio"
-        Me.dtpInicio.Size = New System.Drawing.Size(187, 22)
+        Me.dtpInicio.Size = New System.Drawing.Size(259, 22)
         Me.dtpInicio.TabIndex = 52
         '
         'dtpFin
         '
-        Me.dtpFin.Location = New System.Drawing.Point(349, 484)
+        Me.dtpFin.Location = New System.Drawing.Point(339, 552)
         Me.dtpFin.Name = "dtpFin"
-        Me.dtpFin.Size = New System.Drawing.Size(161, 22)
+        Me.dtpFin.Size = New System.Drawing.Size(270, 22)
         Me.dtpFin.TabIndex = 53
         '
         'FrmAltaIniciativas
