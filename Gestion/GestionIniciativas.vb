@@ -269,4 +269,26 @@ Public Class GestionIniciativas
         End Try
         Return listaModulos.AsReadOnly
     End Function
+
+    Public Function DevolverCursos(ByRef msg As String) As ReadOnlyCollection(Of Curso)
+        Dim todosLosCursos As New List(Of Curso)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT CODCURSO, NOMBRE FROM CURSO"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim curso As New Curso(dr("CODCURSO").ToString, dr("NOMBRE").ToString)
+                todosLosCursos.Add(curso)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return todosLosCursos.AsReadOnly
+    End Function
+
 End Class
