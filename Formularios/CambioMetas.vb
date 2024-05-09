@@ -28,6 +28,7 @@ Public Class CambioMetas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
+            cboMetas.Items.Clear()
             Exit Sub
         End If
         DataGridView1.DataSource = listaMetas
