@@ -303,7 +303,7 @@ Partial Class FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1837, 717)
+        Me.ClientSize = New System.Drawing.Size(1748, 647)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cboMetas)
