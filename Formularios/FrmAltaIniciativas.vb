@@ -8,6 +8,7 @@ Public Class FrmAltaIniciativas
         cboSolicitantes.Items.AddRange(Gestor.DevolverSolicitantes(msg).ToArray)
         cboProfesores.Items.AddRange(Gestor.DevolverProfesores(msg).ToArray)
         cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
+        WindowState = FormWindowState.Maximized
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged
         cboMetas.Items.Clear()
