@@ -50,11 +50,11 @@ Public Class FrmAltaIniciativas
 
     End Sub
 
-    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs) Handles lblModulosSeleccionados.Click
+    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstModulos.SelectedIndexChanged
+    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -74,7 +74,7 @@ Public Class FrmAltaIniciativas
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
             MessageBox.Show("Debes rellenar todos los campos")
         End If
-        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstODS.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 OrElse lstModulos.Items.Count = 0 Then
+        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
         End If
     End Sub
