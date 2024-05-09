@@ -32,8 +32,6 @@ Partial Class FrmAltaIniciativas
         Me.lblFechaFin = New System.Windows.Forms.Label()
         Me.btnAñadirIniciativa = New System.Windows.Forms.Button()
         Me.lblIDSolicitante = New System.Windows.Forms.Label()
-        Me.lstSolicitantes = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboProfesores = New System.Windows.Forms.ComboBox()
@@ -56,7 +54,7 @@ Partial Class FrmAltaIniciativas
         'cboSolicitantes
         '
         Me.cboSolicitantes.FormattingEnabled = True
-        Me.cboSolicitantes.Location = New System.Drawing.Point(1365, 581)
+        Me.cboSolicitantes.Location = New System.Drawing.Point(1515, 581)
         Me.cboSolicitantes.Name = "cboSolicitantes"
         Me.cboSolicitantes.Size = New System.Drawing.Size(250, 24)
         Me.cboSolicitantes.TabIndex = 0
@@ -133,29 +131,11 @@ Partial Class FrmAltaIniciativas
         'lblIDSolicitante
         '
         Me.lblIDSolicitante.AutoSize = True
-        Me.lblIDSolicitante.Location = New System.Drawing.Point(1362, 552)
+        Me.lblIDSolicitante.Location = New System.Drawing.Point(1512, 552)
         Me.lblIDSolicitante.Name = "lblIDSolicitante"
         Me.lblIDSolicitante.Size = New System.Drawing.Size(76, 16)
         Me.lblIDSolicitante.TabIndex = 22
         Me.lblIDSolicitante.Text = "Solicitantes"
-        '
-        'lstSolicitantes
-        '
-        Me.lstSolicitantes.FormattingEnabled = True
-        Me.lstSolicitantes.ItemHeight = 16
-        Me.lstSolicitantes.Location = New System.Drawing.Point(1630, 581)
-        Me.lstSolicitantes.Name = "lstSolicitantes"
-        Me.lstSolicitantes.Size = New System.Drawing.Size(231, 100)
-        Me.lstSolicitantes.TabIndex = 26
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1627, 552)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(170, 16)
-        Me.Label1.TabIndex = 27
-        Me.Label1.Text = "Solicitantes Seleccionados"
         '
         'Label2
         '
@@ -323,8 +303,6 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cboProfesores)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lstSolicitantes)
         Me.Controls.Add(Me.lblIDSolicitante)
         Me.Controls.Add(Me.btnAñadirIniciativa)
         Me.Controls.Add(Me.lblFechaFin)
@@ -352,8 +330,6 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents lblFechaFin As Label
     Friend WithEvents btnAñadirIniciativa As Button
     Friend WithEvents lblIDSolicitante As Label
-    Friend WithEvents lstSolicitantes As ListBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents cboProfesores As ComboBox
