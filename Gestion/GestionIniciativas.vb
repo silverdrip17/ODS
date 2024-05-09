@@ -197,4 +197,47 @@ Public Class GestionIniciativas
     Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
         ModificarMeta(metamodificar.NumODS, metamodificar.CodMeta, metamodificar.Nombre, metamodificar.Descripcion, mensajerror)
     End Sub
+
+    Public Function DevolverProfesores(ByRef msg As String) As ReadOnlyCollection(Of Profesor)
+        Dim todosLosProfesores As New List(Of Profesor)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT NUMERO, NOMBRE, DESCRIPCION FROM ODS"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim profesor As New Profesor(dr("IDPROF").ToString, dr("NOMBRECOMPLETO").ToString)
+                todosLosProfesores.Add(profesor)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+            Return Nothing
+        Finally
+            oConexion.Close()
+        End Try
+        Return todosLosProfesores.AsReadOnly
+    End Function
+
+    Public Function DevolverSolicitantes(ByRef msg As String) As ReadOnlyCollection(Of Solicitante)
+        Dim todosLosSolicitantes As New List(Of Solicitante)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT NUMERO, NOMBRE, DESCRIPCION FROM ODS"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim solicitante As New Solicitante(dr("IDSOLICITANTE").ToString, dr("NOMBRE").ToString)
+                todosLosSolicitantes.Add(solicitante)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return todosLosSolicitantes.AsReadOnly
+    End Function
 End Class
