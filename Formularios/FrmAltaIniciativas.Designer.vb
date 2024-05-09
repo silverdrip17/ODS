@@ -239,9 +239,9 @@ Partial Class FrmAltaIniciativas
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(1430, 201)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(167, 16)
+        Me.Label6.Size = New System.Drawing.Size(143, 16)
         Me.Label6.TabIndex = 47
-        Me.Label6.Text = "Profesores Seleccionados"
+        Me.Label6.Text = "Cursos Seleccionados"
         '
         'lblCursos
         '
@@ -265,9 +265,9 @@ Partial Class FrmAltaIniciativas
         Me.lblModulosSeleccionados.AutoSize = True
         Me.lblModulosSeleccionados.Location = New System.Drawing.Point(1430, 374)
         Me.lblModulosSeleccionados.Name = "lblModulosSeleccionados"
-        Me.lblModulosSeleccionados.Size = New System.Drawing.Size(170, 16)
+        Me.lblModulosSeleccionados.Size = New System.Drawing.Size(153, 16)
         Me.lblModulosSeleccionados.TabIndex = 44
-        Me.lblModulosSeleccionados.Text = "Solicitantes Seleccionados"
+        Me.lblModulosSeleccionados.Text = "Módulos Seleccionados"
         '
         'lstModulos
         '
