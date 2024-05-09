@@ -4,7 +4,6 @@ Public Class FrmAltaIniciativas
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboSolicitantes.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
-        lstProfesores.Hide()
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSolicitantes.SelectedIndexChanged
         lstProfesores.Items.Clear()
@@ -69,5 +68,14 @@ Public Class FrmAltaIniciativas
 
     Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub btnAñadirIniciativa_Click(sender As Object, e As EventArgs) Handles btnAñadirIniciativa.Click
+        If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
+            MessageBox.Show("Debes rellenar todos los campos")
+        End If
+        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstODS.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 OrElse lstModulos.Items.Count = 0 Then
+            MessageBox.Show("Debe haber mínimo un valor en las listas")
+        End If
     End Sub
 End Class
