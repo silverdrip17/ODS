@@ -12,7 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDLBD", "DDLBD", "{9BA567A5-FA7B-458F-9466-D4A9DC5EB35B}"
 	ProjectSection(SolutionItems) = preProject
 		..\SQL\ProyectoODSProg.sql = ..\SQL\ProyectoODSProg.sql
-		..\SQL\resetearDatosODSprog.sql = ..\SQL\resetearDatosODSprog.sql
+		resetearDatosODSprog.sql = resetearDatosODSprog.sql
 	EndProjectSection
 EndProject
 Global
