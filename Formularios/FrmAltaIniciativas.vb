@@ -83,25 +83,6 @@ Public Class FrmAltaIniciativas
         Next
     End Sub
 
-    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
-    End Sub
-
-    Private Sub lstCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstModulos.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
-
-    End Sub
 
     Private Sub btnAñadirIniciativa_Click(sender As Object, e As EventArgs) Handles btnAñadirIniciativa.Click
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
@@ -110,5 +91,11 @@ Public Class FrmAltaIniciativas
         If lstModulos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
         End If
+
+    End Sub
+
+    Private Sub lstMetas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick
+        lstMetas.Items.Remove(lstMetas.SelectedItem)
+
     End Sub
 End Class
