@@ -87,7 +87,7 @@ Public Class GestionIniciativas
             cmdLeerProv.Parameters.AddWithValue("@numeroods", numeroods)
             Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
             If nOds = 0 Then
-                msg = $"No existe ninguna meta con el numero {numeroods}"
+                msg = $"No existe ninguna meta en el ods {numeroods}"
                 Return listaMetas.AsReadOnly
             End If
             sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @numeroods"
