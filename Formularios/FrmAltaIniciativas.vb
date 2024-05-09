@@ -4,6 +4,9 @@ Public Class FrmAltaIniciativas
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
+        cboSolicitantes.Items.AddRange(Gestor.DevolverSolicitantes(msg).ToArray)
+        cboProfesores.Items.AddRange(Gestor.DevolverProfesores(msg).ToArray)
+        cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged
         cboMetas.Items.Clear()
