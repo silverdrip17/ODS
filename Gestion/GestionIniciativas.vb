@@ -204,7 +204,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT NUMERO, NOMBRE, DESCRIPCION FROM ODS"
+            Dim sql As String = "SELECT IDPROF, NOMBRECOMPLETO FROM PROFESORADO"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
@@ -226,7 +226,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT NUMERO, NOMBRE, DESCRIPCION FROM ODS"
+            Dim sql As String = "SELECT IDSOLICITANTE, NOMBRE FROM SOLICITANTE"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
