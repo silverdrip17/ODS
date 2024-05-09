@@ -62,6 +62,10 @@ Public Class FrmAltaIniciativas
     Private Sub lblCursos_Click(sender As Object, e As EventArgs) Handles lblCursos.Click
 
     End Sub
+    Private Sub lstMetas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick
+        lstMetas.Items.Remove(lstMetas.SelectedItem)
+
+    End Sub
 
     Private Sub cboCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCursos.SelectedIndexChanged
         Dim cursoSeleccionado As Curso = TryCast(cboCursos.SelectedItem, Curso)
