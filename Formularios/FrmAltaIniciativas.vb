@@ -63,7 +63,23 @@ Public Class FrmAltaIniciativas
     End Sub
 
     Private Sub cboCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCursos.SelectedIndexChanged
+        Dim cursoSeleccionado As Curso = TryCast(cboCursos.SelectedItem, Curso)
+        Dim msg As String = ""
+        Dim listaModulos As ReadOnlyCollection(Of Modulo)
 
+        Dim id = cursoSeleccionado.CodCurso
+
+        listaModulos = Gestor.ModulosDeUnCurso(id, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+
+        cboModulos.Items.Clear()
+
+        For i As Integer = 0 To listaModulos.Count - 1
+            cboModulos.Items.Add(listaModulos(i))
+        Next
     End Sub
 
     Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs)
