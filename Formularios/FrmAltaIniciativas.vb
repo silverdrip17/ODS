@@ -1,4 +1,5 @@
-﻿Imports Entidades
+﻿Imports System.Collections.ObjectModel
+Imports Entidades
 
 Public Class FrmAltaIniciativas
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -9,20 +10,22 @@ Public Class FrmAltaIniciativas
         cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged
-        cboMetas.Items.Clear()
-        If cboSolicitantes.SelectedIndex < 0 Then
-            Exit Sub
-        End If
+        cboMetas.SelectedItem = ""
         Dim odsSeleccionado As ODS = TryCast(cboODS.SelectedItem, ODS)
-        Dim misMetas As New List(Of Metas)
         Dim msg As String = ""
-        misMetas.AddRange(Gestor.MetasDeUnOds(odsSeleccionado.NumODS.ToString, msg))
-        If msg <> "" Then
+        Dim listaMetas As ReadOnlyCollection(Of Metas)
+        Dim idProv = odsSeleccionado.NumODS
+        listaMetas = Gestor.MetasDeUnOds(idProv, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
+            cboMetas.Items.Clear()
             Exit Sub
         End If
-        cboMetas.Items.AddRange(misMetas.ToArray)
-        cboMetas.Show()
+        cboMetas.Items.Clear()
+
+        For i As Integer = 0 To listaMetas.Count - 1
+            cboMetas.Items.Add(listaMetas(i))
+        Next
     End Sub
 
     Private Sub lblMódulos_Click(sender As Object, e As EventArgs) Handles lblMódulos.Click
@@ -34,6 +37,16 @@ Public Class FrmAltaIniciativas
     End Sub
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetas.SelectedIndexChanged
+        Dim metaSeleccionada As Metas = TryCast(cboMetas.SelectedItem, Metas)
+        If lstMetas.Items.Count <> 0 Then
+            For i As Integer = 0 To lstMetas.Items.Count - 1
+                If lstMetas.Items(i) Is metaSeleccionada Then
+                    MessageBox.Show("Esta meta ya estaba introducida")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstMetas.Items.Add(metaSeleccionada)
 
     End Sub
 
@@ -65,7 +78,7 @@ Public Class FrmAltaIniciativas
 
     End Sub
 
-    Private Sub lstCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstCursos.SelectedIndexChanged
+    Private Sub lstCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstModulos.SelectedIndexChanged
 
     End Sub
 
@@ -77,7 +90,7 @@ Public Class FrmAltaIniciativas
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
             MessageBox.Show("Debes rellenar todos los campos")
         End If
-        If lstCursos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
+        If lstModulos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
         End If
     End Sub
