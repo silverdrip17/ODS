@@ -255,7 +255,7 @@ Public Class GestionIniciativas
                 msg = $"No existe ninguna meta con el numero {codcurso}"
                 Return listaModulos.AsReadOnly
             End If
-            sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @CODCURSO"
+            sql = "Select CODCURSO, CODMODULO, NOMBRE From MODULO Where CODCURSO = @CODCURSO"
             Dim cdmLoc As New SqlCommand(sql, oConexion)
             cdmLoc.Parameters.AddWithValue("@CODCURSO", codcurso)
             Dim drModulos As SqlDataReader = cdmLoc.ExecuteReader
