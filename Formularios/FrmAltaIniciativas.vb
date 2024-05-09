@@ -48,7 +48,42 @@ Public Class FrmAltaIniciativas
             Next
         End If
         lstMetas.Items.Add(metaSeleccionada)
-
+    End Sub
+    Private Sub cboProfesor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProfesores.SelectedIndexChanged
+        Dim profeSeleccionado As Profesor = TryCast(cboProfesores.SelectedItem, Profesor)
+        If lstProfesores.Items.Count <> 0 Then
+            For i As Integer = 0 To lstProfesores.Items.Count - 1
+                If lstProfesores.Items(i) Is profeSeleccionado Then
+                    MessageBox.Show("Este profesor ya estaba introducido")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstProfesores.Items.Add(profeSeleccionado)
+    End Sub
+    Private Sub cboModulo_SelectedIndexChange(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
+        Dim moduloSeleccionada As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+        If lstModulos.Items.Count <> 0 Then
+            For i As Integer = 0 To lstModulos.Items.Count - 1
+                If lstModulos.Items(i) Is moduloSeleccionada Then
+                    MessageBox.Show("Este modulo ya estaba introducida")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstModulos.Items.Add(moduloSeleccionada)
+    End Sub
+    Private Sub Solicitantes_SelectedIndexChange(sender As Object, e As EventArgs) Handles cboSolicitantes.SelectedIndexChanged
+        Dim soliciSeleccionado As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
+        If lstSolicitantes.Items.Count <> 0 Then
+            For i As Integer = 0 To lstSolicitantes.Items.Count - 1
+                If lstSolicitantes.Items(i) Is soliciSeleccionado Then
+                    MessageBox.Show("Esta meta ya estaba introducida")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstSolicitantes.Items.Add(soliciSeleccionado)
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstMetas.SelectedIndexChanged
@@ -62,8 +97,8 @@ Public Class FrmAltaIniciativas
     Private Sub lblCursos_Click(sender As Object, e As EventArgs) Handles lblCursos.Click
 
     End Sub
-    Private Sub lstMetas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick
-        lstMetas.Items.Remove(lstMetas.SelectedItem)
+    Private Sub lisas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick, lstModulos.DoubleClick, lstProfesores.DoubleClick, lstSolicitantes.DoubleClick
+        sender.Items.Remove(sender.SelectedItem)
 
     End Sub
 
