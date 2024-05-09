@@ -42,7 +42,7 @@ Partial Class FrmAltaIniciativas
         Me.lstODS = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cboODS = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.lblCursos = New System.Windows.Forms.Label()
         Me.cboCursos = New System.Windows.Forms.ComboBox()
@@ -226,13 +226,13 @@ Partial Class FrmAltaIniciativas
         Me.Label5.TabIndex = 38
         Me.Label5.Text = "ODS"
         '
-        'ComboBox1
+        'cboODS
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(661, 56)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(250, 24)
-        Me.ComboBox1.TabIndex = 37
+        Me.cboODS.FormattingEnabled = True
+        Me.cboODS.Location = New System.Drawing.Point(661, 56)
+        Me.cboODS.Name = "cboODS"
+        Me.cboODS.Size = New System.Drawing.Size(250, 24)
+        Me.cboODS.TabIndex = 37
         '
         'Label6
         '
@@ -358,7 +358,7 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.cboModulos)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.cboODS)
         Me.Controls.Add(Me.lstODS)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
@@ -404,7 +404,7 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents lstODS As ListBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cboODS As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents lblCursos As Label
     Friend WithEvents cboCursos As ComboBox
