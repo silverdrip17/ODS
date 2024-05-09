@@ -5,12 +5,12 @@ Public Class FrmAltaIniciativas
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
     End Sub
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSolicitantes.SelectedIndexChanged
-        lstProfesores.Items.Clear()
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODS.SelectedIndexChanged
+        cboMetas.Items.Clear()
         If cboSolicitantes.SelectedIndex < 0 Then
             Exit Sub
         End If
-        Dim odsSeleccionado As ODS = TryCast(cboSolicitantes.SelectedItem, ODS)
+        Dim odsSeleccionado As ODS = TryCast(cboODS.SelectedItem, ODS)
         Dim misMetas As New List(Of Metas)
         Dim msg As String = ""
         misMetas.AddRange(Gestor.MetasDeUnOds(odsSeleccionado.NumODS.ToString, msg))
@@ -18,8 +18,8 @@ Public Class FrmAltaIniciativas
             MessageBox.Show(msg)
             Exit Sub
         End If
-        lstProfesores.Items.AddRange(misMetas.ToArray)
-        lstProfesores.Show()
+        cboMetas.Items.AddRange(misMetas.ToArray)
+        cboMetas.Show()
     End Sub
 
     Private Sub lblMódulos_Click(sender As Object, e As EventArgs) Handles lblMódulos.Click
