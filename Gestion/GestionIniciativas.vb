@@ -240,4 +240,33 @@ Public Class GestionIniciativas
         End Try
         Return todosLosSolicitantes.AsReadOnly
     End Function
+
+    Public Function ModulosDeUnCurso(codcurso As String, ByRef msg As String) As ReadOnlyCollection(Of Modulo)
+        Dim listaModulos As New List(Of Modulo)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "Select MODULOS.* From MODULOS Where CODCURSO = @CODCURSO"
+            Dim cmdLeerProv As New SqlCommand(sql, oConexion)
+            cmdLeerProv.Parameters.AddWithValue("@codcurso", codcurso)
+            Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
+            If nOds = 0 Then
+                msg = $"No existe ninguna meta con el numero {codcurso}"
+                Return listaModulos.AsReadOnly
+            End If
+            sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @CODCURSO"
+            Dim cdmLoc As New SqlCommand(sql, oConexion)
+            cdmLoc.Parameters.AddWithValue("@CODCURSO", codcurso)
+            Dim drModulos As SqlDataReader = cdmLoc.ExecuteReader
+
+            Do While drModulos.Read
+                Dim modu As New Modulo(Integer.Parse(drModulos("CODCURSO")), Integer.Parse(drModulos("CODMODULO")).ToString, drModulos("NOMBRE").ToString)
+                listaModulos.Add(modu)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+        End Try
+        Return listaModulos.AsReadOnly
+    End Function
 End Class
