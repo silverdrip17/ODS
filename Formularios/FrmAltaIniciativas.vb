@@ -110,9 +110,11 @@ Public Class FrmAltaIniciativas
     Private Sub btnAñadirIniciativa_Click(sender As Object, e As EventArgs) Handles btnAñadirIniciativa.Click
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
             MessageBox.Show("Debes rellenar todos los campos")
+            Exit Sub
         End If
         If lstModulos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
+            Exit Sub
         End If
     End Sub
 End Class
