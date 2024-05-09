@@ -1,7 +1,20 @@
 ﻿Imports System.Collections.ObjectModel
+Imports System.Data.SqlClient
 Imports Entidades
 
 Public Class FrmAltaIniciativas
+    Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+    Public Sub New()
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+        Me.cadenaDeConexion = cadenaDeConexion
+        If Environment.MachineName = "DESKTOP-NIH4RAC" Then
+            cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+        ElseIf Environment.MachineName = "4V-PRO-948" Then
+            cadenaDeConexion = "Data Source = 4V-PRO-948\SQLEXPRESS; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+        End If
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+    End Sub
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
@@ -151,5 +164,16 @@ Public Class FrmAltaIniciativas
             MessageBox.Show("Debe haber mínimo un valor en las listas")
             Exit Sub
         End If
+
+        'Todo guardar la iniciativa en la BBDD
+        Dim oConexion As SqlConnection(cadenaDeConexion)
+        'Todo pasar por parámetro la cadenaDeConexion al crear el formulario
+        Try
+
+        Catch ex As Exception
+        Finally
+            oConexion.close()
+
+        End Try
     End Sub
 End Class
