@@ -49,6 +49,9 @@ Partial Class FrmAltaIniciativas
         Me.lstMetas = New System.Windows.Forms.ListBox()
         Me.dtpInicio = New System.Windows.Forms.DateTimePicker()
         Me.dtpFin = New System.Windows.Forms.DateTimePicker()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Label1 = New System.Windows.Forms.Label()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboSolicitantes
@@ -281,11 +284,29 @@ Partial Class FrmAltaIniciativas
         Me.dtpFin.Size = New System.Drawing.Size(270, 22)
         Me.dtpFin.TabIndex = 53
         '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(1365, 425)
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(120, 22)
+        Me.NumericUpDown1.TabIndex = 54
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(1362, 392)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(62, 16)
+        Me.Label1.TabIndex = 55
+        Me.Label1.Text = "Nº Horas"
+        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1924, 843)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.dtpFin)
         Me.Controls.Add(Me.dtpInicio)
         Me.Controls.Add(Me.Label7)
@@ -315,6 +336,7 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.cboSolicitantes)
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -347,4 +369,6 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents lstMetas As ListBox
     Friend WithEvents dtpInicio As DateTimePicker
     Friend WithEvents dtpFin As DateTimePicker
+    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents Label1 As Label
 End Class
