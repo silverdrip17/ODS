@@ -190,21 +190,12 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "Select MODULO.CODCURSO, MODULO.CODMODULO, MODULO.NOMBRE From MODULO Where CODCURSO = @CODCURSO"
-            Dim cmdLeerMod As New SqlCommand(sql, oConexion)
-            cmdLeerMod.Parameters.AddWithValue("@codcurso", codcurso)
-            Dim nOds As Integer = cmdLeerMod.ExecuteScalar()
-            If nOds = 0 Then
-                msg = $"No existe ninguna meta con el numero {codcurso}"
-                Return listaModulos.AsReadOnly
-            End If
-            sql = "Select CODCURSO, NOMBRE From CURSO Where CODCURSO = @CODCURSO"
-            Dim cdmLoc As New SqlCommand(sql, oConexion)
+            Dim sqlMod As String = "Select MODULO.* From MODULO Where CODCURSO = @CODCURSO"
+            Dim cdmLoc As New SqlCommand(sqlMod, oConexion)
             cdmLoc.Parameters.AddWithValue("@CODCURSO", codcurso)
             Dim drModulos As SqlDataReader = cdmLoc.ExecuteReader
-
             Do While drModulos.Read
-                ' Dim modu As New Modulo(Integer.Parse(drModulos("CODCURSO")), drModulos("CODMODULO").ToString, drModulos("NOMBRE").ToString)
+                Dim modu As New Modulo(Integer.Parse(drModulos("CODCURSO")), drModulos("CODMODULO").ToString, drModulos("NOMBRE").ToString)
                 listaModulos.Add(modu)
             Loop
         Catch ex As Exception
