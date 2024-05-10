@@ -2,14 +2,14 @@
     Implements IEquatable(Of Modulo)
 
     Public Property CodCurso As Integer
-    Public Property CodModulo As Integer
+    Public Property CodModulo As String
 
     Public Property Nombre As String
 
     Public Sub New()
 
     End Sub
-    Public Sub New(codCurso As Integer, codModulo As Integer, nombre As String)
+    Public Sub New(codCurso As Integer, codModulo As String, nombre As String)
         Me.CodCurso = codCurso
         Me.CodModulo = codModulo
         Me.Nombre = nombre
