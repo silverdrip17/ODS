@@ -6,17 +6,15 @@
     Public Property Descripcion As String
     Public Property FechaInicio As Date
     Public Property FechaFin As Date
-
     Public Sub New()
-
     End Sub
 
-    Public Sub New(codIniciativa As Integer)
+    Public Sub New(codIniciativa As Integer, titulo As String)
         Me.CodIniciativa = codIniciativa
-    End Sub
-    Public Sub New(codIniciativa As Integer, titulo As String, descripcion As String, fechaInicio As Date, fechaFin As Date)
-        Me.New(codIniciativa)
         Me.Titulo = titulo
+    End Sub
+    Public Sub New(codIniciativa As Integer, titulo As String, descripcion As String, fechaInicio As Date, fechaFin As Date, idSolicitante As Integer)
+        Me.New(codIniciativa, titulo)
         Me.Descripcion = descripcion
         Me.FechaInicio = fechaInicio
         Me.FechaFin = fechaFin

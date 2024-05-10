@@ -1,7 +1,20 @@
 ﻿Imports System.Collections.ObjectModel
+Imports System.Data.SqlClient
+Imports System.Diagnostics.Eventing.Reader
 Imports Entidades
 
 Public Class FrmAltaIniciativas
+    Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+    Public Sub New()
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+        If Environment.MachineName = "DESKTOP-NIH4RAC" Then
+            cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+        ElseIf Environment.MachineName = "4V-PRO-948" Then
+            cadenaDeConexion = "Data Source = 4V-PRO-948\SQLEXPRESS; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+        End If
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+    End Sub
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
@@ -29,14 +42,6 @@ Public Class FrmAltaIniciativas
         Next
     End Sub
 
-    Private Sub lblMódulos_Click(sender As Object, e As EventArgs) Handles lblMódulos.Click
-
-    End Sub
-
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-
-    End Sub
-
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetas.SelectedIndexChanged
         Dim metaSeleccionada As Metas = TryCast(cboMetas.SelectedItem, Metas)
         If lstMetas.Items.Count <> 0 Then
@@ -48,18 +53,33 @@ Public Class FrmAltaIniciativas
             Next
         End If
         lstMetas.Items.Add(metaSeleccionada)
-
     End Sub
-
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstMetas.SelectedIndexChanged
-
+    Private Sub cboProfesor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProfesores.SelectedIndexChanged
+        Dim profeSeleccionado As Profesor = TryCast(cboProfesores.SelectedItem, Profesor)
+        If lstProfesores.Items.Count <> 0 Then
+            For i As Integer = 0 To lstProfesores.Items.Count - 1
+                If lstProfesores.Items(i) Is profeSeleccionado Then
+                    MessageBox.Show("Este profesor ya estaba introducido")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstProfesores.Items.Add(profeSeleccionado)
     End Sub
-
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
+    Private Sub cboModulo_SelectedIndexChange(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
+        Dim moduloSeleccionada As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+        If lstModulos.Items.Count <> 0 Then
+            For i As Integer = 0 To lstModulos.Items.Count - 1
+                If lstModulos.Items(i) Is moduloSeleccionada Then
+                    MessageBox.Show("Este modulo ya estaba introducida")
+                    Exit Sub
+                End If
+            Next
+        End If
+        lstModulos.Items.Add(moduloSeleccionada)
     End Sub
-
-    Private Sub lblCursos_Click(sender As Object, e As EventArgs) Handles lblCursos.Click
+    Private Sub lisas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick, lstModulos.DoubleClick, lstProfesores.DoubleClick
+        sender.Items.Remove(sender.SelectedItem)
 
     End Sub
 
@@ -83,32 +103,56 @@ Public Class FrmAltaIniciativas
         Next
     End Sub
 
-    Private Sub lblModulosSeleccionados_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub lstModulos_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
-    End Sub
-
-    Private Sub lstCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstModulos.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub cboModulos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
-
-    End Sub
-
     Private Sub btnAñadirIniciativa_Click(sender As Object, e As EventArgs) Handles btnAñadirIniciativa.Click
         If String.IsNullOrWhiteSpace(txtTitulo.Text) OrElse String.IsNullOrWhiteSpace(txtDescripcionIniciativa.Text) Then
             MessageBox.Show("Debes rellenar todos los campos")
+            Exit Sub
         End If
-        If lstModulos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstSolicitantes.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
+        If lstModulos.Items.Count = 0 OrElse lstMetas.Items.Count = 0 OrElse lstProfesores.Items.Count = 0 Then
             MessageBox.Show("Debe haber mínimo un valor en las listas")
+            Exit Sub
         End If
+
+        'Todo guardar la iniciativa en la BBDD
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Dim mensaje As String
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO FROM INICIATIVA WHERE LOWER(INICIATIVA.TITULO) = LOWER(@TITULO)"
+            Dim cmdIniciativa As New SqlCommand(sql, oConexion)
+            cmdIniciativa.Parameters.AddWithValue("@TITULO", txtTitulo.Text.ToLower)
+            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
+            Dim iniciativa As Iniciativa = If(drIniciativa.Read(), New Iniciativa(drIniciativa("CODINICIATIVA"), drIniciativa("TITULO").ToString), Nothing)
+            'Si no tengo la iniciativa, hay que hacer Insert.
+            If iniciativa Is Nothing Then
+                sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+                mensaje = "La iniciativa se ha añadido"
+            Else
+                'Si ya tengo iniciativa, pregunto si quiere modificarla.
+                Dim respuesta As DialogResult = MessageBox.Show($"La iniciativa de nombre {iniciativa.Titulo} ya existía. ¿Deseas actualizarla con los datos introducidos?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                If respuesta.No Then
+                    MessageBox.Show("No se ha hecho ningún cambio")
+                    Exit Sub
+                End If
+                sql = "UPDATE INICIATIVA SET TITULO = @TITULO, DESCRIPCION = @DESCRIPCION, [FECHA INICIO] = @FECHAIN, [FECHA FIN] = @FECHAFIN, IDSOLICITANTE = @IDSOLICITANTE WHERE CODINICIATIVA = @CODINICIATIVA"
+                mensaje = "La iniciativa se ha modificado"
+            End If
+            'Conseguir solicitante del cboBox.
+            Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
+            Dim idSolicitante As Integer = miSolicitante.IdSolicitante
+            cmdIniciativa = New SqlCommand(sql, oConexion)
+            cmdIniciativa.Parameters.AddWithValue("@TITULO", txtTitulo.Text)
+            cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", txtDescripcionIniciativa.Text)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", dtpInicio.Text) 'Falta modificar a date
+            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", dtpFin.Text) 'Falta modificar a date
+            cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", idSolicitante)
+            If iniciativa IsNot Nothing Then cmdIniciativa.Parameters.AddWithValue("@CODINICIATIVA", idSolicitante)
+            cmdIniciativa.ExecuteNonQuery()
+        Catch ex As Exception
+            mensaje = ex.ToString
+        Finally
+            oConexion.Close()
+            MessageBox.Show(mensaje)
+        End Try
     End Sub
 End Class
