@@ -44,6 +44,9 @@ Public Class FrmAltaIniciativas
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetas.SelectedIndexChanged
         Dim metaSeleccionada As Metas = TryCast(cboMetas.SelectedItem, Metas)
+        If metaSeleccionada Is Nothing Then
+            Exit Sub
+        End If
         If lstMetas.Items.Count <> 0 Then
             For i As Integer = 0 To lstMetas.Items.Count - 1
                 If lstMetas.Items(i) Is metaSeleccionada Then
@@ -56,6 +59,9 @@ Public Class FrmAltaIniciativas
     End Sub
     Private Sub cboProfesor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProfesores.SelectedIndexChanged
         Dim profeSeleccionado As Profesor = TryCast(cboProfesores.SelectedItem, Profesor)
+        If profeSeleccionado Is Nothing Then
+            Exit Sub
+        End If
         If lstProfesores.Items.Count <> 0 Then
             For i As Integer = 0 To lstProfesores.Items.Count - 1
                 If lstProfesores.Items(i) Is profeSeleccionado Then
@@ -68,6 +74,9 @@ Public Class FrmAltaIniciativas
     End Sub
     Private Sub cboModulo_SelectedIndexChange(sender As Object, e As EventArgs) Handles cboModulos.SelectedIndexChanged
         Dim moduloSeleccionada As Modulo = TryCast(cboModulos.SelectedItem, Modulo)
+        If moduloSeleccionada Is Nothing Then
+            Exit Sub
+        End If
         If lstModulos.Items.Count <> 0 Then
             For i As Integer = 0 To lstModulos.Items.Count - 1
                 If lstModulos.Items(i) Is moduloSeleccionada Then
