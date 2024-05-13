@@ -64,6 +64,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modulo.vb" />
+    <Compile Include="Solicitante.vb" />
+    <Compile Include="Curso.vb" />
+    <Compile Include="Profesor.vb" />
+    <Compile Include="Iniciativa.vb" />
     <Compile Include="ODS.vb" />
     <Compile Include="Metas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

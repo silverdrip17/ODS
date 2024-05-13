@@ -11,11 +11,17 @@ Public Class Form1
         Dim msg As String = ""
         Dim listaOds As ReadOnlyCollection(Of ODS)
 
-        dgvOds.DataSource = False 'todo PROFESORADO ¿cómo?
-        listaOds = Gestor.GuardarOds(msg) ' todo PROFESORADO Si devuelve un msg, habrá que hacer algo con el 
+        dgvOds.DataSource = Nothing
+        listaOds = Gestor.DevolverOds(msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
         dgvOds.DataSource = listaOds
-        dgvOds.Columns("imagen").Visible = False ' todo Si había errores no existirá esta columna y provocará error de ejecución
+        dgvOds.Columns("imagen").Visible = False
 
+
+        btnIniciativa.Show()
         btnCambiosMetas.Show()
         btnCambiosODS.Show()
     End Sub
@@ -33,5 +39,10 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnCambiosMetas.Hide()
         btnCambiosODS.Hide()
+        btnIniciativa.Hide()
+    End Sub
+
+    Private Sub btnIniciativa_Click(sender As Object, e As EventArgs) Handles btnIniciativa.Click
+        FrmAltaIniciativas.Show()
     End Sub
 End Class
