@@ -3,8 +3,9 @@ Imports System.Data.SqlClient
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
+
     Private _MisOds As List(Of ODS)
-    Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS)
+    Public ReadOnly Property MisODS As ReadOnlyCollection(Of ODS) ' todo PROFESORADO NO se puede hacer así, ya que _MisOds puede estar vacío (no puede depender de que llamemos o no al método GuardarOds)
         Get
             Return _MisOds.AsReadOnly
         End Get
@@ -22,7 +23,7 @@ Public Class GestionIniciativas
     '    Return MisODS
     'End Function
 
-    Public Function GuardarOds(ByRef msg As String) As ReadOnlyCollection(Of ODS)
+    Public Function GuardarOds(ByRef msg As String) As ReadOnlyCollection(Of ODS) ' todo PROFESORADO Nombre ilógico para lo que hace, y ver comentarios en documento de correcciones sobre esta función
         Dim todosLosOds As New List(Of ODS)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
@@ -46,14 +47,14 @@ Public Class GestionIniciativas
         Return todosLosOds.AsReadOnly
     End Function
 
-    Private _MisMetas As List(Of Metas)
+    Private _MisMetas As List(Of Metas) ' todo PROFESORADO Esta variable no debe existir
     Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
         Get
-            Return MisODS(ods).ListaMetas.AsReadOnly
+            Return MisODS(ods).ListaMetas.AsReadOnly ' todo PROFESORADO No tiene sentido que tenga que obtener TODOS los Ods, esta propiedad debe hacer la consulta con la base de datos de forma que solo busque las metas de un ODS
         End Get
     End Property
 
-    Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas)
+    Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas) ' todo PROFESORADO No se necesita para nada. Nunca querremos TODAS las metas
         Dim todasLasMetas As New List(Of Metas)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
@@ -77,7 +78,7 @@ Public Class GestionIniciativas
         Return todasLasMetas.AsReadOnly
     End Function
 
-    Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas)
+    Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas) ' todo PROFESORADO ¿Función y propiedad para obtener las metas de un ods?
         'saber si exixte el ods
         Dim listaMetas As New List(Of Metas)
         msg = ""
@@ -89,7 +90,7 @@ Public Class GestionIniciativas
             cmdLeerProv.Parameters.AddWithValue("@numeroods", numeroods)
             Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
             If nOds = 0 Then
-                msg = $"No existe ningun ods con el numero {numeroods}"
+                msg = $"No existe ningun ods con el numero {numeroods}" ' todo PROFESORADO En esta parte será que no hay metas del ODS, no que no existe el ODS
                 Return listaMetas.AsReadOnly
             End If
             sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @numeroods"
@@ -107,26 +108,30 @@ Public Class GestionIniciativas
         Return listaMetas.AsReadOnly
     End Function
 
-    Public Function DevolverMeta(numODS As Integer)
+    Public Function DevolverMeta(numODS As Integer) ' todo PROFESORADO Si es una función debe tener tipo de retorno. Por el nombre parece que devuelve solo 1.
+        ' Otra tercera forma de querer devolver las metas de un ODS? Y esta tampoco debe ser así
         If numODS > 17 Then
             Return Nothing
         End If
         Return MisODS(numODS - 1).ListaMetas
     End Function
 
-    Public Function AñadirMetaAODS(numODS As Integer, meta As Metas)
+    Public Function AñadirMetaAODS(numODS As Integer, meta As Metas) ' todo PROFESORADO Como no podemos tener la colección MisODS así, menos añadir la meta de esta forma.
+        ' El método deberá controlar que no contiene ya la meta en la BD y si todo va bien, añadirla allí
+        ' Si no devuelve nada no es función sino sub
         For i As Integer = 0 To MisODS.Count - 1
             If MisODS(i).NumODS = numODS Then
                 MisODS(i).ListaMetas.Add(meta)
             End If
         Next
+        ' todo PROFESORADO 
     End Function
 
-    Public Function ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String) As String
+    Public Function ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String) As String ' todo PROFESORADO ¿qué sentido tiene que devuelva 2 mensajes diferentes: uno con variable mensajerror y otro la función que SIEMPRE devuelve Nothing
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "Select Count(*) from ODS where IDODS = @idOds"
+            Dim sql As String = "Select Count(*) from ODS where IDODS = @idOds" ' todo PROFESORADO ERROR DE EJECUCIÓN, No existe IDODS
             Dim cmdLeerOds As New SqlCommand(sql, oConexion)
             cmdLeerOds.Parameters.AddWithValue("@idOds", idOds)
             Dim nProv As Integer = cmdLeerOds.ExecuteScalar()
@@ -136,7 +141,7 @@ Public Class GestionIniciativas
                 cmdAnyadirOds.Parameters.AddWithValue("@DESCNUEVA", descripcion)
                 cmdAnyadirOds.Parameters.AddWithValue("@NOMBRE", nombre)
                 cmdAnyadirOds.Parameters.AddWithValue("@idOds", idOds)
-                cmdAnyadirOds.ExecuteNonQuery()
+                cmdAnyadirOds.ExecuteNonQuery() ' todo PROFESORADO Controlar número de filas devueltas, y solo si es 1 realmente estará creado
                 mensajerror = "ODS creado correctamente"
             Else
                 sql = "update ODS set DESCRIPCION = @DESCNUEVA, NOMBRE=@NOMBRE where IDODS = @idOds"
@@ -144,7 +149,7 @@ Public Class GestionIniciativas
                 cmdCambiarDesc.Parameters.AddWithValue("@DESCNUEVA", descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
                 cmdCambiarDesc.Parameters.AddWithValue("@idOds", idOds)
-                cmdCambiarDesc.ExecuteNonQuery()
+                cmdCambiarDesc.ExecuteNonQuery() ' todo Lo mismo de antes
                 mensajerror = "ODS modificado correctamente"
 
             End If
@@ -159,7 +164,7 @@ Public Class GestionIniciativas
         Return ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
     End Function
 
-    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String)
+    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String) ' todo Profesorado Si ModificarOds está sobrecargado este debería seguir la misma lógica
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
@@ -174,7 +179,7 @@ Public Class GestionIniciativas
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
-                cmdCambiarDesc.ExecuteNonQuery()
+                cmdCambiarDesc.ExecuteNonQuery() ' todo Como antes...
                 mensajerror = "La meta ha sido modificada exitosamente."
             Else
                 sql = "INSERT INTO Metas (IDODS, NUMERO, DESCRIPCION) VALUES (@IDODS, @NUMERO, @descripcion)"
@@ -182,7 +187,7 @@ Public Class GestionIniciativas
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
-                cmdCambiarDesc.ExecuteNonQuery()
+                cmdCambiarDesc.ExecuteNonQuery() ' todo ...
                 mensajerror = "La meta ha sido creada."
             End If
         Catch ex As Exception
