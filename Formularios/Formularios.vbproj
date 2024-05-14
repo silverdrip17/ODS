@@ -73,23 +73,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="FrmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="FrmPrincipal.Designer.vb">
+      <DependentUpon>FrmPrincipal.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CambioMetas.Designer.vb">
-      <DependentUpon>CambioMetas.vb</DependentUpon>
+    <Compile Include="FrmMantenimientoMetas.Designer.vb">
+      <DependentUpon>FrmMantenimientoMetas.vb</DependentUpon>
     </Compile>
-    <Compile Include="CambioMetas.vb">
+    <Compile Include="FrmMantenimientoMetas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CambioODS.Designer.vb">
-      <DependentUpon>CambioODS.vb</DependentUpon>
+      <DependentUpon>FrmMantenimientoODS.vb</DependentUpon>
     </Compile>
-    <Compile Include="CambioODS.vb">
+    <Compile Include="FrmMantenimientoODS.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAltaIniciativas.Designer.vb">
@@ -103,6 +103,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -121,14 +122,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CambioMetas.resx">
-      <DependentUpon>CambioMetas.vb</DependentUpon>
+    <EmbeddedResource Include="FrmMantenimientoMetas.resx">
+      <DependentUpon>FrmMantenimientoMetas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CambioODS.resx">
-      <DependentUpon>CambioODS.vb</DependentUpon>
+      <DependentUpon>FrmMantenimientoODS.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaIniciativas.resx">
       <DependentUpon>FrmAltaIniciativas.vb</DependentUpon>

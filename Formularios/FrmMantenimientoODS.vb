@@ -1,8 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports Entidades
 
-Public Class CambioODS
-    Private Sub CambioODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class FrmMantenimientoODS
+    Private Sub FrmMantenimientoODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         btnfoto.Hide()
         '  For i As Integer = 0 To Gestor.MisODS.Count - 1

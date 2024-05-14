@@ -1,7 +1,7 @@
 ﻿Imports Gestion
 Imports Entidades
 Imports System.Collections.ObjectModel
-Public Class Form1
+Public Class FrmPrincipal
 
     Private Sub BtnTodasOds_Click(sender As Object, e As EventArgs) ' todo PROFESORADO Si no hace nada, quitarlo
         'dgvods.DataSource = Gestor.DevolverODS
@@ -27,12 +27,12 @@ Public Class Form1
     End Sub
 
     Private Sub btnCambiosMetas_Click(sender As Object, e As EventArgs) Handles btnCambiosMetas.Click
-        Dim forMetas As New CambioMetas
+        Dim forMetas As New FrmMantenimientoMetas
         forMetas.Show()
     End Sub
 
     Private Sub btnCambiosODS_Click(sender As Object, e As EventArgs) Handles btnCambiosODS.Click
-        Dim forOds As New CambioODS
+        Dim forOds As New FrmMantenimientoODS
         forOds.Show()
     End Sub
 
