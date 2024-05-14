@@ -5,15 +5,16 @@ Imports Gestion
 Public Class CambioMetas
     Private Sub CambioMetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
+        ' todo PROFESORADO Hay que limpiar la lista por si luego se carga este formulario con ShowDialog en lugar de con Show
         btnFoto.Hide()
         For i As Integer = 0 To Gestor.MisODS.Count - 1
-            cboods.Items.Add(Gestor.MisODS(i))
+            cboods.Items.Add(Gestor.MisODS(i)) ' todo PROFESORADO Hay que guardar en una lista porque así está llamando continuamente (y si estuviera bien, iendo a la base de datos cada vez)
         Next
     End Sub
 
 
 
-    Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged
+    Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged  ' todo PROFESORADO El control debería llamarse cboOds
         DataGridView1.DataSource = Nothing
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         ' todo PROFESORADO Debe controlar que realmente se ha seleccionado un elemento
@@ -43,7 +44,8 @@ Public Class CambioMetas
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAgregarMeta.Click 'todo PROFESORADO Nombre de método nada significativo Button1_Click
+        ' todo PROFESORADO Puede no haber ODS o luego Meta seleccionada
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         ' todo PROFESORADO ¿Este For para buscar si el odsSeleccionado ya contiene la meta? Y para que se define el método Equals de Meta entonces? En cambio así no tiene sentido
         For i As Integer = 0 To odsSeleccionado.ListaMetas.Count - 1
@@ -57,7 +59,7 @@ Public Class CambioMetas
                 MessageBox.Show("Ya existe una meta con este código")
                 Exit Sub
             End If
-            Gestor.AñadirMetaAODS(odsSeleccionado.NumODS, metaAñadir)
+            Gestor.AñadirMetaAODS(odsSeleccionado.NumODS, metaAñadir) ' todo PROFESORADO ERROR GRAVE, lo intentará hacer odsSeleccionado.ListaMetas.Count - 1 o odsSeleccionado.ListaMetas.Count - 2 veces
 
 
 

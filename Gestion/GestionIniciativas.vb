@@ -21,15 +21,13 @@ Public Class GestionIniciativas
         End If
     End Sub
 
-<<<<<<< HEAD
+
     'Public Function DevolverODS()
     '    Return MisODS
     'End Function
 
-    Public Function GuardarOds(ByRef msg As String) As ReadOnlyCollection(Of ODS) ' todo PROFESORADO Nombre ilógico para lo que hace, y ver comentarios en documento de correcciones sobre esta función
-=======
     Public Function DevolverOds(ByRef msg As String) As ReadOnlyCollection(Of ODS)
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
+
         Dim todosLosOds As New List(Of ODS)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
@@ -51,7 +49,7 @@ Public Class GestionIniciativas
         Return todosLosOds.AsReadOnly
     End Function
 
-<<<<<<< HEAD
+
     Private _MisMetas As List(Of Metas) ' todo PROFESORADO Esta variable no debe existir
     Public ReadOnly Property MisMetas(ods As Integer) As ReadOnlyCollection(Of Metas)
         Get
@@ -83,10 +81,9 @@ Public Class GestionIniciativas
         Return todasLasMetas.AsReadOnly
     End Function
 
+
     Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas) ' todo PROFESORADO ¿Función y propiedad para obtener las metas de un ods?
-=======
-    Public Function MetasDeUnOds(numeroods As String, ByRef msg As String) As ReadOnlyCollection(Of Metas)
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
+
         'saber si exixte el ods
         Dim listaMetas As New List(Of Metas)
         msg = ""
@@ -98,11 +95,8 @@ Public Class GestionIniciativas
             cmdLeerProv.Parameters.AddWithValue("@numeroods", numeroods)
             Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
             If nOds = 0 Then
-<<<<<<< HEAD
                 msg = $"No existe ningun ods con el numero {numeroods}" ' todo PROFESORADO En esta parte será que no hay metas del ODS, no que no existe el ODS
-=======
                 msg = $"No existe ninguna meta en el ods {numeroods}"
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
                 Return listaMetas.AsReadOnly
             End If
             sql = "Select NUMEROODS, CODMETA, NOMBRE, DESCRIPCION From METAS Where NUMEROODS = @numeroods"
@@ -119,8 +113,6 @@ Public Class GestionIniciativas
         End Try
         Return listaMetas.AsReadOnly
     End Function
-
-<<<<<<< HEAD
     Public Function DevolverMeta(numODS As Integer) ' todo PROFESORADO Si es una función debe tener tipo de retorno. Por el nombre parece que devuelve solo 1.
         ' Otra tercera forma de querer devolver las metas de un ODS? Y esta tampoco debe ser así
         If numODS > 17 Then
@@ -137,21 +129,14 @@ Public Class GestionIniciativas
                 MisODS(i).ListaMetas.Add(meta)
             End If
         Next
-        ' todo PROFESORADO 
+        ' todo PROFESORADO ¿qué devuelve?
     End Function
 
-    Public Function ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String) As String ' todo PROFESORADO ¿qué sentido tiene que devuelva 2 mensajes diferentes: uno con variable mensajerror y otro la función que SIEMPRE devuelve Nothing
-        Dim oConexion As New SqlConnection(cadenaDeConexion)
-        Try
-            oConexion.Open()
-            Dim sql As String = "Select Count(*) from ODS where IDODS = @idOds" ' todo PROFESORADO ERROR DE EJECUCIÓN, No existe IDODS
-=======
     Public Sub ModificarOds(idOds As Integer, nombre As String, descripcion As String, ByRef mensajerror As String)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
             Dim sql As String = "Select Count(*) from ODS where NUMERO = @idOds"
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
             Dim cmdLeerOds As New SqlCommand(sql, oConexion)
             cmdLeerOds.Parameters.AddWithValue("@idOds", idOds)
             Dim nOds As Integer = cmdLeerOds.ExecuteScalar()
@@ -182,16 +167,13 @@ Public Class GestionIniciativas
         Finally
             oConexion.Close()
         End Try
-        End Sub
+    End Sub
     Public Sub ModificarOds(ods As ODS, ByRef mensajerror As String)
         ModificarOds(ods.NumODS, ods.Nombre, ods.Descripcion, mensajerror)
     End Sub
 
-<<<<<<< HEAD
-    Public Sub ModificarMeta(metamodificar As Metas, ByRef mensajerror As String) ' todo Profesorado Si ModificarOds está sobrecargado este debería seguir la misma lógica
-=======
-    Public Sub ModificarMeta(numODS As Integer, codMeta As String, nombre As String, descripcion As String, ByRef mensajerror As String)
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
+    Public Sub ModificarMeta(numODS As Integer, codMeta As String, nombre As String, descripcion As String, ByRef mensajerror As String) ' todo Profesorado Si ModificarOds está sobrecargado este debería seguir la misma lógica
+        Dim metamodificar As New Metas(numODS, codMeta, nombre, descripcion)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
@@ -203,34 +185,28 @@ Public Class GestionIniciativas
             If drMeta.Read() Then
                 sql = "UPDATE Metas SET DESCRIPCION = @descripcion, NOMBRE = @NOMBRE WHERE NUMEROODS = @NUMEROODS AND CODMETA = @CODMETA"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
-<<<<<<< HEAD
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
                 cmdCambiarDesc.ExecuteNonQuery() ' todo Como antes...
-=======
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMEROODS", numODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@CODMETA", codMeta)
                 cmdCambiarDesc.ExecuteNonQuery()
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
                 mensajerror = "La meta ha sido modificada exitosamente."
             Else
                 sql = "INSERT INTO Metas (NUMEROODS, CODMETA, NOMBRE, DESCRIPCION) VALUES (@NUMEROODS, @CODMETA, @NOMBRE, @descripcion)"
                 Dim cmdCambiarDesc As New SqlCommand(sql, oConexion)
-<<<<<<< HEAD
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", metamodificar.Descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@IDODS", metamodificar.NumODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMERO", metamodificar.CodMeta)
-                cmdCambiarDesc.ExecuteNonQuery() ' todo ...
-=======
+                cmdCambiarDesc.ExecuteNonQuery()  ' todo Como antes...
                 cmdCambiarDesc.Parameters.AddWithValue("@descripcion", descripcion)
                 cmdCambiarDesc.Parameters.AddWithValue("@NOMBRE", nombre)
                 cmdCambiarDesc.Parameters.AddWithValue("@NUMEROODS", numODS)
                 cmdCambiarDesc.Parameters.AddWithValue("@CODMETA", codMeta)
                 cmdCambiarDesc.ExecuteNonQuery()
->>>>>>> b0c85facfa0a80c2324a38c7fa01b224d6271ff2
                 mensajerror = "La meta ha sido creada."
             End If
         Catch ex As Exception

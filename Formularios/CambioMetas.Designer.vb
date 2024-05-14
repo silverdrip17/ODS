@@ -36,6 +36,7 @@ Partial Class CambioMetas
         Me.btnGuardarMeta = New System.Windows.Forms.Button()
         Me.btnEliminarMeta = New System.Windows.Forms.Button()
         Me.btnFoto = New System.Windows.Forms.Button()
+        Me.btnAgregarMeta = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -158,11 +159,21 @@ Partial Class CambioMetas
         Me.btnFoto.TabIndex = 19
         Me.btnFoto.UseVisualStyleBackColor = True
         '
+        'btnAgregarMeta
+        '
+        Me.btnAgregarMeta.Location = New System.Drawing.Point(427, 358)
+        Me.btnAgregarMeta.Name = "btnAgregarMeta"
+        Me.btnAgregarMeta.Size = New System.Drawing.Size(111, 44)
+        Me.btnAgregarMeta.TabIndex = 20
+        Me.btnAgregarMeta.Text = "Agregar Nueva Meta"
+        Me.btnAgregarMeta.UseVisualStyleBackColor = True
+        '
         'CambioMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAgregarMeta)
         Me.Controls.Add(Me.btnFoto)
         Me.Controls.Add(Me.btnEliminarMeta)
         Me.Controls.Add(Me.btnGuardarMeta)
@@ -198,4 +209,5 @@ Partial Class CambioMetas
     Friend WithEvents btnGuardarMeta As Button
     Friend WithEvents btnEliminarMeta As Button
     Friend WithEvents btnFoto As Button
+    Friend WithEvents btnAgregarMeta As Button
 End Class

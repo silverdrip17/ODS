@@ -6,7 +6,7 @@ Public Class CambioODS
         Dim msg As String = ""
         btnfoto.Hide()
         '  For i As Integer = 0 To Gestor.MisODS.Count - 1
-        cboODS.Items.Add(Gestor.DevolverOds(msg))
+        cboODS.Items.Add(Gestor.DevolverOds(msg)) ' todo PROFESORADO Y si msg devuelve un mensaje????
         '  Next
     End Sub
 
@@ -27,7 +27,7 @@ Public Class CambioODS
 
     Private Sub btnGuardarCambios_Click(sender As Object, e As EventArgs) Handles btnGuardarCambios.Click
         Dim msg As String = ""
-        Gestor.ModificarOds(txtNumODS.Text, txtNombreODS.Text, txtDescripcionODS.Text, msg)
+        Gestor.ModificarOds(txtNumODS.Text, txtNombreODS.Text, txtDescripcionODS.Text, msg) ' todo PROFESORADO NO hace nada con el posible mensaje de error y si es función con el valor devuelto
     End Sub
 
 End Class
