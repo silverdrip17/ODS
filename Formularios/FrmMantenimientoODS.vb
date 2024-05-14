@@ -5,8 +5,13 @@ Public Class FrmMantenimientoODS
     Private Sub FrmMantenimientoODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         btnfoto.Hide()
-        For i As Integer = 0 To Gestor.MisODS.Count - 1
-            cboODS.Items.Add(Gestor.DevolverOds(msg)) ' todo PROFESORADO Y si msg devuelve un mensaje????
+        Dim misODS = Gestor.DevolverOds(msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+        For i As Integer = 0 To misODS.Count - 1
+            cboODS.Items.Add(misODS(i)) ' todo PROFESORADO Hay que guardar en una lista porque así está llamando continuamente (y si estuviera bien, iendo a la base de datos cada vez)
         Next
     End Sub
 
