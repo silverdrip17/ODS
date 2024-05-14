@@ -11,7 +11,11 @@ Public Class CambioMetas
             cboods.Items.Add(Gestor.MisODS(i)) ' todo PROFESORADO Hay que guardar en una lista porque así está llamando continuamente (y si estuviera bien, iendo a la base de datos cada vez)
         Next
     End Sub
-
+    Private Sub LimpiarTextoMetas()
+        txtCodigoMeta.Clear()
+        txtbNombre.Clear()
+        txtDescripcionMeta.Clear()
+    End Sub
 
 
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged  ' todo PROFESORADO El control debería llamarse cboOds
@@ -87,6 +91,4 @@ Public Class CambioMetas
         End If
 
     End Sub
-
-
 End Class
