@@ -2,7 +2,7 @@
 Imports Entidades
 Imports Gestion
 
-Public Class CambioMetas
+Public Class FrmMantenimientoMetas
     Private Sub CambioMetas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         ' todo PROFESORADO Hay que limpiar la lista por si luego se carga este formulario con ShowDialog en lugar de con Show
