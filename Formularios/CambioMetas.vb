@@ -7,14 +7,20 @@ Public Class CambioMetas
         Dim msg As String = ""
         ' todo PROFESORADO Hay que limpiar la lista por si luego se carga este formulario con ShowDialog en lugar de con Show
         btnFoto.Hide()
-        For i As Integer = 0 To Gestor.MisODS.Count - 1
-            cboods.Items.Add(Gestor.MisODS(i)) ' todo PROFESORADO Hay que guardar en una lista porque así está llamando continuamente (y si estuviera bien, iendo a la base de datos cada vez)
+        Dim misODS = Gestor.DevolverOds(msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+        For i As Integer = 0 To misODS.Count - 1
+            cboods.Items.Add(misODS(i)) ' todo PROFESORADO Hay que guardar en una lista porque así está llamando continuamente (y si estuviera bien, iendo a la base de datos cada vez)
         Next
     End Sub
     Private Sub LimpiarTextoMetas()
         txtCodigoMeta.Clear()
         txtbNombre.Clear()
         txtDescripcionMeta.Clear()
+        cboMetas.Items.Clear()
     End Sub
 
 
@@ -34,7 +40,7 @@ Public Class CambioMetas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            'LimpiarTextoMetas()
+            LimpiarTextoMetas()
             Exit Sub
         End If
         DataGridView1.DataSource = listaMetas

@@ -48,18 +48,18 @@ INSERT INTO ODS VALUES (16, 'Paz, justicia e instituciones sólidas', 'Promover s
 INSERT INTO ODS VALUES (17, 'Alianzas para lograr los objetivos', 'Fortalecer los medios de ejecución y revitalizar la alianza mundial para el desarrollo sostenible');
 
 --METAS
-INSERT INTO METAS VALUES (1, '1.1', 'Erradicar la pobreza extrema', 'Meta 1.1');
-INSERT INTO METAS VALUES (2, '2.1', 'Acabar con el hambre', 'Meta 2.1');
-INSERT INTO METAS VALUES (3, '3.1', 'Reducir la mortalidad materna', 'Meta 3.1');
-INSERT INTO METAS VALUES (4, '4.1', 'Lograr la educación primaria universal', 'Meta 4.1');
-INSERT INTO METAS VALUES (5, '5.1', 'Poner fin a todas las formas de discriminación contra todas las mujeres y niñas', 'Meta 5.1');
+INSERT INTO METAS VALUES (1, '1', 'Erradicar la pobreza extrema', 'Meta 1.1');
+INSERT INTO METAS VALUES (2, '1', 'Acabar con el hambre', 'Meta 2.1');
+INSERT INTO METAS VALUES (3, '1', 'Reducir la mortalidad materna', 'Meta 3.1');
+INSERT INTO METAS VALUES (4, '1', 'Lograr la educación primaria universal', 'Meta 4.1');
+INSERT INTO METAS VALUES (5, '1', 'Poner fin a todas las formas de discriminación contra todas las mujeres y niñas', 'Meta 5.1');
 
 --INICIATIVA_METAS
-INSERT INTO INICIATIVA_METAS VALUES (1, 1, '1.1');
-INSERT INTO INICIATIVA_METAS VALUES (2, 2, '2.1');
-INSERT INTO INICIATIVA_METAS VALUES (3, 3, '3.1');
-INSERT INTO INICIATIVA_METAS VALUES (4, 4, '4.1');
-INSERT INTO INICIATIVA_METAS VALUES (4, 5, '5.1');
+INSERT INTO INICIATIVA_METAS VALUES (1, 1, '1');
+INSERT INTO INICIATIVA_METAS VALUES (2, 2, '1');
+INSERT INTO INICIATIVA_METAS VALUES (3, 3, '1');
+INSERT INTO INICIATIVA_METAS VALUES (4, 4, '1');
+INSERT INTO INICIATIVA_METAS VALUES (4, 5, '1');
 
 --PROFESORADO
 DBCC CHECKIDENT (PROFESORADO,RESEED,0)
