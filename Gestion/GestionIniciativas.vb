@@ -57,7 +57,7 @@ Public Class GestionIniciativas
         End Get
     End Property
 
-    Public Function GuardarMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas) ' todo PROFESORADO No se necesita para nada. Nunca querremos TODAS las metas
+    Public Function DevolverMetas(ByRef msg As String) As ReadOnlyCollection(Of Metas) ' todo PROFESORADO No se necesita para nada. Nunca querremos TODAS las metas
         Dim todasLasMetas As New List(Of Metas)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
@@ -95,7 +95,7 @@ Public Class GestionIniciativas
             cmdLeerProv.Parameters.AddWithValue("@numeroods", numeroods)
             Dim nOds As Integer = cmdLeerProv.ExecuteScalar()
             If nOds = 0 Then
-                msg = $"No existe ningun ods con el numero {numeroods}" ' todo PROFESORADO En esta parte será que no hay metas del ODS, no que no existe el ODS
+                msg = $"No hay metas del ods {numeroods}" ' todo PROFESORADO En esta parte será que no hay metas del ODS, no que no existe el ODS
                 msg = $"No existe ninguna meta en el ods {numeroods}"
                 Return listaMetas.AsReadOnly
             End If
