@@ -239,7 +239,7 @@ Public Class GestionIniciativas
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
-                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, Date.Parse(dr().ToString))
+                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, Date.Parse(dr("FECHAINICIO").ToString), Date.Parse(dr("FECHAFIN").ToString))
                 todasLasIniciativas.Add(inici)
             Loop
         Catch ex As Exception

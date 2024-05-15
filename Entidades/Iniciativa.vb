@@ -13,7 +13,7 @@
         Me.CodIniciativa = codIniciativa
         Me.Titulo = titulo
     End Sub
-    Public Sub New(codIniciativa As Integer, titulo As String, descripcion As String, fechaInicio As Date, fechaFin As Date, idSolicitante As Integer)
+    Public Sub New(codIniciativa As Integer, titulo As String, descripcion As String, fechaInicio As Date, fechaFin As Date)
         Me.New(codIniciativa, titulo)
         Me.Descripcion = descripcion
         Me.FechaInicio = fechaInicio
