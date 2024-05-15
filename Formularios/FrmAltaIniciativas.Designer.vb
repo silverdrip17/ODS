@@ -117,7 +117,7 @@ Partial Class FrmAltaIniciativas
         'lblFechaInicio
         '
         Me.lblFechaInicio.AutoSize = True
-        Me.lblFechaInicio.Location = New System.Drawing.Point(29, 517)
+        Me.lblFechaInicio.Location = New System.Drawing.Point(70, 363)
         Me.lblFechaInicio.Name = "lblFechaInicio"
         Me.lblFechaInicio.Size = New System.Drawing.Size(79, 16)
         Me.lblFechaInicio.TabIndex = 17
@@ -126,7 +126,7 @@ Partial Class FrmAltaIniciativas
         'lblFechaFin
         '
         Me.lblFechaFin.AutoSize = True
-        Me.lblFechaFin.Location = New System.Drawing.Point(24, 589)
+        Me.lblFechaFin.Location = New System.Drawing.Point(70, 431)
         Me.lblFechaFin.Name = "lblFechaFin"
         Me.lblFechaFin.Size = New System.Drawing.Size(66, 16)
         Me.lblFechaFin.TabIndex = 19
@@ -282,16 +282,16 @@ Partial Class FrmAltaIniciativas
         '
         'dtpInicio
         '
-        Me.dtpInicio.Location = New System.Drawing.Point(17, 462)
+        Me.dtpInicio.Location = New System.Drawing.Point(63, 392)
         Me.dtpInicio.Name = "dtpInicio"
-        Me.dtpInicio.Size = New System.Drawing.Size(259, 22)
+        Me.dtpInicio.Size = New System.Drawing.Size(274, 22)
         Me.dtpInicio.TabIndex = 52
         '
         'dtpFin
         '
-        Me.dtpFin.Location = New System.Drawing.Point(17, 529)
+        Me.dtpFin.Location = New System.Drawing.Point(63, 459)
         Me.dtpFin.Name = "dtpFin"
-        Me.dtpFin.Size = New System.Drawing.Size(270, 22)
+        Me.dtpFin.Size = New System.Drawing.Size(274, 22)
         Me.dtpFin.TabIndex = 53
         '
         'NumericUpDown1
