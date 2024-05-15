@@ -57,7 +57,7 @@ Partial Class FrmAltaIniciativas
         'cboSolicitantes
         '
         Me.cboSolicitantes.FormattingEnabled = True
-        Me.cboSolicitantes.Location = New System.Drawing.Point(1515, 581)
+        Me.cboSolicitantes.Location = New System.Drawing.Point(359, 552)
         Me.cboSolicitantes.Name = "cboSolicitantes"
         Me.cboSolicitantes.Size = New System.Drawing.Size(250, 24)
         Me.cboSolicitantes.TabIndex = 0
@@ -66,7 +66,7 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstProfesores.FormattingEnabled = True
         Me.lstProfesores.ItemHeight = 16
-        Me.lstProfesores.Location = New System.Drawing.Point(953, 581)
+        Me.lstProfesores.Location = New System.Drawing.Point(886, 552)
         Me.lstProfesores.Name = "lstProfesores"
         Me.lstProfesores.Size = New System.Drawing.Size(231, 100)
         Me.lstProfesores.TabIndex = 1
@@ -116,7 +116,7 @@ Partial Class FrmAltaIniciativas
         'lblFechaFin
         '
         Me.lblFechaFin.AutoSize = True
-        Me.lblFechaFin.Location = New System.Drawing.Point(346, 522)
+        Me.lblFechaFin.Location = New System.Drawing.Point(24, 589)
         Me.lblFechaFin.Name = "lblFechaFin"
         Me.lblFechaFin.Size = New System.Drawing.Size(66, 16)
         Me.lblFechaFin.TabIndex = 19
@@ -124,7 +124,7 @@ Partial Class FrmAltaIniciativas
         '
         'btnAñadirIniciativa
         '
-        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(1423, 728)
+        Me.btnAñadirIniciativa.Location = New System.Drawing.Point(467, 619)
         Me.btnAñadirIniciativa.Name = "btnAñadirIniciativa"
         Me.btnAñadirIniciativa.Size = New System.Drawing.Size(274, 73)
         Me.btnAñadirIniciativa.TabIndex = 21
@@ -134,7 +134,7 @@ Partial Class FrmAltaIniciativas
         'lblIDSolicitante
         '
         Me.lblIDSolicitante.AutoSize = True
-        Me.lblIDSolicitante.Location = New System.Drawing.Point(1512, 552)
+        Me.lblIDSolicitante.Location = New System.Drawing.Point(356, 523)
         Me.lblIDSolicitante.Name = "lblIDSolicitante"
         Me.lblIDSolicitante.Size = New System.Drawing.Size(76, 16)
         Me.lblIDSolicitante.TabIndex = 22
@@ -143,7 +143,7 @@ Partial Class FrmAltaIniciativas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(950, 552)
+        Me.Label2.Location = New System.Drawing.Point(883, 523)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(167, 16)
         Me.Label2.TabIndex = 31
@@ -152,7 +152,7 @@ Partial Class FrmAltaIniciativas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(685, 552)
+        Me.Label3.Location = New System.Drawing.Point(618, 523)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 16)
         Me.Label3.TabIndex = 29
@@ -161,7 +161,7 @@ Partial Class FrmAltaIniciativas
         'cboProfesores
         '
         Me.cboProfesores.FormattingEnabled = True
-        Me.cboProfesores.Location = New System.Drawing.Point(688, 581)
+        Me.cboProfesores.Location = New System.Drawing.Point(621, 552)
         Me.cboProfesores.Name = "cboProfesores"
         Me.cboProfesores.Size = New System.Drawing.Size(250, 24)
         Me.cboProfesores.TabIndex = 28
@@ -169,7 +169,7 @@ Partial Class FrmAltaIniciativas
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(685, 76)
+        Me.Label5.Location = New System.Drawing.Point(356, 129)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(36, 16)
         Me.Label5.TabIndex = 38
@@ -178,7 +178,7 @@ Partial Class FrmAltaIniciativas
         'cboODS
         '
         Me.cboODS.FormattingEnabled = True
-        Me.cboODS.Location = New System.Drawing.Point(688, 105)
+        Me.cboODS.Location = New System.Drawing.Point(359, 158)
         Me.cboODS.Name = "cboODS"
         Me.cboODS.Size = New System.Drawing.Size(250, 24)
         Me.cboODS.TabIndex = 37
@@ -186,7 +186,7 @@ Partial Class FrmAltaIniciativas
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(1627, 318)
+        Me.Label6.Location = New System.Drawing.Point(883, 331)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(153, 16)
         Me.Label6.TabIndex = 47
@@ -195,7 +195,7 @@ Partial Class FrmAltaIniciativas
         'lblCursos
         '
         Me.lblCursos.AutoSize = True
-        Me.lblCursos.Location = New System.Drawing.Point(685, 318)
+        Me.lblCursos.Location = New System.Drawing.Point(356, 331)
         Me.lblCursos.Name = "lblCursos"
         Me.lblCursos.Size = New System.Drawing.Size(49, 16)
         Me.lblCursos.TabIndex = 46
@@ -204,7 +204,7 @@ Partial Class FrmAltaIniciativas
         'cboCursos
         '
         Me.cboCursos.FormattingEnabled = True
-        Me.cboCursos.Location = New System.Drawing.Point(688, 347)
+        Me.cboCursos.Location = New System.Drawing.Point(359, 360)
         Me.cboCursos.Name = "cboCursos"
         Me.cboCursos.Size = New System.Drawing.Size(250, 24)
         Me.cboCursos.TabIndex = 45
@@ -212,7 +212,7 @@ Partial Class FrmAltaIniciativas
         'lblMódulos
         '
         Me.lblMódulos.AutoSize = True
-        Me.lblMódulos.Location = New System.Drawing.Point(1362, 318)
+        Me.lblMódulos.Location = New System.Drawing.Point(618, 331)
         Me.lblMódulos.Name = "lblMódulos"
         Me.lblMódulos.Size = New System.Drawing.Size(59, 16)
         Me.lblMódulos.TabIndex = 42
@@ -222,7 +222,7 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstModulos.FormattingEnabled = True
         Me.lstModulos.ItemHeight = 16
-        Me.lstModulos.Location = New System.Drawing.Point(1630, 347)
+        Me.lstModulos.Location = New System.Drawing.Point(886, 360)
         Me.lstModulos.Name = "lstModulos"
         Me.lstModulos.Size = New System.Drawing.Size(231, 100)
         Me.lstModulos.TabIndex = 41
@@ -230,7 +230,7 @@ Partial Class FrmAltaIniciativas
         'cboModulos
         '
         Me.cboModulos.FormattingEnabled = True
-        Me.cboModulos.Location = New System.Drawing.Point(1365, 347)
+        Me.cboModulos.Location = New System.Drawing.Point(621, 360)
         Me.cboModulos.Name = "cboModulos"
         Me.cboModulos.Size = New System.Drawing.Size(250, 24)
         Me.cboModulos.TabIndex = 40
@@ -238,7 +238,7 @@ Partial Class FrmAltaIniciativas
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(1627, 76)
+        Me.Label7.Location = New System.Drawing.Point(883, 129)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(138, 16)
         Me.Label7.TabIndex = 51
@@ -247,7 +247,7 @@ Partial Class FrmAltaIniciativas
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(1362, 76)
+        Me.Label8.Location = New System.Drawing.Point(618, 129)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(44, 16)
         Me.Label8.TabIndex = 50
@@ -256,7 +256,7 @@ Partial Class FrmAltaIniciativas
         'cboMetas
         '
         Me.cboMetas.FormattingEnabled = True
-        Me.cboMetas.Location = New System.Drawing.Point(1365, 105)
+        Me.cboMetas.Location = New System.Drawing.Point(621, 158)
         Me.cboMetas.Name = "cboMetas"
         Me.cboMetas.Size = New System.Drawing.Size(250, 24)
         Me.cboMetas.TabIndex = 49
@@ -265,7 +265,7 @@ Partial Class FrmAltaIniciativas
         '
         Me.lstMetas.FormattingEnabled = True
         Me.lstMetas.ItemHeight = 16
-        Me.lstMetas.Location = New System.Drawing.Point(1630, 105)
+        Me.lstMetas.Location = New System.Drawing.Point(886, 158)
         Me.lstMetas.Name = "lstMetas"
         Me.lstMetas.Size = New System.Drawing.Size(231, 100)
         Me.lstMetas.TabIndex = 48
@@ -279,14 +279,14 @@ Partial Class FrmAltaIniciativas
         '
         'dtpFin
         '
-        Me.dtpFin.Location = New System.Drawing.Point(339, 552)
+        Me.dtpFin.Location = New System.Drawing.Point(17, 619)
         Me.dtpFin.Name = "dtpFin"
         Me.dtpFin.Size = New System.Drawing.Size(270, 22)
         Me.dtpFin.TabIndex = 53
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(1365, 425)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(621, 438)
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(120, 22)
         Me.NumericUpDown1.TabIndex = 54
@@ -294,7 +294,7 @@ Partial Class FrmAltaIniciativas
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1362, 392)
+        Me.Label1.Location = New System.Drawing.Point(618, 405)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(62, 16)
         Me.Label1.TabIndex = 55
