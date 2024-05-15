@@ -4,17 +4,6 @@ Imports System.Diagnostics.Eventing.Reader
 Imports Entidades
 
 Public Class FrmAltaIniciativas
-    Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
-    Public Sub New()
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-        If Environment.MachineName = "DESKTOP-NIH4RAC" Then
-            cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
-        ElseIf Environment.MachineName = "4V-PRO-948" Then
-            cadenaDeConexion = "Data Source = 4V-PRO-948\SQLEXPRESS; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
-        End If
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-    End Sub
     Private Sub FrmAltaIniciativas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
@@ -133,59 +122,6 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
         'Todo guardar la iniciativa en la BBDD
-        Dim oConexion As New SqlConnection(cadenaDeConexion)
-        Dim mensaje As String
-        Try
-            oConexion.Open()
-            Dim sql As String = "SELECT CODINICIATIVA, TITULO FROM INICIATIVA WHERE LOWER(INICIATIVA.TITULO) = LOWER(@TITULO)"
-            Dim cmdIniciativa As New SqlCommand(sql, oConexion)
-            cmdIniciativa.Parameters.AddWithValue("@TITULO", txtTitulo.Text.ToLower)
-            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
-            Dim iniciativa As Iniciativa = If(drIniciativa.Read(), New Iniciativa(drIniciativa("CODINICIATIVA"), drIniciativa("TITULO").ToString), Nothing)
-            'Si no tengo la iniciativa, hay que hacer Insert.
-            If iniciativa Is Nothing Then
-                sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
-                mensaje = "La iniciativa se ha añadido"
-            Else
-                'Si ya tengo iniciativa, pregunto si quiere modificarla.
-                Dim respuesta As DialogResult = MessageBox.Show($"La iniciativa de nombre {iniciativa.Titulo} ya existía. ¿Deseas actualizarla con los datos introducidos?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
-                If respuesta.No Then
-                    MessageBox.Show("No se ha hecho ningún cambio")
-                    Exit Sub
-                End If
-                sql = "UPDATE INICIATIVA SET TITULO = @TITULO, DESCRIPCION = @DESCRIPCION, [FECHA INICIO] = @FECHAIN, [FECHA FIN] = @FECHAFIN, IDSOLICITANTE = @IDSOLICITANTE WHERE CODINICIATIVA = @CODINICIATIVA"
-                mensaje = "La iniciativa se ha modificado"
-            End If
-            'Conseguir solicitante del cboBox.
-            Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
-            Dim idSolicitante As Integer = miSolicitante.IdSolicitante
-            'Añadir/modificar iniciativa
-            cmdIniciativa = New SqlCommand(sql, oConexion)
-            cmdIniciativa.Parameters.AddWithValue("@TITULO", txtTitulo.Text)
-            cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", txtDescripcionIniciativa.Text)
-            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", fechaIn)
-            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", fechaFin)
-            cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", idSolicitante)
-            If iniciativa IsNot Nothing Then cmdIniciativa.Parameters.AddWithValue("@CODINICIATIVA", idSolicitante)
-            cmdIniciativa.ExecuteNonQuery()
-            'Falta sacar el codigoIniciativa
-            Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = @TITULO"
-            'Iniciativa-Profesorado
-            Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
-            Dim miProfesor As Profesor = cboProfesores.SelectedItem
-            Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
-            cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
-            'cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
-            'Iniciativa-Metas
-            Dim misMetas As New List(Of Metas)
-            misMetas.AddRange(lstMetas.Items)
-
-        Catch ex As Exception
-            mensaje = ex.ToString
-        Finally
-            oConexion.Close()
-            MessageBox.Show(mensaje)
-        End Try
     End Sub
 
     Private Sub cboODSEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODSEliminar.SelectedIndexChanged

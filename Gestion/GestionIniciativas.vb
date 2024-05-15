@@ -236,11 +236,11 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT INICIATIVA.* FROM INICIATIVA"
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
-                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr(3).ToString, dr(4).ToString)
+                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
                 todasLasIniciativas.Add(inici)
             Loop
         Catch ex As Exception
@@ -284,5 +284,48 @@ Public Class GestionIniciativas
         End Try
         Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
+    Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
+        'Todo guardar la iniciativa en la BBDD
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO FROM INICIATIVA WHERE LOWER(INICIATIVA.TITULO) = LOWER(@TITULO)"
+            Dim cmdIniciativa As New SqlCommand(sql, oConexion)
+            cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
+            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
+            Dim iniciativaAux As Iniciativa = If(drIniciativa.Read(), New Iniciativa(drIniciativa("CODINICIATIVA"), drIniciativa("TITULO").ToString), Nothing)
+            'Si no tengo la iniciativa, hay que hacer Insert.
+            If iniciativaAux Is Nothing Then
+                sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+            End If
+            'Conseguir solicitante del cboBox.
+            'Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
+            'Dim idSolicitante As Integer = miSolicitante.IdSolicitante
+            'Añadir/modificar iniciativa
+            cmdIniciativa = New SqlCommand(sql, oConexion)
+            cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
+            cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", iniciativa.FechaInicio)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", iniciativa.FechaFin)
+            'cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.idSolicitante)
+            cmdIniciativa.ExecuteNonQuery()
+            msg = "La iniciativa se ha añadido"
+            'Falta sacar el codigoIniciativa
+            Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = @TITULO"
+            'Iniciativa-Profesorado
+            Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
+            'Dim miProfesor As Profesor = cboProfesores.SelectedItem
+            'Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
+            'cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
+            ''cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
+            ''Iniciativa-Metas
+            'Dim misMetas As New List(Of Metas)
+            'misMetas.AddRange(lstMetas.Items)
 
+        Catch ex As Exception
+            msg = ex.ToString
+        Finally
+            oConexion.Close()
+        End Try
+    End Sub
 End Class
