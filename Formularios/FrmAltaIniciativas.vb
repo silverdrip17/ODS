@@ -164,4 +164,30 @@ Public Class FrmAltaIniciativas
             MessageBox.Show(mensaje)
         End Try
     End Sub
+
+    Private Sub cboODSEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODSEliminar.SelectedIndexChanged
+        cboMetas.SelectedItem = ""
+        Dim odsSeleccionado As ODS = TryCast(cboODS.SelectedItem, ODS)
+        Dim msg As String = ""
+        Dim listaMetas As ReadOnlyCollection(Of Metas)
+        Dim idProv = odsSeleccionado.NumODS
+        listaMetas = Gestor.MetasDeUnOds(idProv, msg)
+        If Not String.IsNullOrWhiteSpace(msg) Then
+            MessageBox.Show(msg)
+            cboMetas.Items.Clear()
+            Exit Sub
+        End If
+        cboMetas.Items.Clear()
+
+        For i As Integer = 0 To listaMetas.Count - 1
+            cboMetas.Items.Add(listaMetas(i))
+        Next
+    End Sub
+
+    Private Sub cboMetasEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMetasEliminar.SelectedIndexChanged
+        Dim metaSeleccionada As Metas = TryCast(cboMetas.SelectedItem, Metas)
+        If metaSeleccionada Is Nothing Then
+            Exit Sub
+        End If
+    End Sub
 End Class
