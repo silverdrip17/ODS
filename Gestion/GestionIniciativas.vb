@@ -236,11 +236,11 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT INICIATIVA.* FROM INICIATIVA"
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
-                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr(3).ToString, dr(4).ToString)
+                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
                 todasLasIniciativas.Add(inici)
             Loop
         Catch ex As Exception

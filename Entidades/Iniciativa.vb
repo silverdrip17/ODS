@@ -28,4 +28,8 @@
         Return other IsNot Nothing AndAlso
                CodIniciativa = other.CodIniciativa
     End Function
+
+    Public Overrides Function ToString() As String
+        Return $"{CodIniciativa}:{Titulo}:{Descripcion}:{FechaInicio}:{FechaFin}"
+    End Function
 End Class
