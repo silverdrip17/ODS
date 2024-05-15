@@ -25,6 +25,7 @@ Public Class FrmMantenimientoMetas
 
 
     Private Sub cboods_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboods.SelectedIndexChanged  ' todo PROFESORADO El control debería llamarse cboOds
+        LimpiarTextoMetas()
         DataGridView1.DataSource = Nothing
         Dim odsSeleccionado As ODS = TryCast(cboods.SelectedItem, ODS)
         ' todo PROFESORADO Debe controlar que realmente se ha seleccionado un elemento
