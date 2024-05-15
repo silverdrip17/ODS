@@ -263,4 +263,28 @@ Public Class GestionIniciativas
         End Try
         Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
+    Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
+        Dim ods() As String = {}
+        Array.Resize(ods, ods.Length + 1)
+        For Each ods As ODS In readonlyods
+            Array.Resize(Korrikas, Korrikas.Length + 1)
+            If String.IsNullOrWhiteSpace(kms.Direccion) OrElse String.IsNullOrWhiteSpace(kms.Localidad) OrElse String.IsNullOrWhiteSpace(kms.Provincia) Then
+                Korrikas(Korrikas.Length - 1) = kms.NumKm
+            ElseIf TypeOf kms Is KilometroFinanciado Then
+                Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
+            Else
+                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
+            End If
+        Next
+        Try
+            File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
+        Catch ex As Exception
+            Return "Error, la carpeta Ficheros no existe"
+        End Try
+
+        _cambios = False
+        Return "" 'GuardarCambios(kor.DatosKorrika)
+    End Function
+
 End Class
