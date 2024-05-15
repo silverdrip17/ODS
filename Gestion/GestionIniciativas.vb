@@ -265,13 +265,13 @@ Public Class GestionIniciativas
     End Function
     Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
         Dim ods() As String = {}
-        Array.Resize(ods, ods.Length + 1)
-        For Each ods As ODS In readonlyods
-            Array.Resize(Korrikas, Korrikas.Length + 1)
-            If String.IsNullOrWhiteSpace(kms.Direccion) OrElse String.IsNullOrWhiteSpace(kms.Localidad) OrElse String.IsNullOrWhiteSpace(kms.Provincia) Then
-                Korrikas(Korrikas.Length - 1) = kms.NumKm
+        Array.Resize(ods, ods.Length+ 1)
+        For Each odss As ODS In readonlyods
+            Array.Resize(ods, ods.Length + 1)
+            If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
+                ods(ods.Length - 1) = odss.NumODS
             ElseIf TypeOf kms Is KilometroFinanciado Then
-                Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+            Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
                 Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
             Else
                 Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
@@ -282,8 +282,6 @@ Public Class GestionIniciativas
         Catch ex As Exception
             Return "Error, la carpeta Ficheros no existe"
         End Try
-
-        _cambios = False
         Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
     Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
