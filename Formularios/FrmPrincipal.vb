@@ -24,6 +24,7 @@ Public Class FrmPrincipal
         listaOds = Gestor.DevolverOds(msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
+            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
 

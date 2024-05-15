@@ -33,6 +33,7 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
+            Gestor.GuardarErrores(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If
@@ -196,6 +197,7 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
+            Gestor.GuardarErrores(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If

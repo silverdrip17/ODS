@@ -1,5 +1,6 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
+Imports System.IO
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
@@ -248,5 +249,18 @@ Public Class GestionIniciativas
             oConexion.Close()
         End Try
         Return todasLasIniciativas.AsReadOnly
+    End Function
+    Public Function GuardarErrores(msg As String) As String
+        Dim rutafichero As String = "./Ficheros/Ficherrores"
+        Try
+            If Not File.Exists(rutafichero) Then
+                File.WriteAllLines(rutafichero, msg)
+            Else
+                File.AppendAllLines(rutafichero, msg)
+            End If
+        Catch ex As Exception
+            Return "Error, la carpeta Ficheros no existe"
+        End Try
+        Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
 End Class
