@@ -149,14 +149,27 @@ Public Class FrmAltaIniciativas
             'Conseguir solicitante del cboBox.
             Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
             Dim idSolicitante As Integer = miSolicitante.IdSolicitante
+            'Añadir/modificar iniciativa
             cmdIniciativa = New SqlCommand(sql, oConexion)
             cmdIniciativa.Parameters.AddWithValue("@TITULO", txtTitulo.Text)
             cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", txtDescripcionIniciativa.Text)
-            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", dtpInicio.Text) 'Falta modificar a date
-            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", dtpFin.Text) 'Falta modificar a date
+            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", fechaIn)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", fechaFin)
             cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", idSolicitante)
             If iniciativa IsNot Nothing Then cmdIniciativa.Parameters.AddWithValue("@CODINICIATIVA", idSolicitante)
             cmdIniciativa.ExecuteNonQuery()
+            'Falta sacar el codigoIniciativa
+            Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = @TITULO"
+            'Iniciativa-Profesorado
+            Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
+            Dim miProfesor As Profesor = cboProfesores.SelectedItem
+            Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
+            cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
+            cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
+            'Iniciativa-Metas
+            Dim misMetas As New List(Of Metas)
+            misMetas.AddRange(lstMetas.Items)
+
         Catch ex As Exception
             mensaje = ex.ToString
         Finally
