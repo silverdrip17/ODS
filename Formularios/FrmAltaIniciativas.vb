@@ -121,7 +121,15 @@ Public Class FrmAltaIniciativas
             MessageBox.Show("Debe haber mínimo un valor en las listas")
             Exit Sub
         End If
-
+        Dim fechaIn, fechaFin As Date
+        If Not Date.TryParse(dtpInicio.Format, fechaIn) Then
+            MessageBox.Show("Debe ser una fecha válida")
+            Exit Sub
+        End If
+        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin < fechaIn Then
+            MessageBox.Show("Debe ser una fecha válida, y no puede ser anterior a la fecha de inicio")
+            Exit Sub
+        End If
         'Todo guardar la iniciativa en la BBDD
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Dim mensaje As String
