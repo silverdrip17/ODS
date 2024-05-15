@@ -84,7 +84,7 @@ Partial Class FrmAltaIniciativas
         'lbltituloiniciativa
         '
         Me.lbltituloiniciativa.AutoSize = True
-        Me.lbltituloiniciativa.Location = New System.Drawing.Point(54, 123)
+        Me.lbltituloiniciativa.Location = New System.Drawing.Point(54, 37)
         Me.lbltituloiniciativa.Name = "lbltituloiniciativa"
         Me.lbltituloiniciativa.Size = New System.Drawing.Size(95, 16)
         Me.lbltituloiniciativa.TabIndex = 13
@@ -92,7 +92,7 @@ Partial Class FrmAltaIniciativas
         '
         'txtTitulo
         '
-        Me.txtTitulo.Location = New System.Drawing.Point(57, 62)
+        Me.txtTitulo.Location = New System.Drawing.Point(57, 70)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(259, 22)
         Me.txtTitulo.TabIndex = 14
@@ -179,7 +179,7 @@ Partial Class FrmAltaIniciativas
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(356, 129)
+        Me.Label5.Location = New System.Drawing.Point(356, 43)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(36, 16)
         Me.Label5.TabIndex = 38
@@ -188,7 +188,7 @@ Partial Class FrmAltaIniciativas
         'cboODS
         '
         Me.cboODS.FormattingEnabled = True
-        Me.cboODS.Location = New System.Drawing.Point(359, 68)
+        Me.cboODS.Location = New System.Drawing.Point(359, 76)
         Me.cboODS.Name = "cboODS"
         Me.cboODS.Size = New System.Drawing.Size(250, 24)
         Me.cboODS.TabIndex = 37
@@ -248,7 +248,7 @@ Partial Class FrmAltaIniciativas
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(883, 129)
+        Me.Label7.Location = New System.Drawing.Point(883, 39)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(138, 16)
         Me.Label7.TabIndex = 51
@@ -257,7 +257,7 @@ Partial Class FrmAltaIniciativas
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(618, 129)
+        Me.Label8.Location = New System.Drawing.Point(618, 43)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(44, 16)
         Me.Label8.TabIndex = 50
@@ -266,7 +266,7 @@ Partial Class FrmAltaIniciativas
         'cboMetas
         '
         Me.cboMetas.FormattingEnabled = True
-        Me.cboMetas.Location = New System.Drawing.Point(621, 68)
+        Me.cboMetas.Location = New System.Drawing.Point(621, 76)
         Me.cboMetas.Name = "cboMetas"
         Me.cboMetas.Size = New System.Drawing.Size(250, 24)
         Me.cboMetas.TabIndex = 49
