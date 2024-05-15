@@ -23,23 +23,10 @@ Partial Class FrmPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
-        Me.dgvOds = New System.Windows.Forms.DataGridView()
         Me.btnCambiosMetas = New System.Windows.Forms.Button()
         Me.btnCambiosODS = New System.Windows.Forms.Button()
         Me.btnIniciativa = New System.Windows.Forms.Button()
-        CType(Me.dgvOds, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvOds
-        '
-        Me.dgvOds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOds.Location = New System.Drawing.Point(24, 9)
-        Me.dgvOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.dgvOds.Name = "dgvOds"
-        Me.dgvOds.RowHeadersWidth = 62
-        Me.dgvOds.RowTemplate.Height = 28
-        Me.dgvOds.Size = New System.Drawing.Size(524, 259)
-        Me.dgvOds.TabIndex = 0
         '
         'btnCambiosMetas
         '
@@ -78,16 +65,12 @@ Partial Class FrmPrincipal
         Me.Controls.Add(Me.btnIniciativa)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
-        Me.Controls.Add(Me.dgvOds)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FrmPrincipal"
         Me.Text = "Form1"
-        CType(Me.dgvOds, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents dgvOds As DataGridView
     Friend WithEvents btnCambiosMetas As Button
     Friend WithEvents btnCambiosODS As Button
     Friend WithEvents btnIniciativa As Button

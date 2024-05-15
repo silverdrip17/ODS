@@ -21,14 +21,12 @@ Public Class FrmPrincipal
         Dim msg As String = ""
         Dim listaOds As ReadOnlyCollection(Of ODS)
 
-        dgvOds.DataSource = Nothing
         listaOds = Gestor.DevolverOds(msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
             Exit Sub
         End If
-        dgvOds.DataSource = listaOds
-        dgvOds.Columns("imagen").Visible = False
+
     End Sub
 
     Private Sub btnIniciativa_Click(sender As Object, e As EventArgs) Handles btnIniciativa.Click
