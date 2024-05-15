@@ -24,7 +24,6 @@ Partial Class FrmPrincipal
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
         Me.dgvOds = New System.Windows.Forms.DataGridView()
-        Me.btnTodasOds = New System.Windows.Forms.Button()
         Me.btnCambiosMetas = New System.Windows.Forms.Button()
         Me.btnCambiosODS = New System.Windows.Forms.Button()
         Me.btnIniciativa = New System.Windows.Forms.Button()
@@ -41,16 +40,6 @@ Partial Class FrmPrincipal
         Me.dgvOds.RowTemplate.Height = 28
         Me.dgvOds.Size = New System.Drawing.Size(524, 259)
         Me.dgvOds.TabIndex = 0
-        '
-        'btnTodasOds
-        '
-        Me.btnTodasOds.Location = New System.Drawing.Point(24, 294)
-        Me.btnTodasOds.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnTodasOds.Name = "btnTodasOds"
-        Me.btnTodasOds.Size = New System.Drawing.Size(165, 30)
-        Me.btnTodasOds.TabIndex = 2
-        Me.btnTodasOds.Text = "Ver Todos los ODS"
-        Me.btnTodasOds.UseVisualStyleBackColor = True
         '
         'btnCambiosMetas
         '
@@ -89,7 +78,6 @@ Partial Class FrmPrincipal
         Me.Controls.Add(Me.btnIniciativa)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
-        Me.Controls.Add(Me.btnTodasOds)
         Me.Controls.Add(Me.dgvOds)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FrmPrincipal"
@@ -100,7 +88,6 @@ Partial Class FrmPrincipal
     End Sub
 
     Friend WithEvents dgvOds As DataGridView
-    Friend WithEvents btnTodasOds As Button
     Friend WithEvents btnCambiosMetas As Button
     Friend WithEvents btnCambiosODS As Button
     Friend WithEvents btnIniciativa As Button
