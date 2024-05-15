@@ -228,4 +228,25 @@ Public Class GestionIniciativas
     Public Sub AñadirMetaAODS(numODS As Integer, metaAñadir As Metas)
         Throw New NotImplementedException() ' todo HACER
     End Sub
+
+    Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
+        Dim todasLasIniciativas As New List(Of Iniciativa)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT INICIATIVA.* FROM INICIATIVA"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, Date.Parse(dr().ToString))
+                todasLasIniciativas.Add(inici)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return todasLasIniciativas.AsReadOnly
+    End Function
 End Class
