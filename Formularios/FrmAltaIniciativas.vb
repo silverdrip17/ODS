@@ -175,7 +175,7 @@ Public Class FrmAltaIniciativas
             Dim miProfesor As Profesor = cboProfesores.SelectedItem
             Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
             cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
-            cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
+            'cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
             'Iniciativa-Metas
             Dim misMetas As New List(Of Metas)
             misMetas.AddRange(lstMetas.Items)

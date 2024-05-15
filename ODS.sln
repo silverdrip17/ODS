@@ -15,12 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDLBD", "DDLBD", "{9BA567A5
 		resetearDatosODSprog.sql = resetearDatosODSprog.sql
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ComentariosProfesorado", "ComentariosProfesorado", "{84FF8AC4-D7D1-4C3F-8768-FB1BEC5819FC}"
-	ProjectSection(SolutionItems) = preProject
-		Profesorado\G3 Comentarios Kevin Edu Danel Pablo.docx = Profesorado\G3 Comentarios Kevin Edu Danel Pablo.docx
-		Profesorado\ODSVer1.xlsx = Profesorado\ODSVer1.xlsx
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
