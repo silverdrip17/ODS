@@ -51,7 +51,17 @@ Partial Class FrmAltaIniciativas
         Me.dtpFin = New System.Windows.Forms.DateTimePicker()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cboMetasEliminar = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.cboODSEliminar = New System.Windows.Forms.ComboBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cboIniciativasEliminar = New System.Windows.Forms.ComboBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboSolicitantes
@@ -300,11 +310,99 @@ Partial Class FrmAltaIniciativas
         Me.Label1.TabIndex = 55
         Me.Label1.Text = "Nº Horas"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(464, 102)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(128, 16)
+        Me.Label4.TabIndex = 56
+        Me.Label4.Text = "AÑADIR INICIATIVA"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(1523, 102)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(139, 16)
+        Me.Label9.TabIndex = 57
+        Me.Label9.Text = "ELIMINAR INICIATIVA"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(1434, 123)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(44, 16)
+        Me.Label10.TabIndex = 61
+        Me.Label10.Text = "Metas"
+        '
+        'cboMetasEliminar
+        '
+        Me.cboMetasEliminar.FormattingEnabled = True
+        Me.cboMetasEliminar.Location = New System.Drawing.Point(1437, 152)
+        Me.cboMetasEliminar.Name = "cboMetasEliminar"
+        Me.cboMetasEliminar.Size = New System.Drawing.Size(250, 24)
+        Me.cboMetasEliminar.TabIndex = 60
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(1172, 123)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(36, 16)
+        Me.Label11.TabIndex = 59
+        Me.Label11.Text = "ODS"
+        '
+        'cboODSEliminar
+        '
+        Me.cboODSEliminar.FormattingEnabled = True
+        Me.cboODSEliminar.Location = New System.Drawing.Point(1175, 152)
+        Me.cboODSEliminar.Name = "cboODSEliminar"
+        Me.cboODSEliminar.Size = New System.Drawing.Size(250, 24)
+        Me.cboODSEliminar.TabIndex = 58
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(1175, 190)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersWidth = 51
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(605, 231)
+        Me.DataGridView1.TabIndex = 62
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(1172, 438)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(83, 16)
+        Me.Label12.TabIndex = 64
+        Me.Label12.Text = "INICIATIVAS"
+        '
+        'cboIniciativasEliminar
+        '
+        Me.cboIniciativasEliminar.FormattingEnabled = True
+        Me.cboIniciativasEliminar.Location = New System.Drawing.Point(1175, 467)
+        Me.cboIniciativasEliminar.Name = "cboIniciativasEliminar"
+        Me.cboIniciativasEliminar.Size = New System.Drawing.Size(250, 24)
+        Me.cboIniciativasEliminar.TabIndex = 63
+        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1924, 843)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.cboIniciativasEliminar)
+        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.cboMetasEliminar)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.cboODSEliminar)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.dtpFin)
@@ -337,6 +435,7 @@ Partial Class FrmAltaIniciativas
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -371,4 +470,13 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents dtpFin As DateTimePicker
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents cboMetasEliminar As ComboBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents cboODSEliminar As ComboBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Label12 As Label
+    Friend WithEvents cboIniciativasEliminar As ComboBox
 End Class
