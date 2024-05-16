@@ -226,10 +226,6 @@ Public Class GestionIniciativas
         Return todosLosCursos.AsReadOnly
     End Function
 
-    Public Sub AñadirMetaAODS(numODS As Integer, metaAñadir As Metas)
-        Throw New NotImplementedException() ' todo HACER
-    End Sub
-
     Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
         Dim todasLasIniciativas As New List(Of Iniciativa)
         msg = ""
@@ -263,27 +259,32 @@ Public Class GestionIniciativas
         End Try
         Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
-    'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
-    '    Dim ods() As String = {}
-    '    Array.Resize(ods, ods.Length + 1)
-    '    For Each odss As ODS In readonlyods
-    '        Array.Resize(ods, ods.Length + 1)
-    '        If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
-    '            ods(ods.Length - 1) = odss.NumODS
-    '        ElseIf TypeOf kms Is KilometroFinanciado Then
-    '            Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
-    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
-    '        Else
-    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
-    '        End If
-    '    Next
-    '    Try
-    '        File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
-    '    Catch ex As Exception
-    '        Return "Error, la carpeta Ficheros no existe"
-    '    End Try
-    '    Return "" 'GuardarCambios(kor.DatosKorrika)
-    'End Function
+
+    Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
+        Dim ods() As String = {}
+        Array.Resize(ods, ods.Length + 1)
+        For Each odss As ODS In readonlyods
+            Array.Resize(ods, ods.Length + 1)
+            If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
+                ods(ods.Length - 1) = odss.NumODS
+            ElseIf TypeOf kms Is KilometroFinanciado Then
+                Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
+            Else
+                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
+            End If
+        Next
+        Try
+            File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
+        Catch ex As Exception
+            Return "Error, la carpeta Ficheros no existe"
+        End Try
+        Return "" 'GuardarCambios(kor.DatosKorrika)
+    End Function
+
+
+
+
     Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
         'Todo guardar la iniciativa en la BBDD
         Dim oConexion As New SqlConnection(cadenaDeConexion)
