@@ -247,13 +247,9 @@ Public Class GestionIniciativas
         Return todasLasIniciativas.AsReadOnly
     End Function
     Public Function GuardarError(msg As String) As String
-        Dim rutafichero As String = "./Ficheros/Ficherrores"
+        Dim rutafichero As String = "./Ficheros/Ficherrores.txt"
         Try
-            If Not File.Exists(rutafichero) Then
-                File.WriteAllText(rutafichero, msg)
-            Else
-                File.AppendAllText(rutafichero, msg)
-            End If
+            File.WriteAllText(rutafichero, msg)
         Catch ex As DirectoryNotFoundException
             Return "Error, el directorio de archivos no existe"
         Catch ex As UnauthorizedAccessException
