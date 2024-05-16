@@ -124,6 +124,12 @@ Public Class FrmAltaIniciativas
         Dim iniciativaNueva As New Iniciativa
         iniciativaNueva.Descripcion = txtDescripcionIniciativa.Text
         iniciativaNueva.Solicitante = cboSolicitantes.SelectedItem
+        iniciativaNueva.FechaInicio = fechaIn
+        iniciativaNueva.FechaFin = fechaFin
+        iniciativaNueva.Titulo = txtTitulo.Text
+
+
+
         For i As Integer = 0 To lstMetas.Items.Count - 1
             Dim meta As Metas = lstMetas.Items(i)
             iniciativaNueva.ListaMetas.Add(meta)
