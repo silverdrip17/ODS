@@ -27,6 +27,7 @@ Public Class GestionIniciativas
             Loop
         Catch ex As Exception
             msg = ex.Message
+
             Return Nothing
         Finally
             oConexion.Close()
@@ -241,15 +242,16 @@ Public Class GestionIniciativas
             Loop
         Catch ex As Exception
             msg = ex.Message
+            GuardarError(msg)
         Finally
             oConexion.Close()
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
-    Public Function GuardarError(msg As String) As String
+    Private Function GuardarError(msg As String) As String
         Dim rutafichero As String = "./Ficheros/Ficherrores.txt"
         Try
-            File.WriteAllText(rutafichero, msg)
+            'File.AppendAllLines(rutafichero, msg)
         Catch ex As DirectoryNotFoundException
             Return "Error, el directorio de archivos no existe"
         Catch ex As UnauthorizedAccessException
