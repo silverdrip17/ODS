@@ -247,7 +247,6 @@ Public Class GestionIniciativas
         Return todasLasIniciativas.AsReadOnly
     End Function
     Public Function GuardarError(msg As String) As String
-        Dim msg As String = ""
         Dim rutafichero As String = "./Ficheros/Ficherrores"
         Try
             If Not File.Exists(rutafichero) Then
@@ -258,7 +257,7 @@ Public Class GestionIniciativas
         Catch ex As Exception
             Return "Error, la carpeta Ficheros no existe"
         End Try
-        Return "" 'GuardarCambios(kor.DatosKorrika)
+        Return ""
     End Function
 
     'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
