@@ -246,19 +246,19 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
-    Public Function GuardarError(msg As String) As String
-        Dim rutafichero As String = "./Ficheros/Ficherrores"
-        Try
-            If Not File.Exists(rutafichero) Then
-                File.WriteAllLines(rutafichero, msg)
-            Else
-                File.AppendAllLines(rutafichero, msg)
-            End If
-        Catch ex As Exception
-            Return "Error, la carpeta Ficheros no existe"
-        End Try
-        Return ""
-    End Function
+    'Public Function GuardarError(msg As String) As String
+    '    Dim rutafichero As String = "./Ficheros/Ficherrores"
+    '    Try
+    '        If Not File.Exists(rutafichero) Then
+    '            File.WriteAllLines(rutafichero, msg)
+    '        Else
+    '            File.AppendAllLines(rutafichero, msg)
+    '        End If
+    '    Catch ex As Exception
+    '        Return "Error, la carpeta Ficheros no existe"
+    '    End Try
+    '    Return "" 'GuardarCambios(kor.DatosKorrika)
+    'End Function
 
     'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
     '    Dim ods() As String = {}
@@ -282,70 +282,70 @@ Public Class GestionIniciativas
     '    Return "" 'GuardarCambios(kor.DatosKorrika)
     'End Function
 
-    Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
-        Dim ods() As String = {}
-        Array.Resize(ods, ods.Length + 1)
-        For Each odss As ODS In readonlyods
-            Array.Resize(ods, ods.Length + 1)
-            If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
-                ods(ods.Length - 1) = odss.NumODS
-            ElseIf TypeOf kms Is KilometroFinanciado Then
-                Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
-                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
-            Else
-                Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
-            End If
-        Next
-        Try
-            File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
-        Catch ex As Exception
-            Return "Error, la carpeta Ficheros no existe"
-        End Try
-        Return "" 'GuardarCambios(kor.DatosKorrika)
-    End Function
+    'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
+    '    Dim ods() As String = {}
+    '    Array.Resize(ods, ods.Length+ 1)
+    '    For Each odss As ODS In readonlyods
+    '        Array.Resize(ods, ods.Length + 1)
+    '        If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
+    '            ods(ods.Length - 1) = odss.NumODS
+    '        ElseIf TypeOf kms Is KilometroFinanciado Then
+    '        Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
+    '        Else
+    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
+    '        End If
+    '    Next
+    '    Try
+    '        File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
+    '    Catch ex As Exception
+    '        Return "Error, la carpeta Ficheros no existe"
+    '    End Try
+    '    Return "" 'GuardarCambios(kor.DatosKorrika)
+    'End Function
 
-    Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
-        'Todo guardar la iniciativa en la BBDD
-        Dim oConexion As New SqlConnection(cadenaDeConexion)
-        Try
-            oConexion.Open()
-            Dim sql As String = "SELECT CODINICIATIVA, TITULO FROM INICIATIVA WHERE LOWER(INICIATIVA.TITULO) = LOWER(@TITULO)"
-            Dim cmdIniciativa As New SqlCommand(sql, oConexion)
-            cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
-            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
-            Dim iniciativaAux As Iniciativa = If(drIniciativa.Read(), New Iniciativa(drIniciativa("CODINICIATIVA"), drIniciativa("TITULO").ToString), Nothing)
-            'Si no tengo la iniciativa, hay que hacer Insert.
-            If iniciativaAux Is Nothing Then
-                sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
-            End If
-            'Conseguir solicitante del cboBox.
-            'Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
-            'Dim idSolicitante As Integer = miSolicitante.IdSolicitante
-            'Añadir/modificar iniciativa
-            cmdIniciativa = New SqlCommand(sql, oConexion)
-            cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
-            cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
-            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", iniciativa.FechaInicio)
-            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", iniciativa.FechaFin)
-            'cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.idSolicitante)
-            cmdIniciativa.ExecuteNonQuery()
-            msg = "La iniciativa se ha añadido"
-            'Falta sacar el codigoIniciativa
-            Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = @TITULO"
-            'Iniciativa-Profesorado
-            Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
-            'Dim miProfesor As Profesor = cboProfesores.SelectedItem
-            'Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
-            'cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
-            ''cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
-            ''Iniciativa-Metas
-            'Dim misMetas As New List(Of Metas)
-            'misMetas.AddRange(lstMetas.Items)
+    'Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
+    '    'Todo guardar la iniciativa en la BBDD
+    '    Dim oConexion As New SqlConnection(cadenaDeConexion)
+    '    Try
+    '        oConexion.Open()
+    '        Dim sql As String = "SELECT CODINICIATIVA, TITULO FROM INICIATIVA WHERE LOWER(INICIATIVA.TITULO) = LOWER(@TITULO)"
+    '        Dim cmdIniciativa As New SqlCommand(sql, oConexion)
+    '        cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
+    '        Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
+    '        ' Dim iniciativaAux As Iniciativa = If(drIniciativa.Read(), New Iniciativa(drIniciativa("CODINICIATIVA"), drIniciativa("TITULO").ToString), Nothing)
+    '        'Si no tengo la iniciativa, hay que hacer Insert.
+    '        If iniciativaAux Is Nothing Then
+    '            sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+    '        End If
+    '        'Conseguir solicitante del cboBox.
+    '        'Dim miSolicitante As Solicitante = TryCast(cboSolicitantes.SelectedItem, Solicitante)
+    '        'Dim idSolicitante As Integer = miSolicitante.IdSolicitante
+    '        'Añadir/modificar iniciativa
+    '        cmdIniciativa = New SqlCommand(sql, oConexion)
+    '        cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
+    '        cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
+    '        cmdIniciativa.Parameters.AddWithValue("@FECHAIN", iniciativa.FechaInicio)
+    '        cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", iniciativa.FechaFin)
+    '        'cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.idSolicitante)
+    '        cmdIniciativa.ExecuteNonQuery()
+    '        msg = "La iniciativa se ha añadido"
+    '        'Falta sacar el codigoIniciativa
+    '        Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = @TITULO"
+    '        'Iniciativa-Profesorado
+    '        Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
+    '        'Dim miProfesor As Profesor = cboProfesores.SelectedItem
+    '        'Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
+    '        'cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", miProfesor.IdProf)
+    '        ''cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", ) 'codigoINiciativa) 
+    '        ''Iniciativa-Metas
+    '        'Dim misMetas As New List(Of Metas)
+    '        'misMetas.AddRange(lstMetas.Items)
 
-        Catch ex As Exception
-            msg = ex.ToString
-        Finally
-            oConexion.Close()
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        msg = ex.ToString
+    '    Finally
+    '        oConexion.Close()
+    '    End Try
+    'End Sub
 End Class

@@ -22,7 +22,7 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarError(msg)
+            'Gestor.GuardarError(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If
@@ -117,31 +117,10 @@ Public Class FrmAltaIniciativas
             MessageBox.Show("Debe ser una fecha válida")
             Exit Sub
         End If
-        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin <= fechaIn Then
-            MessageBox.Show("Debe ser una fecha válida, y no puede ser ni igual ni anterior a la fecha de inicio")
+        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin < fechaIn Then
+            MessageBox.Show("Debe ser una fecha válida, y no puede ser anterior a la fecha de inicio")
             Exit Sub
         End If
-        Dim iniciativaNueva As New Iniciativa
-        iniciativaNueva.Descripcion = txtDescripcionIniciativa.Text
-        iniciativaNueva.Solicitante = cboSolicitantes.SelectedItem
-        iniciativaNueva.FechaInicio = fechaIn
-        iniciativaNueva.FechaFin = fechaFin
-        iniciativaNueva.Titulo = txtTitulo.Text
-
-
-
-        For i As Integer = 0 To lstMetas.Items.Count - 1
-            Dim meta As Metas = lstMetas.Items(i)
-            iniciativaNueva.ListaMetas.Add(meta)
-        Next
-        For i As Integer = 0 To lstModulos.Items.Count - 1
-            Dim modulo As Modulo = lstModulos.Items(i)
-            iniciativaNueva.Modulos.Add(modulo)
-        Next
-        For i As Integer = 0 To lstProfesores.Items.Count - 1
-            Dim profe As Profesor = lstProfesores.Items(i)
-            iniciativaNueva.Profesores.Add(profe)
-        Next
         'Todo guardar la iniciativa en la BBDD
     End Sub
 
@@ -154,7 +133,7 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarError(msg)
+            'Gestor.GuardarError(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If
