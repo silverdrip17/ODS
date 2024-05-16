@@ -50,6 +50,6 @@ Public Class Iniciativa
     End Function
 
     Public Overrides Function ToString() As String
-        Return $"{CodIniciativa}:{Titulo}:{Descripcion}:{FechaInicio}:{FechaFin}"
+        Return $"{CodIniciativa}: {Titulo}"
     End Function
 End Class
