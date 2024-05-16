@@ -272,10 +272,10 @@ Public Class GestionIniciativas
             cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
             cmdIniciativa.Parameters.AddWithValue("@FECHAIN", iniciativa.FechaInicio)
             cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", iniciativa.FechaFin)
-            cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.Solicitante)
+            cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.Solicitante.IdSolicitante)
             cmdIniciativa.ExecuteNonQuery()
-            Dim sqlCodIniciativa As String = "SELECT INICIATIVA.CODINICIATIVA FROM INICIATIVA WHERE INICIATIVA.CODINICIATIVA = COUNT(CODINICIATIVA)"
-            cmdIniciativa = New SqlCommand(sql, oConexion)
+            Dim sqlCodIniciativa As String = "SELECT COUNT(INICIATIVA.CODINICIATIVA) FROM INICIATIVA"
+            cmdIniciativa = New SqlCommand(sqlCodIniciativa, oConexion)
             Dim codIniciativa As Integer = cmdIniciativa.ExecuteScalar
             'Iniciativa-Profesorado
             Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
@@ -308,7 +308,7 @@ Public Class GestionIniciativas
                 cmdIniciativaModulos.Parameters.AddWithValue("@CODCURSO", modulo.CodCurso)
                 cmdIniciativaModulos.Parameters.AddWithValue("@CODMODULO", modulo.CodModulo)
                 cmdIniciativaModulos.Parameters.AddWithValue("@HORAS", horas)
-                cmdIniciativaMetas.ExecuteScalar()
+                cmdIniciativaModulos.ExecuteScalar()
             Next
             msg = "La iniciativa se ha añadido"
         Catch ex As Exception

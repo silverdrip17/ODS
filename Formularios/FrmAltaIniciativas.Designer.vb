@@ -49,8 +49,6 @@ Partial Class FrmAltaIniciativas
         Me.lstMetas = New System.Windows.Forms.ListBox()
         Me.dtpInicio = New System.Windows.Forms.DateTimePicker()
         Me.dtpFin = New System.Windows.Forms.DateTimePicker()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cboIniciativasEliminar = New System.Windows.Forms.ComboBox()
         Me.dgvIniciativas = New System.Windows.Forms.DataGridView()
@@ -61,7 +59,6 @@ Partial Class FrmAltaIniciativas
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnEliminarIniciativa = New System.Windows.Forms.Button()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -93,10 +90,11 @@ Partial Class FrmAltaIniciativas
         '
         'txtTitulo
         '
-        Me.txtTitulo.Location = New System.Drawing.Point(57, 70)
+        Me.txtTitulo.Location = New System.Drawing.Point(57, 68)
         Me.txtTitulo.Name = "txtTitulo"
         Me.txtTitulo.Size = New System.Drawing.Size(259, 22)
         Me.txtTitulo.TabIndex = 14
+        Me.txtTitulo.Text = "Plan de Atención a la Diversidad"
         '
         'lblDescripcionIniciativa
         '
@@ -114,6 +112,7 @@ Partial Class FrmAltaIniciativas
         Me.txtDescripcionIniciativa.Name = "txtDescripcionIniciativa"
         Me.txtDescripcionIniciativa.Size = New System.Drawing.Size(293, 106)
         Me.txtDescripcionIniciativa.TabIndex = 16
+        Me.txtDescripcionIniciativa.Text = "Descripción de: Plan de Atención a la Diversidad"
         '
         'lblFechaInicio
         '
@@ -295,22 +294,6 @@ Partial Class FrmAltaIniciativas
         Me.dtpFin.Size = New System.Drawing.Size(274, 22)
         Me.dtpFin.TabIndex = 53
         '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(621, 348)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(120, 22)
-        Me.NumericUpDown1.TabIndex = 54
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(618, 315)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(62, 16)
-        Me.Label1.TabIndex = 55
-        Me.Label1.Text = "Nº Horas"
-        '
         'Label12
         '
         Me.Label12.AutoSize = True
@@ -414,8 +397,6 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.cboODSEliminar)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.dtpFin)
         Me.Controls.Add(Me.dtpInicio)
         Me.Controls.Add(Me.Label7)
@@ -445,7 +426,6 @@ Partial Class FrmAltaIniciativas
         Me.Controls.Add(Me.cboSolicitantes)
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -479,8 +459,6 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents lstMetas As ListBox
     Friend WithEvents dtpInicio As DateTimePicker
     Friend WithEvents dtpFin As DateTimePicker
-    Friend WithEvents NumericUpDown1 As NumericUpDown
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents cboIniciativasEliminar As ComboBox
     Friend WithEvents dgvIniciativas As DataGridView

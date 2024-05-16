@@ -80,7 +80,6 @@ Public Class FrmAltaIniciativas
     End Sub
     Private Sub lisas_DoubleClick(sender As Object, e As EventArgs) Handles lstMetas.DoubleClick, lstModulos.DoubleClick, lstProfesores.DoubleClick
         sender.Items.Remove(sender.SelectedItem)
-
     End Sub
 
     Private Sub cboCursos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCursos.SelectedIndexChanged
@@ -113,12 +112,12 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
         Dim fechaIn, fechaFin As Date
-        If Not Date.TryParse(dtpInicio.Format, fechaIn) Then
+        If Not Date.TryParse(dtpInicio.Value, fechaIn) Then
             MessageBox.Show("Debe ser una fecha válida")
             Exit Sub
         End If
-        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin < fechaIn Then
-            MessageBox.Show("Debe ser una fecha válida, y no puede ser anterior a la fecha de inicio")
+        If Not Date.TryParse(dtpFin.Value, fechaFin) OrElse fechaFin <= fechaIn Then
+            MessageBox.Show("Debe ser una fecha válida, y además superior a la fecha de inicio")
             Exit Sub
         End If
         Dim iniciativaNueva As New Iniciativa
@@ -127,8 +126,6 @@ Public Class FrmAltaIniciativas
         iniciativaNueva.FechaInicio = fechaIn
         iniciativaNueva.FechaFin = fechaFin
         iniciativaNueva.Titulo = txtTitulo.Text
-
-
 
         For i As Integer = 0 To lstMetas.Items.Count - 1
             Dim meta As Metas = lstMetas.Items(i)
@@ -142,7 +139,9 @@ Public Class FrmAltaIniciativas
             Dim profe As Profesor = lstProfesores.Items(i)
             iniciativaNueva.Profesores.Add(profe)
         Next
-        'Todo guardar la iniciativa en la BBDD
+        Dim msgError = ""
+        Gestor.AnadirIniciativa(iniciativaNueva, msgError)
+        MessageBox.Show(msgError)
     End Sub
 
     Private Sub cboODSEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboODSEliminar.SelectedIndexChanged
