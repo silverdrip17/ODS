@@ -9,12 +9,7 @@ Public Class Iniciativa
     Public Property FechaInicio As Date
     Public Property FechaFin As Date
 
-    Private ReadOnly _Solicitante As Solicitante
-    Public ReadOnly Property Solicitante() As Solicitante
-        Get
-            Return _Solicitante
-        End Get
-    End Property
+    Public Property Solicitante As Solicitante
     Public Property ListaMetas As List(Of Metas)
     Public Property Profesores As List(Of Profesor)
     Public Property Modulos As List(Of Modulo)
@@ -34,7 +29,7 @@ Public Class Iniciativa
 
     Public Sub New(codIniciativa As Integer, titulo As String, descripcion As String, fechaInicio As Date, fechaFin As Date, solicitante As Solicitante, listaMetas As List(Of Metas), profesores As List(Of Profesor), modulos As List(Of Modulo))
         Me.New(codIniciativa, titulo, descripcion, fechaInicio, fechaFin)
-        _Solicitante = solicitante
+        Me.Solicitante = solicitante
         Me.ListaMetas = listaMetas
         Me.Profesores = profesores
         Me.Modulos = modulos

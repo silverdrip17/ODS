@@ -285,13 +285,13 @@ Public Class GestionIniciativas
 
     Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
         Dim ods() As String = {}
-        Array.Resize(ods, ods.Length+ 1)
+        Array.Resize(ods, ods.Length + 1)
         For Each odss As ODS In readonlyods
             Array.Resize(ods, ods.Length + 1)
             If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
                 ods(ods.Length - 1) = odss.NumODS
             ElseIf TypeOf kms Is KilometroFinanciado Then
-            Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+                Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
                 Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
             Else
                 Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia

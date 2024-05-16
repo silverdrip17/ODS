@@ -117,10 +117,25 @@ Public Class FrmAltaIniciativas
             MessageBox.Show("Debe ser una fecha válida")
             Exit Sub
         End If
-        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin < fechaIn Then
-            MessageBox.Show("Debe ser una fecha válida, y no puede ser anterior a la fecha de inicio")
+        If Not Date.TryParse(dtpFin.Format, fechaFin) OrElse fechaFin <= fechaIn Then
+            MessageBox.Show("Debe ser una fecha válida, y no puede ser ni igual ni anterior a la fecha de inicio")
             Exit Sub
         End If
+        Dim iniciativaNueva As New Iniciativa
+        iniciativaNueva.Descripcion = txtDescripcionIniciativa.Text
+        iniciativaNueva.Solicitante = cboSolicitantes.SelectedItem
+        For i As Integer = 0 To lstMetas.Items.Count - 1
+            Dim meta As Metas = lstMetas.Items(i)
+            iniciativaNueva.ListaMetas.Add(meta)
+        Next
+        For i As Integer = 0 To lstModulos.Items.Count - 1
+            Dim modulo As Modulo = lstModulos.Items(i)
+            iniciativaNueva.Modulos.Add(modulo)
+        Next
+        For i As Integer = 0 To lstProfesores.Items.Count - 1
+            Dim profe As Profesor = lstProfesores.Items(i)
+            iniciativaNueva.Profesores.Add(profe)
+        Next
         'Todo guardar la iniciativa en la BBDD
     End Sub
 
