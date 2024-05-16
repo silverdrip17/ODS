@@ -1,4 +1,6 @@
-﻿Public Class Iniciativa
+﻿Imports System.Collections.ObjectModel
+
+Public Class Iniciativa
     Implements IEquatable(Of Iniciativa)
 
     Public Property CodIniciativa As Integer
@@ -6,6 +8,16 @@
     Public Property Descripcion As String
     Public Property FechaInicio As Date
     Public Property FechaFin As Date
+
+    Private ReadOnly _Solicitante As Solicitante
+    Public ReadOnly Property Solicitante() As Solicitante
+        Get
+            Return _Solicitante
+        End Get
+    End Property
+    Public ReadOnly Property ListaMetas As ReadOnlyCollection(Of Metas)
+    Public ReadOnly Property Profesores As ReadOnlyCollection(Of Profesor)
+    Public ReadOnly Property Modulos As ReadOnlyCollection(Of Modulo)
     Public Sub New()
     End Sub
 
@@ -20,6 +32,8 @@
         Me.FechaFin = fechaFin
     End Sub
 
+
+    'Constructor con las colecciones para poder usar método en GestionIniciativa
     Public Overrides Function Equals(obj As Object) As Boolean
         Return Equals(TryCast(obj, Iniciativa))
     End Function
