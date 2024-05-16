@@ -298,7 +298,7 @@ Public Class GestionIniciativas
                 cmdIniciativaMetas.ExecuteScalar()
             Next
             'INICIATIVA-MODULOS
-            Dim horas As Integer = 0
+            Dim horas As Integer = (iniciativa.FechaFin - iniciativa.FechaInicio).TotalHours
 
             Dim sqlIniciativaModulos As String = "INSERT INTO INICIATIVA_MODULOS(CODINICIATIVA, CODCURSO, CODMODULO, HORAS) VALUES (@CODINICIATIVA, @CODCURSO, @CODMODULO, @HORAS)"
             Dim cmdIniciativaModulos As New SqlCommand(sqlIniciativaModulos, oConexion)
