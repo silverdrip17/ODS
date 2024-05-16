@@ -150,4 +150,12 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
     End Sub
+
+    Private Sub cboIniciativasEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboIniciativasEliminar.SelectedIndexChanged
+        Dim msg As String = ""
+        dgvIniciativas.DataSource = Nothing
+        Dim listaIniciativa As ReadOnlyCollection(Of Iniciativa)
+        listaIniciativa = Gestor.DevolverIniciativa(msg)
+        dgvIniciativas.DataSource = listaIniciativa
+    End Sub
 End Class
