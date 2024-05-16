@@ -246,42 +246,23 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
-    'Public Function GuardarError(msg As String) As String
-    '    Dim rutafichero As String = "./Ficheros/Ficherrores"
-    '    Try
-    '        If Not File.Exists(rutafichero) Then
-    '            File.WriteAllLines(rutafichero, msg)
-    '        Else
-    '            File.AppendAllLines(rutafichero, msg)
-    '        End If
-    '    Catch ex As Exception
-    '        Return "Error, la carpeta Ficheros no existe"
-    '    End Try
-    '    Return "" 'GuardarCambios(kor.DatosKorrika)
-    'End Function
-
-    'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
-    '    Dim ods() As String = {}
-    '    Array.Resize(ods, ods.Length + 1)
-    '    For Each odss As ODS In readonlyods
-    '        Array.Resize(ods, ods.Length + 1)
-    '        If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
-    '            ods(ods.Length - 1) = odss.NumODS
-    '        ElseIf TypeOf kms Is KilometroFinanciado Then
-    '            Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
-    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
-    '        Else
-    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
-    '        End If
-    '    Next
-    '    Try
-    '        File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
-    '    Catch ex As Exception
-    '        Return "Error, la carpeta Ficheros no existe"
-    '    End Try
-    '    Return "" 'GuardarCambios(kor.DatosKorrika)
-    'End Function
-
+    Public Function GuardarError(msg As String) As String
+        Dim rutafichero As String = "./Ficheros/Ficherrores"
+        Try
+            If Not File.Exists(rutafichero) Then
+                File.WriteAllText(rutafichero, msg)
+            Else
+                File.AppendAllText(rutafichero, msg)
+            End If
+        Catch ex As DirectoryNotFoundException
+            Return "Error, el directorio de archivos no existe"
+        Catch ex As UnauthorizedAccessException
+            Return "Error, no tienes permisos para acceder al directorio de archivos"
+        Catch ex As IOException
+            Return "Error al escribir en el archivo de errores"
+        End Try
+        Return ""
+    End Function
     'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
     '    Dim ods() As String = {}
     '    Array.Resize(ods, ods.Length+ 1)
