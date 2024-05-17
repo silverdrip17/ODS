@@ -361,7 +361,7 @@ Public Class GestionIniciativas
             cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
             cmdDeLasIniciativas.ExecuteNonQuery()
 
-            sql = "DELETE FROM INICIATIVAS WHERE CODINICIATIVA=@CODINICIATIVA"
+            sql = "DELETE FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
             cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
             cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
             cmdDeLasIniciativas.ExecuteNonQuery()
