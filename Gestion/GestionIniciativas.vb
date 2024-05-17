@@ -341,7 +341,7 @@ Public Class GestionIniciativas
             oConexion.Close()
         End Try
     End Sub
-    Public Function EliminarIni(iniciativa As Iniciativa) As String
+    Public Function EliminarIniciativa(iniciativa As Iniciativa) As String
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
