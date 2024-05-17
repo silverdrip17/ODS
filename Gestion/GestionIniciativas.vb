@@ -1,5 +1,6 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
+Imports System.IO
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
@@ -225,7 +226,151 @@ Public Class GestionIniciativas
         Return todosLosCursos.AsReadOnly
     End Function
 
-    Public Sub AñadirMetaAODS(numODS As Integer, metaAñadir As Metas)
-        Throw New NotImplementedException() ' todo HACER
+    Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
+        Dim todasLasIniciativas As New List(Of Iniciativa)
+        msg = ""
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA"
+            Dim cmdLeer As New SqlCommand(sql, oConexion)
+            Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+            Do While dr.Read
+                Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
+                todasLasIniciativas.Add(inici)
+            Loop
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return todasLasIniciativas.AsReadOnly
+    End Function
+    Public Function GuardarErrores(msg As String) As String
+        Dim rutafichero As String = "./Ficheros/Ficherrores"
+        Try
+            If Not File.Exists(rutafichero) Then
+                File.WriteAllLines(rutafichero, msg)
+            Else
+                File.AppendAllLines(rutafichero, msg)
+            End If
+        Catch ex As Exception
+            Return "Error, la carpeta Ficheros no existe"
+        End Try
+        Return "" 'GuardarCambios(kor.DatosKorrika)
+    End Function
+
+    'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
+    '    Dim ods() As String = {}
+    '    Array.Resize(ods, ods.Length + 1)
+    '    For Each odss As ODS In readonlyods
+    '        Array.Resize(ods, ods.Length + 1)
+    '        If String.IsNullOrWhiteSpace(odss.Nombre) OrElse String.IsNullOrWhiteSpace(odss.Descripcion) Then
+    '            ods(ods.Length - 1) = odss.NumODS
+    '        ElseIf TypeOf kms Is KilometroFinanciado Then
+    '            Dim kilFin As KilometroFinanciado = TryCast(kms, KilometroFinanciado)
+    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia & "*" & kilFin.Organizacion & "*" & kilFin.Euros
+    '        Else
+    '            Korrikas(Korrikas.Length - 1) = kms.NumKm & "*" & kms.Direccion & "*" & kms.Localidad & "*" & kms.Provincia
+    '        End If
+    '    Next
+    '    Try
+    '        File.WriteAllLines("./Ficheros/Korrika" & kor.DatosKorrika.NKorrika, Korrikas)
+    '    Catch ex As Exception
+    '        Return "Error, la carpeta Ficheros no existe"
+    '    End Try
+    '    Return "" 'GuardarCambios(kor.DatosKorrika)
+    'End Function
+
+
+
+
+    Public Sub AnadirIniciativa(iniciativa As Iniciativa, ByRef msg As String)
+        'Todo guardar la iniciativa en la BBDD
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+            Dim cmdIniciativa As New SqlCommand(sql, oConexion)
+            cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
+            cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAIN", iniciativa.FechaInicio)
+            cmdIniciativa.Parameters.AddWithValue("@FECHAFIN", iniciativa.FechaFin)
+            cmdIniciativa.Parameters.AddWithValue("@IDSOLICITANTE", iniciativa.Solicitante.IdSolicitante)
+            cmdIniciativa.ExecuteNonQuery()
+            Dim sqlCodIniciativa As String = "SELECT COUNT(INICIATIVA.CODINICIATIVA) FROM INICIATIVA"
+            cmdIniciativa = New SqlCommand(sqlCodIniciativa, oConexion)
+            Dim codIniciativa As Integer = cmdIniciativa.ExecuteScalar
+            'Iniciativa-Profesorado
+            Dim sqlIniciativaProfesorado As String = "INSERT INTO INICIATIVA_PROFESORADO(IDPROF, CODINICIATIVA) VALUES (@IDPROF, @CODINICIATIVA)"
+            Dim cmdIniciativaProfesorado As New SqlCommand(sqlIniciativaProfesorado, oConexion)
+            For Each profesor As Profesor In iniciativa.Profesores
+                cmdIniciativaProfesorado.Parameters.Clear()
+                cmdIniciativaProfesorado.Parameters.AddWithValue("@IDPROF", profesor.IdProf)
+                cmdIniciativaProfesorado.Parameters.AddWithValue("@CODINICIATIVA", codIniciativa)
+                cmdIniciativaProfesorado.ExecuteScalar()
+            Next
+
+            'INICIATIVA-METAS
+            Dim sqlIniciativaMetas As String = "INSERT INTO INICIATIVA_METAS(CODINICIATIVA, NUMEROODS, CODMETA) VALUES (@CODINICIATIVA, @NUMEROODS, @CODMETA)"
+            Dim cmdIniciativaMetas As New SqlCommand(sqlIniciativaMetas, oConexion)
+            For Each meta As Metas In iniciativa.ListaMetas
+                cmdIniciativaMetas.Parameters.Clear()
+                cmdIniciativaMetas.Parameters.AddWithValue("@CODINICIATIVA", codIniciativa)
+                cmdIniciativaMetas.Parameters.AddWithValue("@NUMEROODS", meta.NumODS)
+                cmdIniciativaMetas.Parameters.AddWithValue("@CODMETA", meta.CodMeta)
+                cmdIniciativaMetas.ExecuteScalar()
+            Next
+            'INICIATIVA-MODULOS
+            Dim horas As Integer = (iniciativa.FechaFin - iniciativa.FechaInicio).TotalHours
+
+            Dim sqlIniciativaModulos As String = "INSERT INTO INICIATIVA_MODULOS(CODINICIATIVA, CODCURSO, CODMODULO, HORAS) VALUES (@CODINICIATIVA, @CODCURSO, @CODMODULO, @HORAS)"
+            Dim cmdIniciativaModulos As New SqlCommand(sqlIniciativaModulos, oConexion)
+            For Each modulo As Modulo In iniciativa.Modulos
+                cmdIniciativaModulos.Parameters.Clear()
+                cmdIniciativaModulos.Parameters.AddWithValue("@CODINICIATIVA", codIniciativa)
+                cmdIniciativaModulos.Parameters.AddWithValue("@CODCURSO", modulo.CodCurso)
+                cmdIniciativaModulos.Parameters.AddWithValue("@CODMODULO", modulo.CodModulo)
+                cmdIniciativaModulos.Parameters.AddWithValue("@HORAS", horas)
+                cmdIniciativaModulos.ExecuteScalar()
+            Next
+            msg = "La iniciativa se ha añadido"
+        Catch ex As Exception
+            msg = ex.ToString
+        Finally
+            oConexion.Close()
+        End Try
     End Sub
+    Public Function EliminarIniciativa(iniciativa As Iniciativa) As String
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "DELETE FROM INICIATIVA_MODULOS WHERE CODINICIATIVA=@CODINICIATIVA"
+            Dim cmdDeLasIniciativas As New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVA_METAS WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVA_PROFESORADO WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+        Catch ex As Exception
+            Return ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return ""
+    End Function
 End Class
