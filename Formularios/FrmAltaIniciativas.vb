@@ -180,8 +180,11 @@ Public Class FrmAltaIniciativas
         dgvIniciativas.DataSource = listaIniciativa
     End Sub
     Private Sub btnEliminarIniciativas_Click(sender As Object, e As EventArgs) Handles btnEliminarIniciativas.Click
+        Dim msg As String = ""
         Dim iniciativaAEliminar As Iniciativa = TryCast(cboIniciativasEliminar.SelectedItem, Iniciativa)
         MessageBox.Show(Gestor.EliminarIniciativa(iniciativaAEliminar))
-
+        cboIniciativasEliminar.Items.Clear()
+        cboIniciativasEliminar.Text = ""
+        cboIniciativasEliminar.Items.AddRange(Gestor.DevolverIniciativa(msg).ToArray)
     End Sub
 End Class
