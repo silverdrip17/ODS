@@ -5,6 +5,7 @@ Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
     Public Sub New()
+        GuardarErrores("Esto es una prueba")
         If Environment.MachineName = "DESKTOP-NIH4RAC" Then
             cadenaDeConexion = "Data Source = DESKTOP-NIH4RAC\MSSQLSERVER2; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
         ElseIf Environment.MachineName = "4V-PRO-948" Then
@@ -246,19 +247,44 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
+    Dim aux As New List(Of String)
     Public Function GuardarErrores(msg As String) As String
-        Dim rutafichero As String = "./Ficheros/Ficherrores"
+        Dim rutafichero As String = ".\Ficheros\errores.log"
+        aux.Add(msg)
         Try
             If Not File.Exists(rutafichero) Then
-                File.WriteAllLines(rutafichero, msg)
+                File.AppendAllLines(rutafichero, aux)
             Else
-                File.AppendAllLines(rutafichero, msg)
+                File.AppendAllLines(rutafichero, aux)
             End If
         Catch ex As Exception
             Return "Error, la carpeta Ficheros no existe"
         End Try
         Return "" 'GuardarCambios(kor.DatosKorrika)
     End Function
+    'Public Function LeerPersona() As String
+    '    Dim existeFichero As Boolean = File.Exists(NOMBREFICHERO)
+    '    If Not existeFichero Then Return $"El fichero {NOMBREFICHERO} no existe"
+    '    Dim lineas() As String = File.ReadAllLines(NOMBREFICHERO)
+    '    Dim partes() As String
+    '    Dim nuevaPersona As Persona
+    '    For i As Integer = 0 To lineas.Length - 1
+    '        partes = lineas(i).Split("*")
+    '        nuevaPersona = New Persona(partes(0), partes(1), partes(2))
+    '        Personas.Add(nuevaPersona)
+    '    Next
+    '    Return Nothing
+    'End Function
+    'Public Function GrabarFichero() As String
+    '    Dim cantidadPersonas As Integer = Personas.Count - 1
+    '    Dim datosPersona(cantidadPersonas) As String
+
+    '    For i As Integer = 0 To cantidadPersonas
+    '        datosPersona(i) = $"{Personas(i).Dni}*{Personas(i).Nombre}*{Personas(i).FechaNacimiento}"
+    '    Next
+    '    File.WriteAllLines(NOMBREFICHERO, datosPersona)
+    '    Return Nothing
+    'End Function
 
     'Public Function GuardarODSMetas(readonlyods As ReadOnlyCollection(Of ODS)) As String
     '    Dim ods() As String = {}
