@@ -317,4 +317,36 @@ Public Class GestionIniciativas
             oConexion.Close()
         End Try
     End Sub
+    Public Function EliminarIni(iniciativa As Iniciativa) As String
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim sql As String = "DELETE FROM INICIATIVA_MODULOS WHERE CODINICIATIVA=@CODINICIATIVA"
+            Dim cmdDeLasIniciativas As New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVA_METAS WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVA_PROFESORADO WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+            sql = "DELETE FROM INICIATIVAS WHERE CODINICIATIVA=@CODINICIATIVA"
+            cmdDeLasIniciativas = New SqlCommand(sql, oConexion)
+            cmdDeLasIniciativas.Parameters.AddWithValue("@CODINICIATIVA", iniciativa.CodIniciativa)
+            cmdDeLasIniciativas.ExecuteNonQuery()
+
+        Catch ex As Exception
+            Return ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+        Return ""
+    End Function
 End Class
