@@ -468,6 +468,7 @@ Partial Class FrmAltaIniciativas
         Me.Text = "Alta de iniciativa"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).EndInit()
+
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -505,6 +506,7 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents Label12 As Label
     Friend WithEvents cboIniciativasEliminar As ComboBox
     Friend WithEvents dgvIniciativas As DataGridView
+
     Friend WithEvents Label10 As Label
     Friend WithEvents cboMetasEliminar As ComboBox
     Friend WithEvents Label11 As Label
@@ -512,4 +514,5 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents Label9 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents btnEliminarIniciativas As Button
+
 End Class

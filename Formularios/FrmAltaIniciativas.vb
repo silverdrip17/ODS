@@ -182,5 +182,6 @@ Public Class FrmAltaIniciativas
     Private Sub btnEliminarIniciativas_Click(sender As Object, e As EventArgs) Handles btnEliminarIniciativas.Click
         Dim iniciativaAEliminar As Iniciativa = TryCast(cboIniciativasEliminar.SelectedItem, Iniciativa)
         MessageBox.Show(Gestor.EliminarIniciativa(iniciativaAEliminar))
+
     End Sub
 End Class
