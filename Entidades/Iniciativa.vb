@@ -14,10 +14,12 @@ Public Class Iniciativa
     Public Property ListaMetas As List(Of Metas)
     Public Property Profesores As List(Of Profesor)
     Public Property Modulos As List(Of Modulo)
+    Public Property ODS As List(Of ODS)
     Public Sub New()
         ListaMetas = New List(Of Metas)
         Profesores = New List(Of Profesor)
         Modulos = New List(Of Modulo)
+        ODS = New List(Of ODS)
     End Sub
 
 
