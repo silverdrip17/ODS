@@ -53,16 +53,15 @@ Partial Class FrmAltaIniciativas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cboIniciativasEliminar = New System.Windows.Forms.ComboBox()
-        Me.dgvIniciativas = New System.Windows.Forms.DataGridView()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cboMetasEliminar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cboODSEliminar = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnEliminarIniciativa = New System.Windows.Forms.Button()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboSolicitantes
@@ -328,15 +327,15 @@ Partial Class FrmAltaIniciativas
         Me.cboIniciativasEliminar.Size = New System.Drawing.Size(250, 24)
         Me.cboIniciativasEliminar.TabIndex = 71
         '
-        'dgvIniciativas
+        'DataGridView1
         '
-        Me.dgvIniciativas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvIniciativas.Location = New System.Drawing.Point(1156, 106)
-        Me.dgvIniciativas.Name = "dgvIniciativas"
-        Me.dgvIniciativas.RowHeadersWidth = 51
-        Me.dgvIniciativas.RowTemplate.Height = 24
-        Me.dgvIniciativas.Size = New System.Drawing.Size(605, 231)
-        Me.dgvIniciativas.TabIndex = 70
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(1156, 106)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.RowHeadersWidth = 51
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(605, 231)
+        Me.DataGridView1.TabIndex = 70
         '
         'Label10
         '
@@ -390,25 +389,15 @@ Partial Class FrmAltaIniciativas
         Me.Label4.TabIndex = 73
         Me.Label4.Text = "AÑADIR INICIATIVA"
         '
-        'btnEliminarIniciativa
-        '
-        Me.btnEliminarIniciativa.Location = New System.Drawing.Point(1156, 437)
-        Me.btnEliminarIniciativa.Name = "btnEliminarIniciativa"
-        Me.btnEliminarIniciativa.Size = New System.Drawing.Size(274, 73)
-        Me.btnEliminarIniciativa.TabIndex = 74
-        Me.btnEliminarIniciativa.Text = "Eliminar INICIATIVA"
-        Me.btnEliminarIniciativa.UseVisualStyleBackColor = True
-        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1710, 843)
-        Me.Controls.Add(Me.btnEliminarIniciativa)
+        Me.ClientSize = New System.Drawing.Size(1924, 843)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.cboIniciativasEliminar)
-        Me.Controls.Add(Me.dgvIniciativas)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.cboMetasEliminar)
         Me.Controls.Add(Me.Label11)
@@ -446,7 +435,7 @@ Partial Class FrmAltaIniciativas
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -483,12 +472,11 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents Label1 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents cboIniciativasEliminar As ComboBox
-    Friend WithEvents dgvIniciativas As DataGridView
+    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label10 As Label
     Friend WithEvents cboMetasEliminar As ComboBox
     Friend WithEvents Label11 As Label
     Friend WithEvents cboODSEliminar As ComboBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnEliminarIniciativa As Button
 End Class

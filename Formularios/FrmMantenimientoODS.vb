@@ -8,7 +8,7 @@ Public Class FrmMantenimientoODS
         Dim misODS = Gestor.DevolverOds(msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            'Gestor.GuardarError(msg)
+            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
         For i As Integer = 0 To misODS.Count - 1
@@ -36,7 +36,7 @@ Public Class FrmMantenimientoODS
         Gestor.ModificarOds(txtNumODS.Text, txtNombreODS.Text, txtDescripcionODS.Text, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            'Gestor.GuardarError(msg)
+            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
         ' todo PROFESORADO NO hace nada con el posible mensaje de error y si es función con el valor devuelto
