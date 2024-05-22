@@ -10,7 +10,6 @@ Public Class FrmMantenimientoMetas
         Dim misODS = Gestor.DevolverOds(msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
         For i As Integer = 0 To misODS.Count - 1
@@ -42,7 +41,6 @@ Public Class FrmMantenimientoMetas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             LimpiarTextoMetas()
             Exit Sub
         End If
@@ -77,7 +75,6 @@ Public Class FrmMantenimientoMetas
         Gestor.ModificarMeta(odsSeleccionado.NumODS, txtCodigoMeta.Text, txtbNombre.Text, txtDescripcionMeta.Text, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
         End If
 
     End Sub
