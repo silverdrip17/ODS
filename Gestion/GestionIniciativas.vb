@@ -316,7 +316,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+            Dim sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN, IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
             Dim cmdIniciativa As New SqlCommand(sql, oConexion)
             cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
             cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
