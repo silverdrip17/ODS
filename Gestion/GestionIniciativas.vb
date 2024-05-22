@@ -407,7 +407,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim cmdStDatosCurso As New SqlCommand("", oConexion)
+            Dim cmdStDatosCurso As New SqlCommand("DATOSCURSO", oConexion)
             cmdStDatosCurso.CommandType = CommandType.StoredProcedure
             cmdStDatosCurso.Parameters.AddWithValue("@CURSO", curso.CodCurso)
         Catch ex As Exception
