@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Runtime.Remoting.Messaging
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
@@ -401,5 +402,20 @@ Public Class GestionIniciativas
             oConexion.Close()
         End Try
         Return ""
+    End Function
+    Public Function DatosCurso(curso As Curso, ByRef msg As String) As Iniciativa
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim cmdStDatosCurso As New SqlCommand("", oConexion)
+            cmdStDatosCurso.CommandType = CommandType.StoredProcedure
+            cmdStDatosCurso.Parameters.AddWithValue("@CURSO", curso.CodCurso)
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+
+        End Try
+        Return New Iniciativa()
     End Function
 End Class
