@@ -247,20 +247,20 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
-    Dim aux As New List(Of String)
-    Public Function GuardarErrores(msg As String) As String
+    Dim listaErrores As New List(Of String)
+    Private Function GuardarErrores(msg As String) As String
         Dim rutafichero As String = ".\Ficheros\errores.log"
-        aux.Add(msg)
+        listaErrores.Add(msg)
         Try
             If Not File.Exists(rutafichero) Then
-                File.AppendAllLines(rutafichero, aux)
+                File.AppendAllLines(rutafichero, listaErrores)
             Else
-                File.AppendAllLines(rutafichero, aux)
+                File.AppendAllLines(rutafichero, listaErrores)
             End If
         Catch ex As Exception
             Return "Error, la carpeta Ficheros no existe"
         End Try
-        Return "" 'GuardarCambios(kor.DatosKorrika)
+        Return ""
     End Function
     'Public Function LeerPersona() As String
     '    Dim existeFichero As Boolean = File.Exists(NOMBREFICHERO)
