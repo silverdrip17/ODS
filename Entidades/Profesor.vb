@@ -6,6 +6,11 @@
 
     Public Sub New()
     End Sub
+
+    Public Sub New(nombre As String)
+        Me.Nombre = nombre
+    End Sub
+
     Public Sub New(codCurso As Integer, nombre As String)
         Me.IdProf = codCurso
         Me.Nombre = nombre

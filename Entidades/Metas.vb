@@ -34,4 +34,8 @@
     Public Overrides Function ToString() As String
         Return $"{CodMeta}:{Nombre}"
     End Function
+
+    Public Sub New(nombre As String)
+        Me.Nombre = nombre
+    End Sub
 End Class
