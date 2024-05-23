@@ -227,15 +227,16 @@ Public Class GestionIniciativas
         End Try
         Return todosLosCursos.AsReadOnly
     End Function
-
-    Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
+    'TODO hacer sobrecarga de devolver iniciativa
+    Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As ReadOnlyCollection(Of Iniciativa)
         Dim todasLasIniciativas As New List(Of Iniciativa)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA"
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
+            cmdLeer.Parameters.AddWithValue("@codiniciativa", codiniciativa)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
                 Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
