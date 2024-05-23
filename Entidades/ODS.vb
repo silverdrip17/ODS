@@ -7,11 +7,14 @@ Public Class ODS
     Public Property Nombre As String
     Public Property Descripcion As String
     Public Property Imagen As String ' todo Debería ser ReadOnly y calcularla aquí
-    Public ReadOnly Property ListaMetas As List(Of Metas) 
+    Public ReadOnly Property ListaMetas As List(Of Metas)
     ' todo PROFESORADO Para que realmente sea ReadOnly debe devolver una ReadOnlyCollections
     ' Pero en ese caso mejor que no sea ReadOnly
 
     Public Sub New()
+    End Sub
+    Public Sub New(nombre As String)
+        Me.Nombre = nombre
     End Sub
 
     Public Sub New(numODS As Integer)

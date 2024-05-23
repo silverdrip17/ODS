@@ -54,4 +54,9 @@ Public Class Iniciativa
     Public Overrides Function ToString() As String
         Return $"{CodIniciativa}: {Titulo}"
     End Function
+
+    Public Sub New(titulo As String)
+        Me.Titulo = titulo
+    End Sub
+
 End Class
