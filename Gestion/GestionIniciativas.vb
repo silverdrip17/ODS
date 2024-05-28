@@ -228,15 +228,14 @@ Public Class GestionIniciativas
         Return todosLosCursos.AsReadOnly
     End Function
     'TODO hacer sobrecarga de devolver iniciativa
-    Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As ReadOnlyCollection(Of Iniciativa)
+    Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
         Dim todasLasIniciativas As New List(Of Iniciativa)
         msg = ""
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
+            Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA"
             Dim cmdLeer As New SqlCommand(sql, oConexion)
-            cmdLeer.Parameters.AddWithValue("@codiniciativa", codiniciativa)
             Dim dr As SqlDataReader = cmdLeer.ExecuteReader
             Do While dr.Read
                 Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
@@ -249,6 +248,29 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
+
+    'Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As ReadOnlyCollection(Of Iniciativa)
+    '    Dim todasLasIniciativas As New List(Of Iniciativa)
+    '    msg = ""
+    '    Dim oConexion As New SqlConnection(cadenaDeConexion)
+    '    Try
+    '        oConexion.Open()
+    '        Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
+    '        Dim cmdLeer As New SqlCommand(sql, oConexion)
+    '        cmdLeer.Parameters.AddWithValue("@codiniciativa", codiniciativa)
+    '        Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+    '        Do While dr.Read
+    '            Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
+    '            todasLasIniciativas.Add(inici)
+    '        Loop
+    '    Catch ex As Exception
+    '        msg = ex.Message
+    '    Finally
+    '        oConexion.Close()
+    '    End Try
+    '    Return todasLasIniciativas.AsReadOnly
+    'End Function
+
     Dim listaErrores As New List(Of String)
     Private Function GuardarErrores(msg As String) As String
         Dim rutafichero As String = ".\Ficheros\errores.log"
