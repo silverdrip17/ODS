@@ -22,7 +22,6 @@ Partial Class FrmPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
         Me.btnCambiosMetas = New System.Windows.Forms.Button()
         Me.btnCambiosODS = New System.Windows.Forms.Button()
         Me.btnIniciativa = New System.Windows.Forms.Button()
@@ -59,7 +58,6 @@ Partial Class FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1000, 491)
         Me.Controls.Add(Me.btnIniciativa)
