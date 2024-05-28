@@ -137,7 +137,7 @@ Partial Class FrmMantenimientoODS
         Me.btnEliminarODS.Text = "Eliminar ODS"
         Me.btnEliminarODS.UseVisualStyleBackColor = False
         '
-        'CambioODS
+        'FrmMantenimientoODS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -153,8 +153,8 @@ Partial Class FrmMantenimientoODS
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboODS)
         Me.Controls.Add(Me.txtNumODS)
-        Me.Name = "CambioODS"
-        Me.Text = "Form2"
+        Me.Name = "FrmMantenimientoODS"
+        Me.Text = "Mantenimiento ODS"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
