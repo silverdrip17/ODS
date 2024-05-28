@@ -29,7 +29,7 @@ Partial Class FrmPrincipal
         '
         'btnCambiosMetas
         '
-        Me.btnCambiosMetas.Location = New System.Drawing.Point(732, 55)
+        Me.btnCambiosMetas.Location = New System.Drawing.Point(57, 154)
         Me.btnCambiosMetas.Name = "btnCambiosMetas"
         Me.btnCambiosMetas.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosMetas.TabIndex = 3
@@ -38,7 +38,7 @@ Partial Class FrmPrincipal
         '
         'btnCambiosODS
         '
-        Me.btnCambiosODS.Location = New System.Drawing.Point(732, 175)
+        Me.btnCambiosODS.Location = New System.Drawing.Point(356, 154)
         Me.btnCambiosODS.Name = "btnCambiosODS"
         Me.btnCambiosODS.Size = New System.Drawing.Size(218, 105)
         Me.btnCambiosODS.TabIndex = 4
@@ -47,7 +47,7 @@ Partial Class FrmPrincipal
         '
         'btnIniciativa
         '
-        Me.btnIniciativa.Location = New System.Drawing.Point(732, 294)
+        Me.btnIniciativa.Location = New System.Drawing.Point(653, 154)
         Me.btnIniciativa.Name = "btnIniciativa"
         Me.btnIniciativa.Size = New System.Drawing.Size(218, 105)
         Me.btnIniciativa.TabIndex = 5
@@ -59,13 +59,13 @@ Partial Class FrmPrincipal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1000, 491)
+        Me.ClientSize = New System.Drawing.Size(932, 369)
         Me.Controls.Add(Me.btnIniciativa)
         Me.Controls.Add(Me.btnCambiosODS)
         Me.Controls.Add(Me.btnCambiosMetas)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "FrmPrincipal"
-        Me.Text = "Form1"
+        Me.Text = "Menu"
         Me.ResumeLayout(False)
 
     End Sub
