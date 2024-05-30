@@ -520,4 +520,26 @@ Public Class GestionIniciativas
 
         Return cursosConDatos
     End Function
+    Public Sub LeerMetas(filePath As String)
+        Dim mensajerror As String = ""
+        Dim numODSs As New List(Of Integer) From {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+
+        Try
+            Dim lines = File.ReadAllLines(filePath)
+            For Each line As String In lines
+                If Not String.IsNullOrWhiteSpace(line) Then
+                    Dim parts = line.Split("*")
+                    If parts.Length >= 3 Then
+                        Dim codMeta = parts(0).Trim()
+                        Dim nombre = parts(1).Trim()
+                        Dim descripcion = parts(2).Trim()
+                        For Each numODS As Integer In numODSs
+                            ModificarMeta(numODS, codMeta, nombre, descripcion, mensajerror)
+                        Next
+                    End If
+                End If
+            Next
+        Catch ex As Exception
+        End Try
+    End Sub
 End Class
