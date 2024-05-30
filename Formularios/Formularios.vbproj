@@ -129,9 +129,6 @@
     <EmbeddedResource Include="FrmMantenimientoMetas.resx">
       <DependentUpon>FrmMantenimientoMetas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CambioODS.resx">
-      <DependentUpon>FrmMantenimientoODS.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmMantenimientoODS.resx">
       <DependentUpon>FrmMantenimientoODS.vb</DependentUpon>
     </EmbeddedResource>
