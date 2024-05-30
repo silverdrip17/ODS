@@ -494,12 +494,23 @@ Public Class GestionIniciativas
         Return ""
     End Function
     Public Function DatosCurso(curso As Curso, ByRef msg As String) As Iniciativa
+        Dim cursosConDatos As New List(Of DtoCurso)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
             Dim cmdStDatosCurso As New SqlCommand("DATOSCURSO", oConexion)
             cmdStDatosCurso.CommandType = CommandType.StoredProcedure
             cmdStDatosCurso.Parameters.AddWithValue("@CURSO", curso.CodCurso)
+            Dim drCurso As SqlDataReader = cmdStDatosCurso.ExecuteReader
+            While drCurso.Read
+                Dim cursoConDato As New DtoCurso With {
+                    .IdCurso = curso.CodCurso,
+                    .Iniciativa = drCurso("INICIATIVA").ToString,
+                    .Meta = drCurso("META").ToString,
+                    .ODS = drCurso("ODS").ToString,
+                    .Modulo = drCurso("MODULO").ToString,
+                    .ProfesorA = drCurso("PROFESOR/A").ToString}
+            End While
         Catch ex As Exception
             msg = ex.Message
         Finally
