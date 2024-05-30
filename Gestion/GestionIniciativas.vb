@@ -493,7 +493,7 @@ Public Class GestionIniciativas
         End Try
         Return ""
     End Function
-    Public Function DatosCurso(curso As Curso, ByRef msg As String) As Iniciativa
+    Public Function DatosCurso(curso As Curso, ByRef msg As String) As List(Of DtoCurso)
         Dim cursosConDatos As New List(Of DtoCurso)
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
@@ -510,13 +510,14 @@ Public Class GestionIniciativas
                     .ODS = drCurso("ODS").ToString,
                     .Modulo = drCurso("MODULO").ToString,
                     .ProfesorA = drCurso("PROFESOR/A").ToString}
+                cursosConDatos.Add(cursoConDato)
             End While
         Catch ex As Exception
             msg = ex.Message
         Finally
             oConexion.Close()
-
         End Try
-        Return New Iniciativa()
+
+        Return cursosConDatos
     End Function
 End Class
