@@ -76,13 +76,13 @@ Partial Class FrmPrincipal
         Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.METASToolStripMenuItem, Me.ODSToolStripMenuItem, Me.INICIATIVASToolStripMenuItem, Me.CURSOSToolStripMenuItem, Me.SALIRToolStripMenuItem})
         Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(1079, 28)
+        Me.MenuStrip2.Size = New System.Drawing.Size(1079, 30)
         Me.MenuStrip2.TabIndex = 9
         Me.MenuStrip2.Text = "MenuStrip2"
         '
         'Label1
         '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Label1.Location = New System.Drawing.Point(254, 118)
         Me.Label1.Name = "Label1"
