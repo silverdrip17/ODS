@@ -48,4 +48,7 @@ Public Class FrmMantenimientoODS
         ' todo PROFESORADO NO hace nada con el posible mensaje de error y si es función con el valor devuelto
     End Sub
 
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        Me.Close()
+    End Sub
 End Class
