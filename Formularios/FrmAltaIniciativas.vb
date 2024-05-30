@@ -22,7 +22,6 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If
@@ -154,7 +153,6 @@ Public Class FrmAltaIniciativas
         listaMetas = Gestor.MetasDeUnOds(idProv, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             cboMetas.Items.Clear()
             Exit Sub
         End If
@@ -171,13 +169,35 @@ Public Class FrmAltaIniciativas
             Exit Sub
         End If
     End Sub
-
+    Private profesoresIniciativa As New List(Of Profesor)
+    Private metasIniciativa As New List(Of Metas)
+    Private modulosIniciativa As New List(Of Modulo)
+    Private entidadesIniciativa As New Solicitante
     Private Sub cboIniciativasEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboIniciativasEliminar.SelectedIndexChanged
+        cboCursos.Items.Clear()
+        cboODS.Items.Clear()
+        cboCursos.Items.Clear()
+        cboSolicitantes.Items.Clear()
+        cboProfesores.Items.Clear()
+        cboMetas.Items.Clear()
+        cboModulos.Items.Clear()
+
         Dim msg As String = ""
-        dgvIniciativas.DataSource = Nothing
+        Dim num As Integer
+        If Not Integer.TryParse(cboIniciativasEliminar.SelectedItem, num) Then
+            MessageBox.Show(msg)
+            Exit Sub
+        End If
+        Dim iniciativa As Iniciativa = Gestor.DevolverIniciativa(num, msg, metasIniciativa, profesoresIniciativa, modulosIniciativa, entidadesIniciativa)
         Dim listaIniciativa As ReadOnlyCollection(Of Iniciativa)
         listaIniciativa = Gestor.DevolverIniciativa(msg)
-        dgvIniciativas.DataSource = listaIniciativa
+        cboCursos.Items.Clear()
+        cboODS.Items.Clear()
+        cboCursos.Items.Clear()
+        cboSolicitantes.Items.Clear()
+        cboProfesores.Items.Clear()
+        cboMetas.Items.Clear()
+        cboModulos.Items.Clear()
     End Sub
     Private Sub btnEliminarIniciativas_Click(sender As Object, e As EventArgs) Handles btnEliminarIniciativas.Click
         Dim msg As String = ""
@@ -185,6 +205,15 @@ Public Class FrmAltaIniciativas
         MessageBox.Show(Gestor.EliminarIniciativa(iniciativaAEliminar))
         cboIniciativasEliminar.Items.Clear()
         cboIniciativasEliminar.Text = ""
+        cboIniciativasEliminar.Items.AddRange(Gestor.DevolverIniciativa(msg).ToArray)
+    End Sub
+
+    Private Sub btnResetearDatos_Click(sender As Object, e As EventArgs) Handles btnResetearDatos.Click
+        Dim msg As String = ""
+        cboODS.Items.AddRange(Gestor.DevolverOds(msg).ToArray)
+        cboSolicitantes.Items.AddRange(Gestor.DevolverSolicitantes(msg).ToArray)
+        cboProfesores.Items.AddRange(Gestor.DevolverProfesores(msg).ToArray)
+        cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
         cboIniciativasEliminar.Items.AddRange(Gestor.DevolverIniciativa(msg).ToArray)
     End Sub
 End Class

@@ -53,7 +53,6 @@ Partial Class FrmAltaIniciativas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cboIniciativasEliminar = New System.Windows.Forms.ComboBox()
-        Me.dgvIniciativas = New System.Windows.Forms.DataGridView()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.cboMetasEliminar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -61,8 +60,8 @@ Partial Class FrmAltaIniciativas
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnEliminarIniciativas = New System.Windows.Forms.Button()
+        Me.btnResetearDatos = New System.Windows.Forms.Button()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboSolicitantes
@@ -329,7 +328,7 @@ Partial Class FrmAltaIniciativas
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(1297, 442)
+        Me.Label12.Location = New System.Drawing.Point(1459, 283)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(104, 20)
         Me.Label12.TabIndex = 72
@@ -338,22 +337,11 @@ Partial Class FrmAltaIniciativas
         'cboIniciativasEliminar
         '
         Me.cboIniciativasEliminar.FormattingEnabled = True
-        Me.cboIniciativasEliminar.Location = New System.Drawing.Point(1300, 479)
+        Me.cboIniciativasEliminar.Location = New System.Drawing.Point(1462, 320)
         Me.cboIniciativasEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboIniciativasEliminar.Name = "cboIniciativasEliminar"
         Me.cboIniciativasEliminar.Size = New System.Drawing.Size(281, 28)
         Me.cboIniciativasEliminar.TabIndex = 71
-        '
-        'dgvIniciativas
-        '
-        Me.dgvIniciativas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvIniciativas.Location = New System.Drawing.Point(1300, 132)
-        Me.dgvIniciativas.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.dgvIniciativas.Name = "dgvIniciativas"
-        Me.dgvIniciativas.RowHeadersWidth = 51
-        Me.dgvIniciativas.RowTemplate.Height = 24
-        Me.dgvIniciativas.Size = New System.Drawing.Size(681, 289)
-        Me.dgvIniciativas.TabIndex = 70
         '
         'Label10
         '
@@ -411,7 +399,7 @@ Partial Class FrmAltaIniciativas
         '
         'btnEliminarIniciativas
         '
-        Me.btnEliminarIniciativas.Location = New System.Drawing.Point(1301, 574)
+        Me.btnEliminarIniciativas.Location = New System.Drawing.Point(1446, 132)
         Me.btnEliminarIniciativas.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnEliminarIniciativas.Name = "btnEliminarIniciativas"
         Me.btnEliminarIniciativas.Size = New System.Drawing.Size(308, 91)
@@ -419,16 +407,25 @@ Partial Class FrmAltaIniciativas
         Me.btnEliminarIniciativas.Text = "Eliminar Iniciativas"
         Me.btnEliminarIniciativas.UseVisualStyleBackColor = True
         '
+        'btnResetearDatos
+        '
+        Me.btnResetearDatos.Location = New System.Drawing.Point(209, 660)
+        Me.btnResetearDatos.Name = "btnResetearDatos"
+        Me.btnResetearDatos.Size = New System.Drawing.Size(271, 91)
+        Me.btnResetearDatos.TabIndex = 75
+        Me.btnResetearDatos.Text = "Resetear datos"
+        Me.btnResetearDatos.UseVisualStyleBackColor = True
+        '
         'FrmAltaIniciativas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2164, 1054)
+        Me.Controls.Add(Me.btnResetearDatos)
         Me.Controls.Add(Me.btnEliminarIniciativas)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.cboIniciativasEliminar)
-        Me.Controls.Add(Me.dgvIniciativas)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.cboMetasEliminar)
         Me.Controls.Add(Me.Label11)
@@ -467,8 +464,6 @@ Partial Class FrmAltaIniciativas
         Me.Name = "FrmAltaIniciativas"
         Me.Text = "Alta de iniciativa"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvIniciativas, System.ComponentModel.ISupportInitialize).EndInit()
-
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -505,7 +500,6 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents Label1 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents cboIniciativasEliminar As ComboBox
-    Friend WithEvents dgvIniciativas As DataGridView
 
     Friend WithEvents Label10 As Label
     Friend WithEvents cboMetasEliminar As ComboBox
@@ -514,5 +508,5 @@ Partial Class FrmAltaIniciativas
     Friend WithEvents Label9 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents btnEliminarIniciativas As Button
-
+    Friend WithEvents btnResetearDatos As Button
 End Class

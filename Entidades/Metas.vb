@@ -6,7 +6,9 @@
     Public Property Nombre As String
     Public Property Descripcion As String
 
-    Public Sub New()
+    Public Sub New(numODS As Integer, codMeta As String, descripcion As String)
+        Me.New(numODS, codMeta)
+        Me.Descripcion = descripcion
     End Sub
 
     Public Sub New(numODS As Integer, codMeta As String)
@@ -34,4 +36,8 @@
     Public Overrides Function ToString() As String
         Return $"{CodMeta}:{Nombre}"
     End Function
+
+    Public Sub New(nombre As String)
+        Me.Nombre = nombre
+    End Sub
 End Class

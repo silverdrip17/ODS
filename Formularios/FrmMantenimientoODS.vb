@@ -1,14 +1,15 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Collections.ObjectModel
+Imports System.Data.SqlClient
+Imports System.IO
 Imports Entidades
 
 Public Class FrmMantenimientoODS
     Private Sub FrmMantenimientoODS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim msg As String = ""
         btnfoto.Hide()
-        Dim misODS = Gestor.DevolverOds(msg)
+        Dim misODS As ReadOnlyCollection(Of ODS) = Gestor.DevolverOds(msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
         For i As Integer = 0 To misODS.Count - 1
@@ -25,7 +26,13 @@ Public Class FrmMantenimientoODS
         txtNombreODS.Text = odsSeleccionado.Nombre
         txtNumODS.Text = odsSeleccionado.NumODS
         btnfoto.Show()
-        btnfoto.BackgroundImage = Image.FromFile($"./Imagenes/{odsSeleccionado.NumODS}.jpg") ' todo PROFESORADO ¿Y si no existe el fichero? ¿Y si está corrupto?
+        Dim imagen As String
+        imagen = $"./Imagenes/{odsSeleccionado.NumODS}.jpg"
+        If Not File.Exists(imagen) Then
+            MessageBox.Show($"Falta imagen {odsSeleccionado.NumODS}")
+            Exit Sub
+        End If
+        btnfoto.BackgroundImage = Image.FromFile(imagen) ' todo PROFESORADO ¿Y si no existe el fichero? ¿Y si está corrupto?
         btnfoto.BackgroundImageLayout = ImageLayout.Stretch
 
     End Sub
@@ -36,7 +43,6 @@ Public Class FrmMantenimientoODS
         Gestor.ModificarOds(txtNumODS.Text, txtNombreODS.Text, txtDescripcionODS.Text, msg)
         If Not String.IsNullOrWhiteSpace(msg) Then
             MessageBox.Show(msg)
-            Gestor.GuardarErrores(msg)
             Exit Sub
         End If
         ' todo PROFESORADO NO hace nada con el posible mensaje de error y si es función con el valor devuelto

@@ -9,6 +9,11 @@
     Public Sub New()
 
     End Sub
+
+    Public Sub New(nombre As String)
+        Me.Nombre = nombre
+    End Sub
+
     Public Sub New(codCurso As Integer, codModulo As String, nombre As String)
         Me.CodCurso = codCurso
         Me.CodModulo = codModulo

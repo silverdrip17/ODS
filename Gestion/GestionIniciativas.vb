@@ -1,6 +1,8 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Reflection
+Imports System.Runtime.Remoting.Messaging
 Imports Entidades
 Public Class GestionIniciativas
     Private cadenaDeConexion As String = "Data Source = .; Initial Catalog = PROYECTOODS; Integrated Security = SSPI; MultipleActiveResultSets=true"
@@ -226,7 +228,7 @@ Public Class GestionIniciativas
         End Try
         Return todosLosCursos.AsReadOnly
     End Function
-
+    'TODO hacer sobrecarga de devolver iniciativa
     Public Function DevolverIniciativa(ByRef msg As String) As ReadOnlyCollection(Of Iniciativa)
         Dim todasLasIniciativas As New List(Of Iniciativa)
         msg = ""
@@ -247,20 +249,100 @@ Public Class GestionIniciativas
         End Try
         Return todasLasIniciativas.AsReadOnly
     End Function
-    Dim aux As New List(Of String)
-    Public Function GuardarErrores(msg As String) As String
+
+    'Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As Iniciativa
+    '    Dim iniciativa As Iniciativa = Nothing
+    '    msg = ""
+    '    Dim oConexion As New SqlConnection(cadenaDeConexion)
+    '    Try
+    '        oConexion.Open()
+    '        Dim sql As String = "SELECT CODINICIATIVA, TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN FROM INICIATIVA WHERE CODINICIATIVA=@CODINICIATIVA"
+    '        Dim cmdLeer As New SqlCommand(sql, oConexion)
+    '        cmdLeer.Parameters.AddWithValue("@codiniciativa", codiniciativa)
+    '        Dim dr As SqlDataReader = cmdLeer.ExecuteReader
+    '        Do While dr.Read
+    '            Dim inici As New Iniciativa(dr("CODINICIATIVA").ToString, dr("TITULO").ToString, dr("DESCRIPCION").ToString, dr("FECHAINICIO").ToString, dr("FECHAFIN").ToString)
+    '            todasLasIniciativas.Add(inici)
+    '        Loop
+    '    Catch ex As Exception
+    '        msg = ex.Message
+    '    Finally
+    '        oConexion.Close()
+    '    End Try
+    '    Return todasLasIniciativas.AsReadOnly
+    'End Function
+
+    Public Function DevolverIniciativa(idIniciativa As Integer, ByRef msgError As String, ByRef listametas As List(Of Metas), ByRef profesores As List(Of Profesor), ByRef modulos As List(Of Modulo), ByRef solicitante As Solicitante) As Iniciativa
+        Dim newconnection As New SqlConnection(cadenaDeConexion)
+        Dim iniciativa As Iniciativa = Nothing
+        msgError = ""
+        Try
+            newconnection.Open()
+
+            Dim sqlExisteIniciativa As String = "SELECT COUNT(*) FROM INICIATIVAS WHERE IdIniciativa = @IdIniciativa"
+            Dim cmdInicitiva As New SqlCommand(sqlExisteIniciativa, newconnection)
+            cmdInicitiva.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim nIniciativa As Integer = cmdInicitiva.ExecuteScalar
+            If nIniciativa = 0 Then msgError = $"La Iniciativa {idIniciativa} no existe"
+
+            Dim sqlProfe As String = "Select * From Profesores WHERE IdProfesor IN (Select IdProfesor from Realiza where idiniciativa = @IDINICIATIVA)"
+            Dim cmdProfe As New SqlCommand(sqlProfe, newconnection)
+            cmdProfe.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drProfe As SqlDataReader = cmdProfe.ExecuteReader
+            Do While drProfe.Read
+                Dim profesor As New Profesor(drProfe("IdProfesor").ToString, drProfe("Nombre").ToString)
+                profesores.Add(profesor)
+            Loop
+
+            Dim sqlModulo As String = "Select * From Modulos WHERE IdModulo IN (SELECT IdModulo FROM TRABAJA WHERE IDINICIATIVA = @IDINICIATIVA) AND IdCiclo IN (SELECT IdCiclo FROM TRABAJA WHERE IDINICIATIVA = @IDINICIATIVA)"
+            Dim cmdModulo As New SqlCommand(sqlModulo, newconnection)
+            cmdModulo.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drModulo As SqlDataReader = cmdModulo.ExecuteReader
+            Do While drModulo.Read
+                Dim modulo As New Modulo(drModulo("IdModulo").ToString, drModulo("IdCiclo").ToString, drModulo("Nombre").ToString)
+                modulos.Add(modulo)
+            Loop
+
+            Dim sqlMeta As String = "Select * From Metas WHERE IdMeta IN (SELECT IDMETA FROM TIENE WHERE IDINICIATIVA = @IDINICIATIVA) AND IdOds IN (SELECT IDODS FROM TIENE WHERE IDINICIATIVA = @IDINICIATIVA)"
+            Dim cmdMeta As New SqlCommand(sqlMeta, newconnection)
+            cmdMeta.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drMeta As SqlDataReader = cmdMeta.ExecuteReader
+            Do While drMeta.Read
+                Dim meta As New Metas(drMeta("numods").ToString, drMeta("nummeta").ToString, drMeta("Descripcion").ToString)
+                listametas.Add(meta)
+            Loop
+
+            Dim sqlIniciativa As String = "Select * From INICIATIVAS WHERE IdIniciativa = @IdIniciativa"
+            Dim cmdIniciativa As New SqlCommand(sqlIniciativa, newconnection)
+            cmdIniciativa.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
+            Do While drIniciativa.Read
+                iniciativa = New Iniciativa(drIniciativa("codiniciativa").ToString, drIniciativa("titulo").ToString, drIniciativa("DESCRIPCIÓN"), drIniciativa("FECHAINICIO").ToString, drIniciativa("FECHAFIN").ToString, solicitante, listametas, profesores, modulos)
+            Loop
+
+
+        Catch ex As Exception
+            msgError = ex.Message
+        Finally
+            newconnection.Close()
+        End Try
+        Return iniciativa
+    End Function
+
+    Dim listaErrores As New List(Of String)
+    Private Function GuardarErrores(msg As String) As String
         Dim rutafichero As String = ".\Ficheros\errores.log"
-        aux.Add(msg)
+        listaErrores.Add(msg)
         Try
             If Not File.Exists(rutafichero) Then
-                File.AppendAllLines(rutafichero, aux)
+                File.AppendAllLines(rutafichero, listaErrores)
             Else
-                File.AppendAllLines(rutafichero, aux)
+                File.AppendAllLines(rutafichero, listaErrores)
             End If
         Catch ex As Exception
             Return "Error, la carpeta Ficheros no existe"
         End Try
-        Return "" 'GuardarCambios(kor.DatosKorrika)
+        Return ""
     End Function
     'Public Function LeerPersona() As String
     '    Dim existeFichero As Boolean = File.Exists(NOMBREFICHERO)
@@ -319,7 +401,7 @@ Public Class GestionIniciativas
         Dim oConexion As New SqlConnection(cadenaDeConexion)
         Try
             oConexion.Open()
-            Dim sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, [FECHA INICIO], [FECHA FIN], IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
+            Dim sql = "INSERT INTO INICIATIVA (TITULO, DESCRIPCION, FECHAINICIO, FECHAFIN, IDSOLICITANTE) VALUES (@TITULO, @DESCRIPCION, @FECHAIN, @FECHAFIN, @IDSOLICITANTE)"
             Dim cmdIniciativa As New SqlCommand(sql, oConexion)
             cmdIniciativa.Parameters.AddWithValue("@TITULO", iniciativa.Titulo)
             cmdIniciativa.Parameters.AddWithValue("@DESCRIPCION", iniciativa.Descripcion)
@@ -402,4 +484,53 @@ Public Class GestionIniciativas
         End Try
         Return ""
     End Function
+    Public Function DatosCurso(curso As Curso, ByRef msg As String) As List(Of DtoCurso)
+        Dim cursosConDatos As New List(Of DtoCurso)
+        Dim oConexion As New SqlConnection(cadenaDeConexion)
+        Try
+            oConexion.Open()
+            Dim cmdStDatosCurso As New SqlCommand("DATOSCURSO", oConexion)
+            cmdStDatosCurso.CommandType = CommandType.StoredProcedure
+            cmdStDatosCurso.Parameters.AddWithValue("@CURSO", curso.CodCurso)
+            Dim drCurso As SqlDataReader = cmdStDatosCurso.ExecuteReader
+            While drCurso.Read
+                Dim cursoConDato As New DtoCurso With {
+                    .IdCurso = curso.CodCurso,
+                    .Iniciativa = drCurso("INICIATIVA").ToString,
+                    .Meta = drCurso("META").ToString,
+                    .ODS = drCurso("ODS").ToString,
+                    .Modulo = drCurso("MODULO").ToString,
+                    .ProfesorA = drCurso("PROFESOR/A").ToString}
+                cursosConDatos.Add(cursoConDato)
+            End While
+        Catch ex As Exception
+            msg = ex.Message
+        Finally
+            oConexion.Close()
+        End Try
+
+        Return cursosConDatos
+    End Function
+    Public Sub LeerMetas(filePath As String)
+        Dim mensajerror As String = ""
+        Dim numODSs As New List(Of Integer) From {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
+
+        Try
+            Dim lines = File.ReadAllLines(filePath)
+            For Each line As String In lines
+                If Not String.IsNullOrWhiteSpace(line) Then
+                    Dim parts = line.Split("*")
+                    If parts.Length >= 3 Then
+                        Dim codMeta = parts(0).Trim()
+                        Dim nombre = parts(1).Trim()
+                        Dim descripcion = parts(2).Trim()
+                        For Each numODS As Integer In numODSs
+                            ModificarMeta(numODS, codMeta, nombre, descripcion, mensajerror)
+                        Next
+                    End If
+                End If
+            Next
+        Catch ex As Exception
+        End Try
+    End Sub
 End Class
