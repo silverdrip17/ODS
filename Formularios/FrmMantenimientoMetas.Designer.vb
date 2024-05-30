@@ -36,6 +36,7 @@ Partial Class FrmMantenimientoMetas
         Me.btnGuardarMeta = New System.Windows.Forms.Button()
         Me.btnEliminarMeta = New System.Windows.Forms.Button()
         Me.btnFoto = New System.Windows.Forms.Button()
+        Me.btnVolver = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -158,11 +159,21 @@ Partial Class FrmMantenimientoMetas
         Me.btnFoto.TabIndex = 19
         Me.btnFoto.UseVisualStyleBackColor = True
         '
+        'btnVolver
+        '
+        Me.btnVolver.Location = New System.Drawing.Point(305, 459)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(181, 50)
+        Me.btnVolver.TabIndex = 20
+        Me.btnVolver.Text = "VOLVER"
+        Me.btnVolver.UseVisualStyleBackColor = True
+        '
         'FrmMantenimientoMetas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(800, 564)
+        Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.btnFoto)
         Me.Controls.Add(Me.btnEliminarMeta)
         Me.Controls.Add(Me.btnGuardarMeta)
@@ -198,4 +209,5 @@ Partial Class FrmMantenimientoMetas
     Friend WithEvents btnGuardarMeta As Button
     Friend WithEvents btnEliminarMeta As Button
     Friend WithEvents btnFoto As Button
+    Friend WithEvents btnVolver As Button
 End Class

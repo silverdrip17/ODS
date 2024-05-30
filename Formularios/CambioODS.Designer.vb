@@ -35,6 +35,7 @@ Partial Class FrmMantenimientoODS
         Me.btnGuardarCambios = New System.Windows.Forms.Button()
         Me.btnfoto = New System.Windows.Forms.Button()
         Me.btnEliminarODS = New System.Windows.Forms.Button()
+        Me.btnVolver = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtNumODS
@@ -137,11 +138,21 @@ Partial Class FrmMantenimientoODS
         Me.btnEliminarODS.Text = "Eliminar ODS"
         Me.btnEliminarODS.UseVisualStyleBackColor = False
         '
-        'CambioODS
+        'btnVolver
+        '
+        Me.btnVolver.Location = New System.Drawing.Point(263, 321)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(181, 50)
+        Me.btnVolver.TabIndex = 14
+        Me.btnVolver.Text = "VOLVER"
+        Me.btnVolver.UseVisualStyleBackColor = True
+        '
+        'FrmMantenimientoODS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 331)
+        Me.ClientSize = New System.Drawing.Size(800, 402)
+        Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.btnEliminarODS)
         Me.Controls.Add(Me.btnfoto)
         Me.Controls.Add(Me.btnGuardarCambios)
@@ -153,7 +164,7 @@ Partial Class FrmMantenimientoODS
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cboODS)
         Me.Controls.Add(Me.txtNumODS)
-        Me.Name = "CambioODS"
+        Me.Name = "FrmMantenimientoODS"
         Me.Text = "Form2"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -172,4 +183,5 @@ Partial Class FrmMantenimientoODS
     Friend WithEvents btnGuardarCambios As Button
     Friend WithEvents btnfoto As Button
     Friend WithEvents btnEliminarODS As Button
+    Friend WithEvents btnVolver As Button
 End Class

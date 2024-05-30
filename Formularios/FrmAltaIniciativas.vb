@@ -216,4 +216,8 @@ Public Class FrmAltaIniciativas
         cboCursos.Items.AddRange(Gestor.DevolverCursos(msg).ToArray)
         cboIniciativasEliminar.Items.AddRange(Gestor.DevolverIniciativa(msg).ToArray)
     End Sub
+
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        Me.Close()
+    End Sub
 End Class

@@ -22,6 +22,6 @@
     End Sub
 
     Public Overrides Function ToString() As String
-        Return Me.Iniciativa.ToString() + Me.Meta.ToString + Me.ODS.ToString + Me.Modulo.ToString + Me.ProfesorA.ToString
+        Return Me.Iniciativa.ToString()
     End Function
 End Class
