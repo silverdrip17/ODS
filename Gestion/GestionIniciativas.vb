@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Reflection
 Imports System.Runtime.Remoting.Messaging
 Imports Entidades
 Public Class GestionIniciativas
@@ -249,8 +250,8 @@ Public Class GestionIniciativas
         Return todasLasIniciativas.AsReadOnly
     End Function
 
-    'Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As ReadOnlyCollection(Of Iniciativa)
-    '    Dim todasLasIniciativas As New List(Of Iniciativa)
+    'Public Function DevolverIniciativa(ByRef msg As String, codiniciativa As Integer) As Iniciativa
+    '    Dim iniciativa As Iniciativa = Nothing
     '    msg = ""
     '    Dim oConexion As New SqlConnection(cadenaDeConexion)
     '    Try
@@ -270,6 +271,72 @@ Public Class GestionIniciativas
     '    End Try
     '    Return todasLasIniciativas.AsReadOnly
     'End Function
+
+    Public Function DevolverIniciativa(idIniciativa As Integer, ByRef msgError As String, ByRef listametas As List(Of Metas), ByRef profesores As List(Of Profesor), ByRef modulos As List(Of Modulo), ByRef solicitante As List(Of Solicitante)) As Iniciativa
+        Dim newconnection As New SqlConnection(cadenaDeConexion)
+        Dim iniciativa As Iniciativa = Nothing
+        msgError = ""
+        Try
+            newconnection.Open()
+
+            Dim sqlExisteIniciativa As String = "SELECT COUNT(*) FROM INICIATIVAS WHERE IdIniciativa = @IdIniciativa"
+            Dim cmdInicitiva As New SqlCommand(sqlExisteIniciativa, newconnection)
+            cmdInicitiva.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim nIniciativa As Integer = cmdInicitiva.ExecuteScalar
+            If nIniciativa = 0 Then msgError = $"La Iniciativa {idIniciativa} no existe"
+
+            Dim sqlEntidad As String = "Select * From [Entidades Externas] WHERE IdEntidad IN (Select IdEntidad from Colabora where idiniciativa = @IDINICIATIVA)"
+            Dim cmdEntidad As New SqlCommand(sqlEntidad, newconnection)
+            cmdEntidad.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drEntidad As SqlDataReader = cmdEntidad.ExecuteReader
+            Do While drEntidad.Read
+                Dim entidad As New Solicitante(drEntidad("IDEntidad").ToString, drEntidad("Nombre").ToString)
+                solicitante.Add(entidad)
+            Loop
+
+            Dim sqlProfe As String = "Select * From Profesores WHERE IdProfesor IN (Select IdProfesor from Realiza where idiniciativa = @IDINICIATIVA)"
+            Dim cmdProfe As New SqlCommand(sqlProfe, newconnection)
+            cmdProfe.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drProfe As SqlDataReader = cmdProfe.ExecuteReader
+            Do While drProfe.Read
+                Dim profesor As New Profesor(drProfe("IdProfesor").ToString, drProfe("Nombre").ToString)
+                profesores.Add(profesor)
+            Loop
+
+            Dim sqlModulo As String = "Select * From Modulos WHERE IdModulo IN (SELECT IdModulo FROM TRABAJA WHERE IDINICIATIVA = @IDINICIATIVA) AND IdCiclo IN (SELECT IdCiclo FROM TRABAJA WHERE IDINICIATIVA = @IDINICIATIVA)"
+            Dim cmdModulo As New SqlCommand(sqlModulo, newconnection)
+            cmdModulo.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drModulo As SqlDataReader = cmdModulo.ExecuteReader
+            Do While drModulo.Read
+                Dim modulo As New Modulo(drModulo("IdModulo").ToString, drModulo("IdCiclo").ToString, drModulo("Nombre").ToString)
+                modulos.Add(modulo)
+            Loop
+
+            Dim sqlMeta As String = "Select * From Metas WHERE IdMeta IN (SELECT IDMETA FROM TIENE WHERE IDINICIATIVA = @IDINICIATIVA) AND IdOds IN (SELECT IDODS FROM TIENE WHERE IDINICIATIVA = @IDINICIATIVA)"
+            Dim cmdMeta As New SqlCommand(sqlMeta, newconnection)
+            cmdMeta.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drMeta As SqlDataReader = cmdMeta.ExecuteReader
+            Do While drMeta.Read
+                Dim meta As New Metas(drMeta("numods").ToString, drMeta("nummeta").ToString, drMeta("Descripcion").ToString)
+                listametas.Add(meta)
+            Loop
+
+            Dim sqlIniciativa As String = "Select * From INICIATIVAS WHERE IdIniciativa = @IdIniciativa"
+            Dim cmdIniciativa As New SqlCommand(sqlIniciativa, newconnection)
+            cmdIniciativa.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
+            Dim drIniciativa As SqlDataReader = cmdIniciativa.ExecuteReader
+            Do While drIniciativa.Read
+                iniciativa = New Iniciativa(drIniciativa("codiniciativa").ToString, drIniciativa("titulo").ToString, drIniciativa("DESCRIPCIÓN"), drIniciativa("FECHAINICIO").ToString, drIniciativa("FECHAFIN").ToString, solicitante, listametas, profesores, modulos)
+            Loop
+
+
+        Catch ex As Exception
+            msgError = ex.Message
+        Finally
+            newconnection.Close()
+        End Try
+        Return iniciativa
+    End Function
 
     Dim listaErrores As New List(Of String)
     Private Function GuardarErrores(msg As String) As String

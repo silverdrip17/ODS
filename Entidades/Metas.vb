@@ -6,7 +6,9 @@
     Public Property Nombre As String
     Public Property Descripcion As String
 
-    Public Sub New()
+    Public Sub New(numODS As Integer, codMeta As String, descripcion As String)
+        Me.New(numODS, codMeta)
+        Me.Descripcion = descripcion
     End Sub
 
     Public Sub New(numODS As Integer, codMeta As String)
