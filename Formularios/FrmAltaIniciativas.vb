@@ -172,7 +172,7 @@ Public Class FrmAltaIniciativas
     Private profesoresIniciativa As New List(Of Profesor)
     Private metasIniciativa As New List(Of Metas)
     Private modulosIniciativa As New List(Of Modulo)
-    Private entidadesIniciativa As New List(Of Solicitante)
+    Private entidadesIniciativa As New Solicitante
     Private Sub cboIniciativasEliminar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboIniciativasEliminar.SelectedIndexChanged
         cboCursos.Items.Clear()
         cboODS.Items.Clear()

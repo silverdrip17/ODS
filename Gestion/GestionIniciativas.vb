@@ -272,7 +272,7 @@ Public Class GestionIniciativas
     '    Return todasLasIniciativas.AsReadOnly
     'End Function
 
-    Public Function DevolverIniciativa(idIniciativa As Integer, ByRef msgError As String, ByRef listametas As List(Of Metas), ByRef profesores As List(Of Profesor), ByRef modulos As List(Of Modulo), ByRef solicitante As List(Of Solicitante)) As Iniciativa
+    Public Function DevolverIniciativa(idIniciativa As Integer, ByRef msgError As String, ByRef listametas As List(Of Metas), ByRef profesores As List(Of Profesor), ByRef modulos As List(Of Modulo), ByRef solicitante As Solicitante) As Iniciativa
         Dim newconnection As New SqlConnection(cadenaDeConexion)
         Dim iniciativa As Iniciativa = Nothing
         msgError = ""
@@ -284,15 +284,6 @@ Public Class GestionIniciativas
             cmdInicitiva.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
             Dim nIniciativa As Integer = cmdInicitiva.ExecuteScalar
             If nIniciativa = 0 Then msgError = $"La Iniciativa {idIniciativa} no existe"
-
-            Dim sqlEntidad As String = "Select * From [Entidades Externas] WHERE IdEntidad IN (Select IdEntidad from Colabora where idiniciativa = @IDINICIATIVA)"
-            Dim cmdEntidad As New SqlCommand(sqlEntidad, newconnection)
-            cmdEntidad.Parameters.AddWithValue("@IdIniciativa", idIniciativa)
-            Dim drEntidad As SqlDataReader = cmdEntidad.ExecuteReader
-            Do While drEntidad.Read
-                Dim entidad As New Solicitante(drEntidad("IDEntidad").ToString, drEntidad("Nombre").ToString)
-                solicitante.Add(entidad)
-            Loop
 
             Dim sqlProfe As String = "Select * From Profesores WHERE IdProfesor IN (Select IdProfesor from Realiza where idiniciativa = @IDINICIATIVA)"
             Dim cmdProfe As New SqlCommand(sqlProfe, newconnection)
