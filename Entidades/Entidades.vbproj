@@ -64,6 +64,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DtoCurso.vb" />
     <Compile Include="Modulo.vb" />
     <Compile Include="Solicitante.vb" />
     <Compile Include="Curso.vb" />
